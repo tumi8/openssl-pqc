@@ -5,7 +5,7 @@
 DIR=		apps
 TOP=		..
 CC=		cc
-INCLUDES=	-I$(TOP) -I../include $(KRB5_INCLUDES)
+INCLUDES=	-I$(TOP) -I../include -I../oqs/include $(KRB5_INCLUDES)
 CFLAG=		-g -static
 MAKEFILE=	Makefile
 PERL=		perl
@@ -15,8 +15,8 @@ KRB5_INCLUDES=
 LIBKRB5=
 
 PEX_LIBS=
-EX_LIBS= 
-EXE_EXT= 
+EX_LIBS=
+EXE_EXT=
 
 SHLIB_TARGET=
 
@@ -24,9 +24,9 @@ CFLAGS= -DMONOLITH $(INCLUDES) $(CFLAG)
 
 GENERAL=Makefile makeapps.com install.com
 
-DLIBCRYPTO=../libcrypto.a
+DLIBCRYPTO=../libcrypto.a ../oqs/liboqs.a
 DLIBSSL=../libssl.a
-LIBCRYPTO=-L.. -lcrypto
+LIBCRYPTO=-L.. -lcrypto -L../oqs -loqs
 LIBSSL=-L.. -lssl
 
 PROGRAM= openssl
@@ -91,7 +91,7 @@ req: sreq.o $(A_OBJ) $(DLIBCRYPTO)
 		LIBDEPS="$(PEX_LIBS) $(LIBCRYPTO) $(EX_LIBS)" \
 		link_app.$${shlib_target}
 
-sreq.o: req.c 
+sreq.o: req.c
 	$(CC) -c $(INCLUDES) $(CFLAG) -o sreq.o req.c
 
 openssl-vms.cnf: openssl.cnf

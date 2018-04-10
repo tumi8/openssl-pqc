@@ -22,6 +22,9 @@
 /out.*
 /tmp.*
 
+# OQS
+/oqs
+
 # Most *.c files under test/ are symlinks
 /test/*.c
 # Apart from these

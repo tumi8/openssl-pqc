@@ -169,6 +169,9 @@
 # include <openssl/krb5_asn.h>
 #endif
 #include <openssl/md5.h>
+#ifndef OPENSSL_NO_OQSKEM
+#include <oqs/oqs.h>
+#endif
 
 #ifndef OPENSSL_NO_SSL3_METHOD
 static const SSL_METHOD *ssl3_get_server_method(int ver);
@@ -487,6 +490,7 @@ int ssl3_accept(SSL *s)
 #endif
                 || (alg_k & SSL_kEDH)
                 || (alg_k & SSL_kEECDH)
+                || (alg_k & SSL_kOQSKEM_DEFAULT)
                 || ((alg_k & SSL_kRSA)
                     && (s->cert->pkeys[SSL_PKEY_RSA_ENC].privatekey == NULL
                         || (SSL_C_IS_EXPORT(s->s3->tmp.new_cipher)
@@ -1622,6 +1626,10 @@ int ssl3_send_server_key_exchange(SSL *s)
     int curve_id = 0;
     BN_CTX *bn_ctx = NULL;
 #endif
+#ifndef OPENSSL_NO_OQSKEM
+    unsigned char *oqskem_srvr_msg = NULL;
+    size_t oqskem_srvr_msg_len = 0;
+#endif
     EVP_PKEY *pkey;
     const EVP_MD *md = NULL;
     unsigned char *p, *d;
@@ -1832,8 +1840,80 @@ int ssl3_send_server_key_exchange(SSL *s)
             r[1] = NULL;
             r[2] = NULL;
             r[3] = NULL;
+
+            #ifndef OPENSSL_NO_HYBRID_OQSKEM_ECDHE
+                        if ((type & SSL_kOQSKEM_DEFAULT)) {
+                            if (type & SSL_kOQSKEX_DEFAULT) {
+                                if ((s->s3->tmp.oqskem_kem = OQS_KEM_new(OQS_KEM_alg_default)) == NULL) {
+                                    SSLerr(SSL_F_SSL3_SEND_SERVER_KEY_EXCHANGE,ERR_R_MALLOC_FAILURE);
+                                    goto err;
+                                }
+                            }
+
+                            oqskem_srvr_msg_len = s->s3->tmp.oqskem_kem->length_public_key;
+                            oqskem_srvr_msg = OPENSSL_malloc(oqskem_srvr_msg_len);
+                            if (oqskem_srvr_msg == NULL) {
+                                SSLerr(SSL_F_SSL3_SEND_SERVER_KEY_EXCHANGE,ERR_R_MALLOC_FAILURE);
+                                goto err;
+                            }
+
+                            s->s3->tmp.oqskem_priv_len = s->s3->tmp.oqskem_kem->length_secret_key;
+                            s->s3->tmp.oqskem_priv = OPENSSL_malloc(s->s3->tmp.oqskem_priv_len);
+                            if (s->s3->tmp.oqskem_priv == NULL) {
+                                SSLerr(SSL_F_SSL3_SEND_SERVER_KEY_EXCHANGE,ERR_R_MALLOC_FAILURE);
+                                goto err;
+                            }
+
+                            if (OQS_KEM_keypair(s->s3->tmp.oqskem_kem, oqskem_srvr_msg, s->s3->tmp.oqskem_priv) != OQS_SUCCESS) {
+                                SSLerr(SSL_F_SSL3_SEND_SERVER_KEY_EXCHANGE,ERR_R_INTERNAL_ERROR);
+                                goto err;
+                            }
+
+                            n += 2 + oqskem_srvr_msg_len;
+                        }
+            #endif
+
         } else
 #endif                          /* !OPENSSL_NO_ECDH */
+#ifndef OPENSSL_NO_OQSKEM
+	  if (((type & SSL_kOQSKEM_DEFAULT)) && !(type & SSL_kEECDH)) {
+            if (type & SSL_kOQSKEM_DEFAULT) {
+                if ((s->s3->tmp.oqskem_kem = OQS_KEM_new(OQS_KEM_alg_default)) == NULL) {
+                    SSLerr(SSL_F_SSL3_SEND_SERVER_KEY_EXCHANGE,ERR_R_MALLOC_FAILURE);
+                    goto err;
+                }
+            }
+
+            oqskem_srvr_msg_len = s->s3->tmp.oqskem_kem->length_public_key;
+            oqskem_srvr_msg = OPENSSL_malloc(oqskem_srvr_msg_len);
+            if (oqskem_srvr_msg == NULL) {
+                SSLerr(SSL_F_SSL3_SEND_SERVER_KEY_EXCHANGE,ERR_R_MALLOC_FAILURE);
+                goto err;
+            }
+
+            s->s3->tmp.oqskem_priv_len = s->s3->tmp.oqskem_kem->length_secret_key;
+            s->s3->tmp.oqskem_priv = OPENSSL_malloc(s->s3->tmp.oqskem_priv_len);
+            if (s->s3->tmp.oqskem_priv == NULL) {
+                SSLerr(SSL_F_SSL3_SEND_SERVER_KEY_EXCHANGE,ERR_R_MALLOC_FAILURE);
+                goto err;
+            }
+
+            if (OQS_KEM_keypair(s->s3->tmp.oqskem_kem, oqskem_srvr_msg, s->s3->tmp.oqskem_priv) != OQS_SUCCESS) {
+                SSLerr(SSL_F_SSL3_SEND_SERVER_KEY_EXCHANGE,ERR_R_INTERNAL_ERROR);
+                goto err;
+            }
+
+            n += 2 + oqskem_srvr_msg_len;
+
+            /* We'll generate the serverKeyExchange message
+             * explicitly so we can set these to NULLs
+             */
+            r[0] = NULL;
+            r[1] = NULL;
+            r[2] = NULL;
+            r[3] = NULL;
+        } else
+#endif                          /* !OPENSSL_NO_OQSKEX */
 #ifndef OPENSSL_NO_PSK
         if (type & SSL_kPSK) {
             /*
@@ -1957,6 +2037,18 @@ int ssl3_send_server_key_exchange(SSL *s)
         }
 #endif
 
+#ifndef OPENSSL_NO_OQSKEM
+        if ((type & SSL_kOQSKEM_DEFAULT)) {
+            p[0] = (oqskem_srvr_msg_len >> 8) & 0xFF;
+            p[1] =  oqskem_srvr_msg_len       & 0xFF;
+            p += 2;
+            memcpy((unsigned char *) p, oqskem_srvr_msg, oqskem_srvr_msg_len);
+            OPENSSL_free(oqskem_srvr_msg);
+            oqskem_srvr_msg = NULL;
+            p += oqskem_srvr_msg_len;
+        }
+#endif
+
 #ifndef OPENSSL_NO_PSK
         if (type & SSL_kPSK) {
             /* copy PSK identity hint */
@@ -2061,6 +2153,10 @@ int ssl3_send_server_key_exchange(SSL *s)
     if (encodedPoint != NULL)
         OPENSSL_free(encodedPoint);
     BN_CTX_free(bn_ctx);
+#endif
+#ifndef OPENSSL_NO_OQSKEM
+    if (oqskem_srvr_msg != NULL)
+        OPENSSL_free(oqskem_srvr_msg);
 #endif
     EVP_MD_CTX_cleanup(&md_ctx);
     s->state = SSL_ST_ERR;
@@ -2184,6 +2280,12 @@ int ssl3_get_client_key_exchange(SSL *s)
     EVP_PKEY *clnt_pub_pkey = NULL;
     EC_POINT *clnt_ecpoint = NULL;
     BN_CTX *bn_ctx = NULL;
+#endif
+#ifndef OPENSSL_NO_OQSKEM
+    unsigned char *clnt_oqskem_msg = NULL;
+    int clnt_oqskem_msg_len = 0;
+    unsigned char *pprime_oqskem = NULL;
+    size_t nprime_oqskem;
 #endif
 
     n = s->method->ssl_get_message(s,
@@ -2744,12 +2846,40 @@ int ssl3_get_client_key_exchange(SSL *s)
                 al = SSL_AD_HANDSHAKE_FAILURE;
                 goto f_err;
             }
-            /*
-             * p is pointing to somewhere in the buffer currently, so set it
-             * to the start
-             */
-            p = (unsigned char *)s->init_buf->data;
+#ifndef OPENSSL_NO_HYBRID_OQSKEM_ECDHE
+            p += i;
+            n -= 1 + i;
+#endif
         }
+
+#ifndef OPENSSL_NO_HYBRID_OQSKEM_ECDHE
+        if ((alg_k & SSL_kOQSKEM_DEFAULT)) {
+            /* Parse client message */
+            if (n < 2) {
+                SSLerr(SSL_F_SSL3_GET_CLIENT_KEY_EXCHANGE, SSL_R_BAD_LENGTH);
+                goto err;
+            }
+            clnt_oqskem_msg_len = (p[0] << 8) | p[1];
+            p += 2;
+            if (n < 2 + clnt_oqskem_msg_len) {
+                SSLerr(SSL_F_SSL3_GET_CLIENT_KEY_EXCHANGE, SSL_R_BAD_LENGTH);
+                goto err;
+            }
+            clnt_oqskem_msg = OPENSSL_malloc(clnt_oqskem_msg_len);
+            if (clnt_oqskem_msg == NULL) {
+                SSLerr(SSL_F_SSL3_GET_CLIENT_KEY_EXCHANGE, ERR_R_INTERNAL_ERROR);
+                goto err;
+            }
+            memcpy(clnt_oqskem_msg, p, clnt_oqskem_msg_len);
+            p += clnt_oqskem_msg_len;
+        }
+#endif
+
+        /*
+         * p is pointing to somewhere in the buffer currently, so set it
+         * to the start
+         */
+        p = (unsigned char *)s->init_buf->data;
 
         /* Compute the shared pre-master secret */
         field_size = EC_GROUP_get_degree(group);
@@ -2771,6 +2901,37 @@ int ssl3_get_client_key_exchange(SSL *s)
         EC_KEY_free(s->s3->tmp.ecdh);
         s->s3->tmp.ecdh = NULL;
 
+#ifndef OPENSSL_NO_HYBRID_OQSKEM_ECDHE
+        if ((alg_k & SSL_kOQSKEM_DEFAULT)) {
+            if (clnt_oqskem_msg_len != s->s3->tmp.oqskem_kem->length_ciphertext) {
+                SSLerr(SSL_F_SSL3_GET_CLIENT_KEY_EXCHANGE, ERR_R_ASN1_LENGTH_MISMATCH);
+                goto err;
+            }
+            nprime_oqskem = s->s3->tmp.oqskem_kem->length_shared_secret;
+            pprime_oqskem = OPENSSL_malloc(nprime_oqskem);
+            if (pprime_oqskem == NULL) {
+                SSLerr(SSL_F_SSL3_GET_CLIENT_KEY_EXCHANGE, ERR_R_ASN1_LENGTH_MISMATCH);
+                goto err;
+            }
+            if (OQS_KEM_decaps(s->s3->tmp.oqskem_kem, pprime_oqskem, clnt_oqskem_msg, s->s3->tmp.oqskem_priv) != OQS_SUCCESS) {
+                SSLerr(SSL_F_SSL3_GET_CLIENT_KEY_EXCHANGE, ERR_R_INTERNAL_ERROR);
+                goto err;
+            }
+            OPENSSL_free(clnt_oqskem_msg);
+            OPENSSL_cleanse(s->s3->tmp.oqskem_priv, s->s3->tmp.oqskem_priv_len);
+            OQS_KEM_free(s->s3->tmp.oqskem_kem);
+            clnt_oqskem_msg = NULL;
+            s->s3->tmp.oqskem_priv = NULL;
+            s->s3->tmp.oqskem_kem = NULL;
+
+            // FIXME: I have no idea if this is safe, as I don't know how big p is, but let's try it anyway for testing purposes.
+            memcpy(p + i, pprime_oqskem, nprime_oqskem);
+            i += nprime_oqskem;
+            OPENSSL_cleanse(pprime_oqskem, nprime_oqskem);
+            OPENSSL_free(pprime_oqskem);
+        }
+#endif
+
         /* Compute the master secret */
         s->session->master_key_length =
             s->method->ssl3_enc->generate_master_secret(s,
@@ -2779,6 +2940,60 @@ int ssl3_get_client_key_exchange(SSL *s)
                                                         p, i);
 
         OPENSSL_cleanse(p, i);
+        return (ret);
+    } else
+#endif
+#ifndef OPENSSL_NO_OQSKEM
+      if (((alg_k & SSL_kOQSKEM_DEFAULT)) && !(alg_k & SSL_kEECDH)) {
+        int ret = 1;
+
+        /* Parse client message */
+        if (n < 2) {
+            SSLerr(SSL_F_SSL3_GET_CLIENT_KEY_EXCHANGE, SSL_R_BAD_LENGTH);
+            goto err;
+        }
+        clnt_oqskem_msg_len = (p[0] << 8) | p[1];
+        p += 2;
+        if (n < 2 + clnt_oqskem_msg_len) {
+            SSLerr(SSL_F_SSL3_GET_CLIENT_KEY_EXCHANGE, SSL_R_BAD_LENGTH);
+            goto err;
+        }
+        clnt_oqskem_msg = OPENSSL_malloc(clnt_oqskem_msg_len);
+        if (clnt_oqskem_msg == NULL) {
+            SSLerr(SSL_F_SSL3_GET_CLIENT_KEY_EXCHANGE, ERR_R_MALLOC_FAILURE);
+            goto err;
+        }
+        memcpy(clnt_oqskem_msg, p, clnt_oqskem_msg_len);
+        p += clnt_oqskem_msg_len;
+
+        if (clnt_oqskem_msg_len != s->s3->tmp.oqskem_kem->length_ciphertext) {
+            SSLerr(SSL_F_SSL3_GET_CLIENT_KEY_EXCHANGE, ERR_R_ASN1_LENGTH_MISMATCH);
+            goto err;
+        }
+        nprime_oqskem = s->s3->tmp.oqskem_kem->length_shared_secret;
+        pprime_oqskem = OPENSSL_malloc(nprime_oqskem);
+        if (pprime_oqskem == NULL) {
+            SSLerr(SSL_F_SSL3_GET_CLIENT_KEY_EXCHANGE, ERR_R_ASN1_LENGTH_MISMATCH);
+            goto err;
+        }
+        if (OQS_KEM_decaps(s->s3->tmp.oqskem_kem, pprime_oqskem, clnt_oqskem_msg, s->s3->tmp.oqskem_priv) != OQS_SUCCESS) {
+            SSLerr(SSL_F_SSL3_GET_CLIENT_KEY_EXCHANGE, ERR_R_INTERNAL_ERROR);
+            goto err;
+        }
+        OPENSSL_free(clnt_oqskem_msg);
+        OPENSSL_cleanse(s->s3->tmp.oqskem_priv, s->s3->tmp.oqskem_priv_len);
+        OQS_KEM_free(s->s3->tmp.oqskem_kem);
+        clnt_oqskem_msg = NULL;
+        s->s3->tmp.oqskem_priv = NULL;
+        s->s3->tmp.oqskem_kem = NULL;
+
+        /* Compute the master secret */
+        s->session->master_key_length = s->method->ssl3_enc-> \
+            generate_master_secret(s, s->session->master_key, pprime_oqskem, nprime_oqskem);
+
+        OPENSSL_cleanse(pprime_oqskem, nprime_oqskem);
+        OPENSSL_free(pprime_oqskem);
+
         return (ret);
     } else
 #endif
@@ -2995,7 +3210,7 @@ int ssl3_get_client_key_exchange(SSL *s)
     return (1);
  f_err:
     ssl3_send_alert(s, SSL3_AL_FATAL, al);
-#if !defined(OPENSSL_NO_DH) || !defined(OPENSSL_NO_RSA) || !defined(OPENSSL_NO_ECDH) || defined(OPENSSL_NO_SRP)
+#if !defined(OPENSSL_NO_DH) || !defined(OPENSSL_NO_RSA) || !defined(OPENSSL_NO_ECDH) || defined(OPENSSL_NO_SRP) || !defined(OPENSSL_NO_OQSKEX)
  err:
 #endif
 #ifndef OPENSSL_NO_ECDH
@@ -3004,6 +3219,9 @@ int ssl3_get_client_key_exchange(SSL *s)
     if (srvr_ecdh != NULL)
         EC_KEY_free(srvr_ecdh);
     BN_CTX_free(bn_ctx);
+#endif
+#ifndef OPENSSL_NO_OQSKEM
+    OPENSSL_free(clnt_oqskem_msg);
 #endif
     s->state = SSL_ST_ERR;
     return (-1);

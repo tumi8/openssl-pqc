@@ -1,7 +1,7 @@
-open-quantum-safe/openssl - 1.0.2-new-api
-=========================================
+open-quantum-safe/openssl - OQS fork of OpenSSL 1.0.2
+=====================================================
 
-OpenSSL is an open-source TLS/SSL and crypto library [https://openssl.org/](https://openssl.org/).  ([View the original README file for OpenSSL](https://github.com/open-quantum-safe/openssl/blob/OpenSSL_1_0_2-stable/README).)
+OpenSSL is an open-source TLS/SSL and crypto library [https://openssl.org/](https://openssl.org/).  ([View the original README file for OpenSSL](https://github.com/open-quantum-safe/openssl/blob/OQS-OpenSSL_1_0_2-stable/README).)
 
 This repository contains a fork of OpenSSL that adds quantum-safe cryptographic algorithms and ciphersuites.
 
@@ -85,7 +85,7 @@ Follow the instructions there to download and build that branch of liboqs.
 
 Clone or download the source from Github:
 
-	git clone --branch OpenSSL_1_0_2-stable-new-api https://github.com/open-quantum-safe/openssl.git
+	git clone --branch OQS-OpenSSL_1_0_2-stable https://github.com/open-quantum-safe/openssl.git
 	cd openssl
 
 ### Step 3: Install liboqs into OpenSSL director
@@ -154,7 +154,7 @@ In another terminal window, you can run a TLS client for any or all of the suppo
 License
 -------
 
-All modifications in the open-quantum-safe/openssl repository are released under the same terms as OpenSSL, namely as described in the file [LICENSE](https://github.com/open-quantum-safe/openssl/blob/OpenSSL_1_0_2-stable/LICENSE).  
+All modifications in the open-quantum-safe/openssl repository are released under the same terms as OpenSSL, namely as described in the file [LICENSE](https://github.com/open-quantum-safe/openssl/blob/OQS-OpenSSL_1_0_2-stable/LICENSE).  
 
 Team
 ----

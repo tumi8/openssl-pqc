@@ -249,7 +249,7 @@ static int do_multi(int multi);
 # define SIZE_NUM        5
 # define RSA_NUM         4
 # define DSA_NUM         3
-# define OQSKEM_NUM      1
+# define OQSKEM_NUM      OQS_KEM_algs_length
 
 # define EC_NUM       16
 # define MAX_ECDH_SIZE 256
@@ -280,7 +280,7 @@ static double ecdsa_results[EC_NUM][2];
 static double ecdh_results[EC_NUM][1];
 # endif
 # ifndef OPENSSL_NO_OQSKEM
-static double oqskem_results[OQSKEM_NUM][4];
+static double oqskem_results[OQSKEM_NUM][3];
 # endif
 
 # if defined(OPENSSL_NO_DSA) && !(defined(OPENSSL_NO_ECDSA) && defined(OPENSSL_NO_ECDH))
@@ -552,8 +552,6 @@ int MAIN(int argc, char **argv)
 # define R_EC_B283    13
 # define R_EC_B409    14
 # define R_EC_B571    15
-
-# define R_OQSKEM_DEFAULT        0
 
 # ifndef OPENSSL_NO_RSA
     RSA *rsa_key[RSA_NUM];
@@ -1104,9 +1102,13 @@ int MAIN(int argc, char **argv)
         } else
 # endif
 # ifndef OPENSSL_NO_OQSKEM
-        if (strcmp(*argv, "oqskem_default") == 0)
-            oqskem_doit[R_OQSKEM_DEFAULT] = 2;
-        else if (strcmp(*argv, "oqskem") == 0) {
+        if (strncmp(*argv, "oqskem-", 7) == 0) {
+            for (i = 0; i < OQSKEM_NUM; i++) {
+                if (strcasecmp(*argv+7, OQS_KEM_alg_identifier(i)) == 0) {
+                    oqskem_doit[i] = 1;
+                }
+            }
+        } else if (strcmp(*argv, "oqskem") == 0) {
             for (i = 0; i < OQSKEM_NUM; i++)
                 oqskem_doit[i] = 1;
         } else
@@ -1214,8 +1216,10 @@ int MAIN(int argc, char **argv)
             BIO_printf(bio_err, "ecdh\n");
 # endif
 # ifndef OPENSSL_NO_OQSKEM
-            BIO_printf(bio_err, "oqskem_default\n");
-            BIO_printf(bio_err, "oqskem\n");
+            for (i = 0; i < OQSKEM_NUM; i++) {
+                BIO_printf(bio_err, "oqskem-%s ", OQS_KEM_alg_identifier(i));
+            }
+            BIO_printf(bio_err, "\noqskem\n");
 # endif
 
 # ifndef OPENSSL_NO_IDEA
@@ -2426,11 +2430,9 @@ int MAIN(int argc, char **argv)
         if (!oqskem_doit[j])
             continue;
 
-        if (j == R_OQSKEM_DEFAULT) {
-            oqskem_kem[j] = OQS_KEM_new(OQS_KEM_alg_default);
-        }
+        oqskem_kem[j] = OQS_KEM_new(OQS_KEM_alg_identifier(j));
         if (oqskem_kem[j] == NULL) {
-            BIO_printf(bio_err,"OQSKEM failure - OQS_KEM_new.\n");
+            BIO_printf(bio_err,"OQSKEM failure - OQS_KEM_new(%s).\n", OQS_KEM_alg_identifier(j));
             ERR_print_errors(bio_err);
             rsa_count=1;
         } else {
@@ -2642,7 +2644,7 @@ int MAIN(int argc, char **argv)
         if (!oqskem_doit[k])
             continue;
         if (j && !mr) {
-            printf("                                      keypair        keypair/s         encaps     encaps/s        decaps     decaps/s\n");
+            printf("                                          keypair        keypair/s             encaps     encaps/s            decaps     decaps/s\n");
             j = 0;
         }
         if (mr)
@@ -2651,7 +2653,7 @@ int MAIN(int argc, char **argv)
                     oqskem_results[k][0], oqskem_results[k][1], oqskem_results[k][2]);
 
         else
-            fprintf(stdout,"oqskem %-25s     %8.6fms       %8.1f       %8.6fms   %8.1f      %8.6fms   %8.1f\n",
+            fprintf(stdout,"oqskem %-25s     %12.6fms       %8.1f       %12.6fms   %8.1f      %12.6fms   %8.1f\n",
                     oqskem_method_names[k],
                     oqskem_results[k][0] * 1000, 1.0/oqskem_results[k][0],
                     oqskem_results[k][1] * 1000, 1.0/oqskem_results[k][1],

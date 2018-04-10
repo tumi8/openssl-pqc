@@ -628,12 +628,6 @@ int MAIN(int argc, char **argv)
 
 # endif
 
-# ifndef OPENSSL_NO_OQSKEM
-    static const char *test_oqskem_names[OQSKEM_NUM] = {
-        "default",
-    };
-# endif
-
 # ifndef OPENSSL_NO_ECDSA
     unsigned char ecdsasig[256];
     unsigned int ecdsasiglen;
@@ -651,6 +645,7 @@ int MAIN(int argc, char **argv)
 # endif
 
 # ifndef OPENSSL_NO_OQSKEM
+    char *oqskem_method_names[OQSKEM_NUM];
     OQS_KEM *oqskem_kem[OQSKEM_NUM];
     unsigned char *oqskem_secret_key;
     unsigned char *oqskem_public_key;
@@ -703,6 +698,7 @@ int MAIN(int argc, char **argv)
 # ifndef OPENSSL_NO_OQSKEM
     for (i=0; i<OQSKEM_NUM; i++) {
         oqskem_kem[i] = NULL;
+        oqskem_method_names[i] = NULL;
     }
     oqskem_secret_key = NULL;
     oqskem_public_key = NULL;
@@ -2425,6 +2421,7 @@ int MAIN(int argc, char **argv)
         RAND_seed(rnd_seed, sizeof rnd_seed);
         rnd_fake = 1;
     }
+    OQS_randombytes_custom_algorithm((void (*)(uint8_t *, size_t)) &RAND_bytes);
     for (j = 0; j < OQSKEM_NUM; j++) {
         if (!oqskem_doit[j])
             continue;
@@ -2446,6 +2443,7 @@ int MAIN(int argc, char **argv)
             /* time OQSKEM keypair operation */
             char lbl[1000];
             sprintf(lbl, "OQS KEM %s", oqskem_kem[j]->method_name);
+            oqskem_method_names[j] = strdup(oqskem_kem[j]->method_name);
             pkey_print_message(lbl, "keypair", oqskem_c[j][0], 0, OQSKEM_SECONDS);
             Time_F(START);
             for (count = 0, run = 1; COND(oqskem_c[j][0]); count++) {
@@ -2644,17 +2642,17 @@ int MAIN(int argc, char **argv)
         if (!oqskem_doit[k])
             continue;
         if (j && !mr) {
-            printf("                                 keypair   keypair/s         encaps   encaps/s       decaps   decaps/s\n");
+            printf("                                      keypair        keypair/s         encaps     encaps/s        decaps     decaps/s\n");
             j = 0;
         }
         if (mr)
             fprintf(stdout,"+F6:%u:%s:%f:%f:%f\n",
-                    k, test_oqskem_names[k],
+                    k, oqskem_method_names[k],
                     oqskem_results[k][0], oqskem_results[k][1], oqskem_results[k][2]);
 
         else
-            fprintf(stdout,"oqskem (%-15s)     %8.6fms    %8.1f   %8.6fms   %8.1f      %8.6fms   %8.1f\n",
-                    test_oqskem_names[k],
+            fprintf(stdout,"oqskem %-25s     %8.6fms       %8.1f       %8.6fms   %8.1f      %8.6fms   %8.1f\n",
+                    oqskem_method_names[k],
                     oqskem_results[k][0] * 1000, 1.0/oqskem_results[k][0],
                     oqskem_results[k][1] * 1000, 1.0/oqskem_results[k][1],
                     oqskem_results[k][2] * 1000, 1.0/oqskem_results[k][2]);
@@ -2691,6 +2689,12 @@ int MAIN(int argc, char **argv)
             EC_KEY_free(ecdh_a[i]);
         if (ecdh_b[i] != NULL)
             EC_KEY_free(ecdh_b[i]);
+    }
+# endif
+# ifndef OPENSSL_NO_OQSKEM
+    for (i = 0; i < OQSKEM_NUM; i++) {
+        if (oqskem_method_names[i] != NULL)
+            free(oqskem_method_names[i]);
     }
 # endif
 

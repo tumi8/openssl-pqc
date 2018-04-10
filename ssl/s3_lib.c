@@ -3197,8 +3197,10 @@ void ssl3_free(SSL *s)
         EC_KEY_free(s->s3->tmp.ecdh);
 #endif
 #ifndef OPENSSL_NO_OQSKEM
-    if (s->s3->tmp.oqskem_priv != NULL)
+    if (s->s3->tmp.oqskem_priv != NULL) {
+        OPENSSL_cleanse(s->s3->tmp.oqskem_priv, s->s3->tmp.oqskem_priv_len);
         OPENSSL_free(s->s3->tmp.oqskem_priv);
+    }
     if (s->s3->tmp.oqskem_kem != NULL)
         OQS_KEM_free(s->s3->tmp.oqskem_kem);
 #endif
@@ -3260,6 +3262,7 @@ void ssl3_clear(SSL *s)
 #endif
 #ifndef OPENSSL_NO_OQSKEM
     if (s->s3->tmp.oqskem_priv != NULL) {
+        OPENSSL_cleanse(s->s3->tmp.oqskem_priv, s->s3->tmp.oqskem_priv_len);
         OPENSSL_free(s->s3->tmp.oqskem_priv);
         s->s3->tmp.oqskem_priv = NULL;
     }

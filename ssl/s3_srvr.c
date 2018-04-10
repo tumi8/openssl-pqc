@@ -1843,7 +1843,7 @@ int ssl3_send_server_key_exchange(SSL *s)
 
             #ifndef OPENSSL_NO_HYBRID_OQSKEM_ECDHE
                         if ((type & SSL_kOQSKEM_DEFAULT)) {
-                            if (type & SSL_kOQSKEX_DEFAULT) {
+                            if (type & SSL_kOQSKEM_DEFAULT) {
                                 if ((s->s3->tmp.oqskem_kem = OQS_KEM_new(OQS_KEM_alg_default)) == NULL) {
                                     SSLerr(SSL_F_SSL3_SEND_SERVER_KEY_EXCHANGE,ERR_R_MALLOC_FAILURE);
                                     goto err;
@@ -1913,7 +1913,7 @@ int ssl3_send_server_key_exchange(SSL *s)
             r[2] = NULL;
             r[3] = NULL;
         } else
-#endif                          /* !OPENSSL_NO_OQSKEX */
+#endif                          /* !OPENSSL_NO_OQSKEM */
 #ifndef OPENSSL_NO_PSK
         if (type & SSL_kPSK) {
             /*
@@ -2291,7 +2291,7 @@ int ssl3_get_client_key_exchange(SSL *s)
     n = s->method->ssl_get_message(s,
                                    SSL3_ST_SR_KEY_EXCH_A,
                                    SSL3_ST_SR_KEY_EXCH_B,
-                                   SSL3_MT_CLIENT_KEY_EXCHANGE, 2048, &ok);
+                                   SSL3_MT_CLIENT_KEY_EXCHANGE, 20480, &ok);
 
     if (!ok)
         return ((int)n);
@@ -2836,7 +2836,7 @@ int ssl3_get_client_key_exchange(SSL *s)
             /* Get encoded point length */
             i = *p;
             p += 1;
-            if (n != 1 + i) {
+            if (n < 1 + i) {
                 SSLerr(SSL_F_SSL3_GET_CLIENT_KEY_EXCHANGE, SSL_R_LENGTH_MISMATCH);
                 al = SSL_AD_DECODE_ERROR;
                 goto f_err;
@@ -3210,7 +3210,7 @@ int ssl3_get_client_key_exchange(SSL *s)
     return (1);
  f_err:
     ssl3_send_alert(s, SSL3_AL_FATAL, al);
-#if !defined(OPENSSL_NO_DH) || !defined(OPENSSL_NO_RSA) || !defined(OPENSSL_NO_ECDH) || defined(OPENSSL_NO_SRP) || !defined(OPENSSL_NO_OQSKEX)
+#if !defined(OPENSSL_NO_DH) || !defined(OPENSSL_NO_RSA) || !defined(OPENSSL_NO_ECDH) || defined(OPENSSL_NO_SRP) || !defined(OPENSSL_NO_OQSKEM)
  err:
 #endif
 #ifndef OPENSSL_NO_ECDH

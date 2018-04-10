@@ -575,6 +575,7 @@ typedef struct ssl3_state_st {
 #  ifndef OPENSSL_NO_OQSKEM
         OQS_KEM *oqskem_kem;
         unsigned char *oqskem_priv; /* holds short lived OQS_KEM private key */
+        unsigned long oqskem_priv_len;
 #  endif
         /* used when SSL_ST_FLUSH_DATA is entered */
         int next_state;

@@ -5,7 +5,7 @@
 DIR=		test
 TOP=		..
 CC=		cc
-INCLUDES=	-I$(TOP) -I../include $(KRB5_INCLUDES)
+INCLUDES=	-I$(TOP) -I../include -I../oqs/include $(KRB5_INCLUDES)
 CFLAG=		-g
 MAKEDEPEND=	$(TOP)/util/domd $(TOP) -MD $(MAKEDEPPROG)
 PERL=		perl
@@ -24,9 +24,9 @@ GENERAL=Makefile maketests.com \
 	tpkcs7.com tpkcs7d.com tverify.com testgen.com testss.com testssl.com \
 	testca.com VMSca-response.1 VMSca-response.2
 
-DLIBCRYPTO= ../libcrypto.a
+DLIBCRYPTO= ../libcrypto.a ../oqs/lib/liboqs.a
 DLIBSSL= ../libssl.a
-LIBCRYPTO= -L.. -lcrypto
+LIBCRYPTO= -L.. -lcrypto ../oqs/lib/liboqs.a
 LIBSSL= -L.. -lssl
 
 BNTEST=		bntest
@@ -117,7 +117,7 @@ SRC=	$(BNTEST).c $(ECTEST).c  $(ECDSATEST).c $(ECDHTEST).c $(IDEATEST).c \
 	$(CLIENTHELLOTEST).c  $(SSLV2CONFTEST).c $(DTLSTEST).c ssltestlib.c \
 	$(BADDTLSTEST).c $(FATALERRTEST).c
 
-EXHEADER= 
+EXHEADER=
 HEADER=	testutil.h ssltestlib.h $(EXHEADER)
 
 ALL=    $(GENERAL) $(SRC) $(HEADER)

@@ -3038,7 +3038,7 @@ int ssl3_send_client_key_exchange(SSL *s)
                 }
 
                 if (alg_k & SSL_kOQSKEM_DEFAULT) {
-                    if ((oqskem_kem = OQS_KEX_new(OQS_KEM_alg_default)) == NULL) {
+                    if ((oqskem_kem = OQS_KEM_new(OQS_KEM_alg_default)) == NULL) {
                         SSLerr(SSL_F_SSL3_SEND_CLIENT_KEY_EXCHANGE,ERR_R_MALLOC_FAILURE);
                         goto err;
                     }
@@ -3062,7 +3062,7 @@ int ssl3_send_client_key_exchange(SSL *s)
                     goto err;
                 }
 
-                if (OQS_KEM_encaps(oqskem_kem, clnt_oqskem_msg, nprime_oqskem, srvr_oqskem_msg) != OQS_SUCCESS) {
+                if (OQS_KEM_encaps(oqskem_kem, clnt_oqskem_msg, pprime_oqskem, srvr_oqskem_msg) != OQS_SUCCESS) {
                     SSLerr(SSL_F_SSL3_SEND_CLIENT_KEY_EXCHANGE, ERR_R_INTERNAL_ERROR);
                     goto err;
                 }
@@ -3070,8 +3070,8 @@ int ssl3_send_client_key_exchange(SSL *s)
                 // FIXME: I have no idea if this is safe, as I don't know how big p is, but let's try it anyway for testing purposes.
                 memcpy(p + n, pprime_oqskem, nprime_oqskem);
                 n += nprime_oqskem;
-                OPENSSL_cleanse(pprime_oqskex, nprime_oqskem);
-                OPENSSL_free(pprime_oqskex);
+                OPENSSL_cleanse(pprime_oqskem, nprime_oqskem);
+                OPENSSL_free(pprime_oqskem);
             }
 #endif
 
@@ -3118,14 +3118,14 @@ int ssl3_send_client_key_exchange(SSL *s)
                 p += 1;
                 /* copy the point */
                 memcpy((unsigned char *)p, encodedPoint, n);
-#ifndef OPENSSL_NO_HYBRID_OQSKEX_ECDHE
+#ifndef OPENSSL_NO_HYBRID_OQSKEM_ECDHE
                 p += n;
 #endif
                 /* increment n to account for length field */
                 n += 1;
             }
 
-#ifndef OPENSSL_NO_HYBRID_OQSKEX_ECDHE
+#ifndef OPENSSL_NO_HYBRID_OQSKEM_ECDHE
             if ((alg_k & SSL_kOQSKEM_DEFAULT)) {
                 p[0] = (clnt_oqskem_msg_len >> 8) & 0xFF;
                 p[1] =  clnt_oqskem_msg_len       & 0xFF;
@@ -3185,7 +3185,7 @@ int ssl3_send_client_key_exchange(SSL *s)
                 goto err;
             }
 
-            if (OQS_KEM_encaps(oqskem_kem, clnt_oqskem_msg, nprime_oqskem, srvr_oqskem_msg) != OQS_SUCCESS) {
+            if (OQS_KEM_encaps(oqskem_kem, clnt_oqskem_msg, pprime_oqskem, srvr_oqskem_msg) != OQS_SUCCESS) {
                 SSLerr(SSL_F_SSL3_SEND_CLIENT_KEY_EXCHANGE, ERR_R_INTERNAL_ERROR);
                 goto err;
             }

@@ -410,7 +410,9 @@ Makefile: Makefile.org Configure config
 	@false
 
 libclean:
+	if [ -d oqs/lib ] ; then mv oqs/lib oqs/lib-tmp-renamed ; fi
 	rm -f *.map *.so *.so.* *.dylib *.dll engines/*.so engines/*.dll engines/*.dylib *.a engines/*.a */lib */*/lib
+	if [ -d oqs/lib-tmp-renamed ] ; then mv oqs/lib-tmp-renamed oqs/lib ; fi
 
 clean:	libclean
 	rm -f shlib/*.o *.o core a.out fluff rehash.time testlog make.log cctest cctest.c

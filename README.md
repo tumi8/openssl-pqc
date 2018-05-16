@@ -88,7 +88,7 @@ Clone or download the source from Github:
 	git clone --branch OQS-OpenSSL_1_0_2-stable https://github.com/open-quantum-safe/openssl.git
 	cd openssl
 
-### Step 3: Install liboqs into OpenSSL director
+### Step 3: Install liboqs into OpenSSL directory
 
 Go back to the directory where you built liboqs.  
 

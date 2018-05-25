@@ -5,6 +5,8 @@ OpenSSL is an open-source TLS/SSL and crypto library [https://openssl.org/](http
 
 This repository contains a fork of OpenSSL that adds quantum-safe cryptographic algorithms and ciphersuites.
 
+See the [OpenSSL_1_0_2-stable branch](https://github.com/open-quantum-safe/openssl/tree/OpenSSL_1_0_2-stable) for a version enabling PQC authentication, using a different version of liboqs. (This branch will be updated once liboqs's master branch refactoring is completed.)
+
 Overview
 --------
 

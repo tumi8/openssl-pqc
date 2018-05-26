@@ -1,4 +1,4 @@
-OQS-OpenSSL-1\_0\_2-stable snapshot 2018-04
+OQS-OpenSSL-1\_0\_2-stable snapshot 2018-05 -- DRAFT
 ===========================================
 
 About
@@ -15,26 +15,14 @@ This branch of our fork of OpenSSL aims to provide integration of post-quantum a
 Release notes
 =============
 
-This snapshot of the OQS fork of OpenSSL 1.0.2 (`OQS-OpenSSL-1_0_2-stable`) was released on April 10, 2018.  Its release page on Github is https://github.com/open-quantum-safe/openssl/releases/tag/OQS-OpenSSL-1_0_2-stable-snapshot-2018-04.
+This snapshot of the OQS fork of OpenSSL 1.0.2 (`OQS-OpenSSL-1_0_2-stable`) was released on May 30, 2018.  Its release page on Github is https://github.com/open-quantum-safe/openssl/releases/tag/OQS-OpenSSL-1_0_2-stable-snapshot-2018-05.
 
 What's New
 ----------
 
-This is the first snapshot release of OQS-OpenSSL-1\_0\_2-stable.
+This is the second snapshot release of OQS-OpenSSL-1\_0\_2-stable.
 
-This release uses the new key encapsulation mechanism (KEM) API in liboqs nist-branch, which will soon also be present on liboqs master branch.
-
-### `openssl speed`
-
-- The `openssl speed` command can do performance testing of all enabled key encapsulation mechanisms provided by liboqs.
-
-### Key exchange in TLS 1.2
-
-- `DEFAULT`: The "default" KEM from liboqs is available for use in post-quantum and hybrid ciphersuites in TLS 1.2.  See README.md for a list of ciphersuites.
-
-Note that our integration strategy is that key encapsulation mechanisms from liboqs nist-branch will only be surfaced in OpenSSL via the "default" KEM (which can be changed at compile time in liboqs).  Key encapsulations from our updated liboqs master branch (coming in May 2018) will all be surfaced in OpenSSL via their own names.
-
-Algorithm datasheets for all supported algorithms are available in the [liboqs documentation](https://github.com/open-quantum-safe/liboqs/tree/nist-branch/docs/algorithms).
+It includes all upstream changes to OpenSSL-1\_0\_2-stable since the last snapshot release of OQS-OpenSSL-1\_0\_2-stable.  There are no additional changes.
 
 Comparison to OQS' other OpenSSL branches
 -----------------------------------------

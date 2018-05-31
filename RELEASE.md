@@ -1,4 +1,4 @@
-OQS-OpenSSL-1\_0\_2-stable snapshot 2018-05 -- DRAFT
+OQS-OpenSSL-1\_0\_2-stable snapshot 2018-05
 ===========================================
 
 About

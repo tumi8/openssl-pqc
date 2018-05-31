@@ -94,6 +94,7 @@ Clone or download the source from Github:
 
 Go back to the directory where you built liboqs.  
 
+	cd /path/to/liboqs
 	make install PREFIX=<path-to-openssl-dir>/oqs
 
 This will create a directory `oqs` in your newly download OpenSSL directory, with subdirectories `include` and `lib` containing the headers and library files of liboqs.
@@ -104,7 +105,7 @@ Now we follow the standard instructions for building OpenSSL.
 
 To configure OpenSSL, on Linux type:
 
-	./config
+	./Configure linux-x86_64 -lm
 
 and on macOS type:
 

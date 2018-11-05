@@ -69,8 +69,8 @@ See the README.md files of [liboqs master branch](https://github.com/open-quantu
 
 **TLS compatibility:** The ciphersuite numbers and message formats used for post-quantum and hybrid key exchange are experimental, and may change between releases of OQS-OpenSSL\_1\_0\_2-stable.
 
-Building OQS-OpenSSL\_1\_0\_2-stable
-------------------------------------
+Building on Linux and macOS
+---------------------------
 
 Builds have been tested manually on macOS 10.14 (clang 10.0.0), Ubuntu 14.04 (gcc-5), Ubuntu 16.04 (gcc-5), and Ubuntu 18.04.1 (gcc-7).
 

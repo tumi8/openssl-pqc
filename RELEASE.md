@@ -1,4 +1,4 @@
-OQS-OpenSSL-1\_0\_2-stable snapshot 2018-11
+OQS-OpenSSL\_1\_0\_2-stable snapshot 2018-11
 ===========================================
 
 About
@@ -21,18 +21,18 @@ Release notes
 =============
 
 **This is a release candidate for liboqs master, not a final release.**. 
-This snapshot of the OQS fork of OpenSSL 1.0.2 (`OQS-OpenSSL-1_0_2-stable`) was released on TODO.  Its release page on Github is TODO.
+This snapshot of the OQS fork of OpenSSL 1.0.2 (`OQS-OpenSSL\_1_0_2-stable`) was released on TODO.  Its release page on Github is TODO.
 
 What's New
 ----------
 
-This is the third snapshot release of OQS-OpenSSL-1\_0\_2-stable.
+This is the third snapshot release of OQS-OpenSSL\_1\_0\_2-stable.
 
 It syncs the fork with the upstream OpenSSL 1.0.2p release.
 
-There are no additional changes in this repository.  However, since the last snapshot release, OQS-OpenSSL-1\_0\_2-stable now builds against the liboqs master branch.
+There are no additional changes in this repository.  However, since the last snapshot release, OQS-OpenSSL\_1\_0\_2-stable now builds against the liboqs master branch.
 
 Future work
 -----------
 
-Snapshot releases of OQS-OpenSSL-1\_0\_2-stable will be made approximately bi-monthly.  These will include syncing the branch with upstream releases of OpenSSL, and changes required to sync with new releases of liboqs.
+Snapshot releases of OQS-OpenSSL\_1\_0\_2-stable will be made approximately bi-monthly.  These will include syncing the branch with upstream releases of OpenSSL, and changes required to sync with new releases of liboqs.

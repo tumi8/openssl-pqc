@@ -1,9 +1,9 @@
-OQS-OpenSSL-1\_0\_2-stable
+OQS-OpenSSL\_1\_0\_2-stable
 ==========================
 
 OpenSSL is an open-source TLS/SSL and crypto library [https://openssl.org/](https://openssl.org/).  ([View the original README file for OpenSSL](https://github.com/open-quantum-safe/openssl/blob/OQS-OpenSSL_1_0_2-stable/README).)
 
-This branch (OQS-OpenSSL-1\_0\_2-stable) is a fork of OpenSSL 1.0.2 that adds the following:
+This branch (OQS-OpenSSL\_1\_0\_2-stable) is a fork of OpenSSL 1.0.2 that adds the following:
 
 - post-quantum key exchange in TLS 1.2
 - hybrid (post-quantum + elliptic curve) key exchange in TLS 1.2
@@ -16,7 +16,7 @@ The **Open Quantum Safe (OQS) project** has the goal of developing and prototypi
 
 **liboqs** is an open source C library for quantum-safe cryptographic algorithms.  See more about liboqs at [https://github.com/open-quantum-safe/liboqs/](https://github.com/open-quantum-safe/liboqs/), including a list of supported algorithms. OpenSSL can use either the [master](https://github.com/open-quantum-safe/liboqs/tree/master) or the [nist](https://github.com/open-quantum-safe/liboqs/tree/nist-branch) branch of liboqs; the former is recommended for normal uses of OpenSSL as included mechanisms follow a stricter set of requirements, the latter contains more algorithms and is better suited for experimentation.
 
-**OQS-OpenSSL-1\_0\_2-stable** is an integration of liboqs into (a fork of) OpenSSL 1.0.2.  The goal of this integration is to provide easy prototyping of quantum-resistant cryptography in the TLS 1.2 protocol.  The integration should not be considered "production quality".
+**OQS-OpenSSL\_1\_0\_2-stable** is an integration of liboqs into (a fork of) OpenSSL 1.0.2.  The goal of this integration is to provide easy prototyping of quantum-resistant cryptography in the TLS 1.2 protocol.  The integration should not be considered "production quality".
 
 More information on OQS can be found on our website: [https://openquantumsafe.org/](https://openquantumsafe.org/).
 

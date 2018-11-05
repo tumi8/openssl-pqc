@@ -1,22 +1,45 @@
-open-quantum-safe/openssl - OQS fork of OpenSSL 1.0.2
-=====================================================
+OQS-OpenSSL-1\_0\_2-stable
+==========================
 
 OpenSSL is an open-source TLS/SSL and crypto library [https://openssl.org/](https://openssl.org/).  ([View the original README file for OpenSSL](https://github.com/open-quantum-safe/openssl/blob/OQS-OpenSSL_1_0_2-stable/README).)
 
-This repository contains a fork of OpenSSL that adds quantum-safe cryptographic algorithms and ciphersuites.
+This branch (OQS-OpenSSL-1\_0\_2-stable) is a fork of OpenSSL 1.0.2 that adds the following:
 
-See the [OpenSSL_1_0_2-stable branch](https://github.com/open-quantum-safe/openssl/tree/OpenSSL_1_0_2-stable) for a version enabling PQC authentication, using a different version of liboqs. (This branch will be updated once liboqs's master branch refactoring is completed.)
+- post-quantum key exchange in TLS 1.2
+- hybrid (post-quantum + elliptic curve) key exchange in TLS 1.2
+- post-quantum key exchange primitives from liboqs in OpenSSL's `speed` command
 
 Overview
 --------
 
 The **Open Quantum Safe (OQS) project** has the goal of developing and prototyping quantum-resistant cryptography.  
 
-**liboqs** is an open source C library for quantum-safe cryptographic algorithms.  liboqs initially focuses on key exchange algorithms.  See more about liboqs at [https://github.com/open-quantum-safe/liboqs/](https://github.com/open-quantum-safe/liboqs/), including a list of supported algorithms.
+**liboqs** is an open source C library for quantum-safe cryptographic algorithms.  See more about liboqs at [https://github.com/open-quantum-safe/liboqs/](https://github.com/open-quantum-safe/liboqs/), including a list of supported algorithms. OpenSSL can use either the [master](https://github.com/open-quantum-safe/liboqs/tree/master) or the [nist](https://github.com/open-quantum-safe/liboqs/tree/nist-branch) branch of liboqs; the former is recommended for normal uses of OpenSSL as included mechanisms follow a stricter set of requirements, the latter contains more algorithms and is better suited for experimentation.
 
-**open-quantum-safe/openssl** is an integration of liboqs into (a fork of) OpenSSL.  The goal of this integration is to provide easy prototyping of quantum-resistant cryptography.  The integration should not be considered "production quality".
+**OQS-OpenSSL-1\_0\_2-stable** is an integration of liboqs into (a fork of) OpenSSL 1.0.2.  The goal of this integration is to provide easy prototyping of quantum-resistant cryptography in the TLS 1.2 protocol.  The integration should not be considered "production quality".
 
 More information on OQS can be found on our website: [https://openquantumsafe.org/](https://openquantumsafe.org/).
+
+Contents of branch OQS-OpenSSL\_1\_0\_2-stable
+----------------------------------------------
+
+This branch ([OQS-OpenSSL\_1\_0\_2-stable branch](https://github.com/open-quantum-safe/openssl/tree/OQS-OpenSSL_1_0_2-stable)) integrates post-quantum key exchange from liboqs in TLS 1.2 in OpenSSL v1.0.2.  
+
+(For TLS 1.3, see the [OQS-OpenSSL\_1\_1\_1-stable](https://github.com/open-quantum-safe/openssl/tree/OQS-OpenSSL_1_1_1-stable) branch.)
+
+### Key exchange mechanisms
+
+The following key exchange / key encapsulation mechanisms from liboqs are supported (assuming they have been enabled in liboqs):
+
+- `DEFAULT`: This special mechanism uses the liboqs's default configured scheme.  This can be changed by editing `src/kem/kem.c` (for liboqs master branch) or `Makefile` (for liboqs nist-branch).
+- `DEFAULT-ECDHE`: liboqs's default configured scheme, in hybrid mode with elliptic curve Diffie–Hellman.
+
+For each post-quantum KEM `X` listed above, the following TLS 1.2 ciphersuites are available:
+
+- `OQSKEM-X-RSA-AES128-GCM-SHA256`
+- `OQSKEM-X-ECDSA-AES128-GCM-SHA256`
+- `OQSKEM-X-RSA-AES256-GCM-SHA384`
+- `OQSKEM-X-ECDSA-AES256-GCM-SHA384`
 
 Limitations and security
 ------------------------
@@ -37,89 +60,82 @@ The OQS fork of OpenSSL is not endorsed by with the OpenSSL project.
 
 Proofs of TLS such as [[JKSS12]](https://eprint.iacr.org/2011/219) and [[KPW13]](https://eprint.iacr.org/2013/339) require a key exchange mechanism that has a form of active security, either in the form of the PRF-ODH assumption, or an IND-CCA KEM.  Most basic post-quantum key exchange mechanisms do not achieve active security, and would need to have an IND-CPA to IND-CCA KEM transform applied or be protected from active attacks using a signature scheme.  The `DEFAULT` KEM built in liboqs may not necessarily provide active security, in which case existing proofs of security of TLS against active attackers do not apply.
 
-Contents
---------
+Lifecycle for OQS-OpenSSL\_1\_0\_2-stable
+-----------------------------------------
 
-open-quantum-safe/openssl currently contains:
+**Release cycle:** We aim to make releases of OQS-OpenSSL\_1\_0\_2-stable on a bi-monthly basis, either when there has been a new release of OpenSSL 1.0.2 or when we have made changes to our fork.
 
-- Integration of post-quantum key exchange primitives from liboqs into OpenSSL's `speed` command
-- Ciphersuites using post-quantum key exchange based on primitives from liboqs, including hybrid ciphersuites which also use ECDHE key exchange
+See the README.md files of [liboqs master branch](https://github.com/open-quantum-safe/liboqs/blob/master/README.md) and [liboqs nist-branch](https://github.com/open-quantum-safe/liboqs/blob/nist-branch/README.md) for information about the algorithm lifecycle within the corresponding libraries.
 
-Our modifications are currently **only** for OpenSSL v1.0.2 (and correspondingly TLS 1.2).
+**TLS compatibility:** The ciphersuite numbers and message formats used for post-quantum and hybrid key exchange are experimental, and may change between releases of OQS-OpenSSL\_1\_0\_2-stable.
 
-### liboqs version
+Building OQS-OpenSSL\_1\_0\_2-stable
+------------------------------------
 
-An earlier version of liboqs exposed a key exchange (KEX) API, while a newer version exposes a key encapsulation mechanism (KEM) API.  This branch of our OpenSSL fork works with the KEM version of liboqs.
+Builds have been tested manually on macOS 10.14 (clang 10.0.0), Ubuntu 14.04 (gcc-5), Ubuntu 16.04 (gcc-5), and Ubuntu 18.04.1 (gcc-7).
 
-Currently, the KEM API of liboqs is only available on liboqs' [nist-branch](https://github.com/open-quantum-safe/liboqs/tree/nist-branch).  Thus, this branch of liboqs' OpenSSL fork must be compiled against liboqs' nist-branch.
+### Step 0: Install dependencies
 
-### Ciphersuites
+For **Ubuntu**, you need to install the following packages:
 
-For each post-quantum KEM exposed `X`, there are the following ciphersuites:
+	sudo apt install autoconf automake gcc libtool libssl-dev make unzip xsltproc
 
-- `OQSKEM-X-RSA-AES128-GCM-SHA256`
-- `OQSKEM-X-ECDSA-AES128-GCM-SHA256`
-- `OQSKEM-X-RSA-AES256-GCM-SHA384`
-- `OQSKEM-X-ECDSA-AES256-GCM-SHA384`
-- `OQSKEM-X-ECDHE-RSA-AES128-GCM-SHA256`
-- `OQSKEM-X-ECDHE-ECDSA-AES128-GCM-SHA256`
-- `OQSKEM-X-ECDHE-RSA-AES256-GCM-SHA384`
-- `OQSKEM-X-ECDHE-ECDSA-AES256-GCM-SHA384`
+For **macOS**, you need to install the following packages using brew (or a package manager of your choice):
 
-Currently, only one KEM from liboqs is exposed:
+	brew install autoconf automake libtool openssl wget
 
-- `X` = `DEFAULT`: this uses whichever key exchange primitive is configured as the default key exchange primitive in liboqs.
-
-Note that when liboqs' master branch is ported to the new liboqs API, we intend that all KEMs present in liboqs master branch will be exposed in our OpenSSL fork.  However, we intend that any algorithms in liboqs nist-branch that are not present in liboqs master branch will only be accessible via recompiling liboqs with that algorithm set to `DEFAULT`.
-
-Building on Linux and macOS
----------------------------
-
-Builds have been tested on macOS 10.13.3 (clang), Ubuntu 14.04.5 (gcc-7).
-
-### Step 1: Build liboqs
-
-First, you must download and build liboqs.  You must use a version of liboqs that uses the new KEM API.  Currently, the only version that does so is [nist-branch](https://github.com/open-quantum-safe/liboqs/tree/ds-nist-branch).  
-
-Follow the instructions there to download and build that branch of liboqs.
-
-### Step 2: Download fork of OpenSSL
+### Step 1: Download fork of OpenSSL
 
 Clone or download the source from Github:
 
-	git clone --branch OQS-OpenSSL_1_0_2-stable https://github.com/open-quantum-safe/openssl.git
-	cd openssl
+    git clone --branch OQS-OpenSSL_1_0_2-stable https://github.com/open-quantum-safe/openssl.git
 
-### Step 3: Install liboqs into OpenSSL directory
+### Step 2: Build liboqs
 
-Go back to the directory where you built liboqs.  
+You can use the either the [master](https://github.com/open-quantum-safe/liboqs/tree/master) or the [nist](https://github.com/open-quantum-safe/liboqs/tree/nist-branch) branch of liboqs with the OQS-OpenSSL\_1\_0\_2-stable branch. Each branch support a different set of KEX/KEM mechanisnms (see above).
 
-	cd /path/to/liboqs
-	make install PREFIX=<path-to-openssl-dir>/oqs
+The following instructions will download and build liboqs, then install it into a subdirectory inside the OpenSSL folder.
 
-This will create a directory `oqs` in your newly download OpenSSL directory, with subdirectories `include` and `lib` containing the headers and library files of liboqs.
+For the **master branch**:
 
-### Step 4: Build fork of OpenSSL
+    git clone --branch master https://github.com/open-quantum-safe/liboqs.git
+    cd liboqs
+    autoreconf -i
+    ./configure --prefix=<path-to-openssl-dir>/oqs --enable-shared=no --enable-openssl --with-openssl-dir=<path-to-system-openssl-dir>
+    make -j
+    make install
 
-Now we follow the standard instructions for building OpenSSL.
+On **Ubuntu**, `<path-to-system-openssl-dir>` is probably `/usr`.  On **macOS** with brew, `<path-to-system-openssl-dir>` is probably `/usr/local/opt/openssl`.
 
-To configure OpenSSL, on Linux type:
+For the **nist branch**:
 
-	./Configure linux-x86_64 -lm
+    git clone --branch nist-branch https://github.com/open-quantum-safe/liboqs.git
+    cd liboqs
+    make -j
+    make install-noshared PREFIX=<path-to-openssl-dir>/oqs
 
-and on macOS type:
+### Step 3: Build fork of OpenSSL
 
-	./Configure darwin64-x86_64-cc
+Now we follow the standard instructions for building OpenSSL 1.0.2.
 
-Then type:
+For **Ubuntu**:
 
-	make depend
-	make
+    cd <path-to-openssl-dir>
+    ./Configure no-shared linux-x86_64 -lm
+    make -j
+    
+For **macOS**:
+
+    cd <path-to-openssl-dir>
+    ./Configure no-shared darwin64-x86_64-cc
+    make -j
+    
+The OQS fork of OpenSSL can also be built with shared libraries, but we have used `no-shared` in the instructions above to avoid having to get the shared libraries in the right place for the runtime linker.
 
 Running
 -------
 
-See the [liboqs documentation](https://github.com/open-quantum-safe/liboqs/blob/ds-nist-branch/README.md) for information on test programs in liboqs.
+See the [liboqs documentation](https://github.com/open-quantum-safe/liboqs/) for information on test programs in liboqs.
 
 ### openssl speed
 
@@ -131,23 +147,13 @@ OpenSSL's `speed` command performs basic benchmarking of cryptographic primitive
 
 OpenSSL contains a basic TLS server (`s_server`) and TLS client (`s_client`) which can be used to demonstrate and test SSL/TLS connections.
 
-To see the list of supported ciphersuites from OQS, type:
-
-	apps/openssl ciphers OQSKEM-DEFAULT:OQSKEM-DEFAULT-ECDHE
-
 To run a server, we first need to generate a self-signed X.509 certificate.  Run the following command:
 
-	apps/openssl req -x509 -new -newkey rsa:2048 -keyout server.key -nodes -out server.cer -sha256 -days 365 -config apps/openssl.cnf
-
-Hit enter in response to all the prompts to accept the defaults.  
-
-When done, type to combine the key and certificate (as required by `s_server`):
-
-	cat server.key server.cer > server.pem
+	apps/openssl req -x509 -new -newkey rsa:2048 -keyout rsa.key -out rsa.crt -nodes -subj "/CN=oqstest" -days 365 -config apps/openssl.cnf
 
 To run a basic TLS server with all OQS ciphersuites enabled:
 
-	apps/openssl s_server -cipher OQSKEM-DEFAULT:OQSKEM-DEFAULT-ECDHE
+	apps/openssl s_server -cert rsa.crt -key rsa.key -www -tls1_2 -cipher OQSKEM-DEFAULT:OQSKEM-DEFAULT-ECDHE
 
 In another terminal window, you can run a TLS client for any or all of the supported ciphersuites, for example:
 
@@ -162,11 +168,11 @@ All modifications in the open-quantum-safe/openssl repository are released under
 Team
 ----
 
-The Open Quantum Safe project is lead by [Michele Mosca](http://faculty.iqc.uwaterloo.ca/mmosca/) (University of Waterloo) and [Douglas Stebila](https://www.douglas.stebila.ca/research/) (McMaster University).
+The Open Quantum Safe project is led by [Douglas Stebila](https://www.douglas.stebila.ca/research/) and [Michele Mosca](http://faculty.iqc.uwaterloo.ca/mmosca/) at the University of Waterloo.
 
 ### Contributors
 
-Contributors to the liboqs fork of OpenSSL include:
+Contributors to open-quantum-safe/openssl branch OQS-OpenSSL\_1\_0\_2-stable include:
 
 - Kevin Kane (Microsoft)
 - Tancrède Lepoint (SRI)
@@ -177,5 +183,8 @@ See the liboqs documentation for a list of contributors to liboqs.
 
 ### Support
 
-Development of Open Quantum Safe has been supported in part by the Tutte Institute for Mathematics and Computing.  Research projects which developed specific components of Open Quantum Safe have been supported by various research grants; see the source papers for funding acknowledgements.
+Financial support for the development of Open Quantum Safe has been provided by Amazon Web Services and the Tutte Institute for Mathematics and Computing.  
 
+We'd like to make a special acknowledgement to the companies who have dedicated programmer time to contribute source code to OQS, including Amazon Web Services, evolutionQ, and Microsoft Research.  
+
+Research projects which developed specific components of OQS have been supported by various research grants, including funding from the Natural Sciences and Engineering Research Council of Canada (NSERC); see the source papers for funding acknowledgments.

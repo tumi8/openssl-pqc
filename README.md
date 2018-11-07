@@ -132,6 +132,39 @@ For **macOS**:
     
 The OQS fork of OpenSSL can also be built with shared libraries, but we have used `no-shared` in the instructions above to avoid having to get the shared libraries in the right place for the runtime linker.
 
+Building on Windows
+-------------------
+
+Builds have been tested on Windows 10 (VS2017 build tools). Make sure you can build the unmodified version of OpenSSL by following the instructions in [INSTALL.W64](https://github.com/open-quantum-safe/openssl/blob/OQS-OpenSSL_1_1_1-stable/INSTALL.W64).
+
+### Step 1: Download fork of OpenSSL
+
+Clone or download the source from Github:
+
+    git clone --branch OQS-OpenSSL_1_0_2-stable https://github.com/open-quantum-safe/openssl.git
+
+### Step 2: Build liboqs
+
+Next, you must download and build liboqs using the master branch of liboqs (the nist branch is not currently supported on Windows).  The following instructions will download and build that branch of liboqs, then copy the required files it into a subdirectory inside the OpenSSL folder.  You may need to install dependencies before building liboqs; see the [liboqs master branch README.md](https://github.com/open-quantum-safe/liboqs/blob/master/README.md).
+
+    git clone --branch master https://github.com/open-quantum-safe/liboqs.git
+    cd liboqs
+    msbuild VisualStudio\liboqs.sln
+    mkdir ..\openssl\oqs
+    mkdir ..\openssl\oqs\lib
+    mkdir ..\openssl\oqs\include
+    xcopy VisualStudio\x64\Release\oqs.lib ..\openssl\oqs\lib\
+    xcopy /S VisualStudio\include ..\openssl\oqs\include\
+
+### Step 3: Build fork of OpenSSL
+
+Now we follow the standard instructions for building OpenSSL, for example
+
+    cd ..\openssl
+    perl Configure VC-WIN64A
+    ms\do_win64a
+    nmake -f ms\nt.mak
+
 Running
 -------
 

@@ -158,7 +158,7 @@ Next, you must download and build liboqs using the master branch of liboqs (the 
 
 ### Step 3: Build fork of OpenSSL
 
-Now we follow the standard instructions for building OpenSSL, for example
+Now we follow the standard instructions for building OpenSSL:
 
     cd ..\openssl
     perl Configure VC-WIN64A

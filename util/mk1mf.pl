@@ -496,6 +496,7 @@ TMP_D=$tmp_dir
 # The output directory for the header files
 INC_D=$inc_dir
 INCO_D=$inc_dir${o}openssl
+INCOQS_D=$inc_dir${o}oqs
 
 PERL=$perl
 CP=$cp
@@ -518,6 +519,9 @@ O_FIPSCANISTER=\$(FIPSLIB_D)${o}fipscanister.lib
 FIPS_SHA1_EXE=\$(FIPSDIR)${o}bin${o}fips_standalone_sha1${exep}
 PREMAIN_DSO_EXE=\$(BIN_D)${o}fips_premain_dso$exep
 FIPSLINK=\$(PERL) \$(FIPSDIR)${o}bin${o}fipslink.pl
+
+# OQS headers
+LIBOQS_INCLUDE = oqs${o}include${o}oqs
 
 ######################################################
 # You should not need to touch anything below this point
@@ -551,7 +555,7 @@ SO_CRYPTO= $plib\$(CRYPTO)$so_shlibp
 L_SSL=     \$(LIB_D)$o$plib\$(SSL)$libp
 L_CRYPTO=  \$(LIB_D)$o$plib\$(CRYPTO)$libp
 
-L_LIBS= \$(L_SSL) \$(L_CRYPTO) $ex_l_libs
+L_LIBS= \$(L_SSL) \$(L_CRYPTO) oqs${o}lib${o}oqs.lib $ex_l_libs
 
 ######################################################
 # Don't touch anything below this point
@@ -567,10 +571,14 @@ LIBS_DEP=\$(O_CRYPTO) \$(O_SSL)
 EOF
 
 $rules=<<"EOF";
-all: banner \$(TMP_D) \$(BIN_D) \$(TEST_D) \$(LIB_D) \$(INCO_D) headers lib exe $build_targets
+all: banner incoqs \$(TMP_D) \$(BIN_D) \$(TEST_D) \$(LIB_D) \$(INCO_D) headers lib exe $build_targets
 
 banner:
 $banner
+
+incoqs:
+	\$(MKDIR) \"\$(INCOQS_D)\"
+        \$(CP) \"\$(LIBOQS_INCLUDE)${o}*.h" \"\$(INCOQS_D)\"
 
 \$(TMP_D):
 	\$(MKDIR) \"\$(TMP_D)\"
@@ -606,8 +614,10 @@ install: all
 	\$(MKDIR) \"\$(INSTALLTOP)${o}bin\"
 	\$(MKDIR) \"\$(INSTALLTOP)${o}include\"
 	\$(MKDIR) \"\$(INSTALLTOP)${o}include${o}openssl\"
+	\$(MKDIR) \"\$(INSTALLTOP)${o}include${o}oqs\"
 	\$(MKDIR) \"\$(INSTALLTOP)${o}lib\"
 	\$(CP) \"\$(INCO_D)${o}*.\[ch\]\" \"\$(INSTALLTOP)${o}include${o}openssl\"
+	\$(CP) \"\$(INCOQS_D)${o}*.\[ch\]\" \"\$(INSTALLTOP)${o}include${o}oqs\"
 	\$(CP) \"\$(BIN_D)$o\$(E_EXE)$exep\" \"\$(INSTALLTOP)${o}bin\"
 	\$(MKDIR) \"\$(OPENSSLDIR)\"
 	\$(CP) apps${o}openssl.cnf \"\$(OPENSSLDIR)\"

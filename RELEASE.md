@@ -1,5 +1,5 @@
-OQS-OpenSSL\_1\_0\_2-stable snapshot 2018-11 release candidate 1
-================================================================
+OQS-OpenSSL\_1\_0\_2-stable snapshot 2018-11-rc3
+================================================
 
 About
 -----
@@ -30,7 +30,7 @@ This is the third snapshot release of OQS-OpenSSL\_1\_0\_2-stable.
 
 It syncs the fork with the upstream OpenSSL 1.0.2p release.
 
-There are no additional changes in this repository.  However, since the last snapshot release, OQS-OpenSSL\_1\_0\_2-stable now builds against the liboqs master branch.
+There are no algorithmic changes since the last release.  However, since the last snapshot release, OQS-OpenSSL\_1\_0\_2-stable now builds against the liboqs master branch, and Windows builds have been fixed.
 
 Future work
 -----------

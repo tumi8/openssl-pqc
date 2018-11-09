@@ -207,7 +207,8 @@ $libp=".lib";
 $shlibp=($shlib)?".dll":".lib";
 $lfile='/out:';
 
-$shlib_ex_obj="";
+$shlib_ex_obj="oqs\\lib\\oqs.lib";
+
 $app_ex_obj="setargv.obj" if ($FLAVOR !~ /CE/);
 if ($FLAVOR =~ /WIN64A/) {
 	if (`nasm -v 2>NUL` =~ /NASM version ([0-9]+\.[0-9]+)/ && $1 >= 2.0) {

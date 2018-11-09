@@ -25,7 +25,7 @@ Contents of branch OQS-OpenSSL\_1\_0\_2-stable
 
 This branch ([OQS-OpenSSL\_1\_0\_2-stable branch](https://github.com/open-quantum-safe/openssl/tree/OQS-OpenSSL_1_0_2-stable)) integrates post-quantum key exchange from liboqs in TLS 1.2 in OpenSSL v1.0.2.  
 
-(For TLS 1.3, see the [OQS-OpenSSL\_1\_1\_1-stable](https://github.com/open-quantum-safe/openssl/tree/OQS-OpenSSL_1_1_1-stable) branch.)
+(For TLS 1.3, see the [OQS-OpenSSL\_1\_1\_1-stable](https://github.com/open-quantum-safe/openssl/tree/OQS-OpenSSL_1_1_1-stable) branch. For post-quantum authentication in TLS 1.2, see the deprecated [OpenSSL\_1\_0\_2-stable](https://github.com/open-quantum-safe/openssl/tree/OpenSSL_1_0_2-stable) branch using an older version of liboqs.)
 
 ### Key exchange mechanisms
 
@@ -145,7 +145,7 @@ Clone or download the source from Github:
 
 ### Step 2: Build liboqs
 
-Next, you must download and build liboqs using the master branch of liboqs (the nist branch is not currently supported on Windows).  The following instructions will download (using git, alternatively, [download](https://github.com/open-quantum-safe/liboqs/archive/master.zip) and unzip the project) and build the x64 release configuration of liboqs, then copy the required files it into a subdirectory inside the OpenSSL folder.  You may need to install dependencies before building liboqs; see the [liboqs master branch README.md](https://github.com/open-quantum-safe/liboqs/blob/master/README.md).
+Next, you must download and build liboqs using the master branch of liboqs (the nist branch is not currently supported on Windows).  The following instructions will download (using git, alternatively, [download](https://github.com/open-quantum-safe/liboqs/archive/master.zip) and unzip the project) and build liboqs, then copy the required files it into a subdirectory inside the OpenSSL folder.  The liboqs configuration (Debug/Release, x86/x64) must match the one of OpenSSL; the following instructions assume the x64 release configuration is used.  You may need to install dependencies before building liboqs; see the [liboqs master branch README.md](https://github.com/open-quantum-safe/liboqs/blob/master/README.md).
 
     git clone --branch master https://github.com/open-quantum-safe/liboqs.git
     msbuild liboqs\VisualStudio\liboqs.sln /p:Configuration=Release;Platform=x64
@@ -161,7 +161,7 @@ Now we follow the standard instructions for building OpenSSL, for example:
 
     perl Configure VC-WIN64A
     ms\do_win64a
-    nmake -f ms\nt.mak
+    nmake -f ms\nt.mak (or ntdll.mak to build DLLs)
 
 Running
 -------

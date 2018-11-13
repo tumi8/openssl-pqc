@@ -1,5 +1,5 @@
-OQS-OpenSSL\_1\_0\_2-stable snapshot 2018-11-rc3
-================================================
+OQS-OpenSSL\_1\_0\_2-stable snapshot 2018-11
+============================================
 
 About
 -----
@@ -20,8 +20,7 @@ This branch of our fork of OpenSSL can be used with the following versions of li
 Release notes
 =============
 
-**This is a release candidate for liboqs master, not a final release.**. 
-This snapshot of the OQS fork of OpenSSL 1.0.2 (`OQS-OpenSSL\_1_0_2-stable`) was released on TODO.  Its release page on Github is TODO.
+This snapshot of the OQS fork of OpenSSL 1.0.2 (`OQS-OpenSSL_1_0_2-stable`) was released on November 13, 2018.  Its release page on Github is https://github.com/open-quantum-safe/openssl/releases/tag/OQS-OpenSSL_1_0_2-stable-snapshot-2018-11.
 
 What's New
 ----------

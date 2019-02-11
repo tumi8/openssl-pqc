@@ -188,8 +188,8 @@ To run a basic TLS server with all OQS ciphersuites enabled:
 
 In another terminal window, you can run a TLS client for any or all of the supported ciphersuites, for example:
 
-	apps/openssl s_client -cipher OQSKEM-DEFAULT
-	apps/openssl s_client -cipher OQSKEM-DEFAULT-ECDHE
+	apps/openssl s_client -CAfile rsa.crt -cipher OQSKEM-DEFAULT
+	apps/openssl s_client -CAfile rsa.crt -cipher OQSKEM-DEFAULT-ECDHE
 
 License
 -------

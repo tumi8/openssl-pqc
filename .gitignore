@@ -121,3 +121,13 @@ ms/nt.mak
 ms/ntdll.mak
 ms/ssleay32.def
 ms/version32.rc
+
+# OQS stuff
+/oqs_test/tests/__pycache__
+/oqs_test/tmp/
+/*.crt
+/*.key
+/*.csr
+/*.srl
+/*.pem
+/*.out

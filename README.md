@@ -56,7 +56,7 @@ In addition, implementations that we have included on nist-branch of liboqs have
 
 The integration of liboqs into our fork of OpenSSL is currently at an experimental stage, and has not received significant review.  At this stage, we do not recommend relying on it in any production environment or to protect any sensitive data.
 
-The OQS fork of OpenSSL is not endorsed by with the OpenSSL project.
+The OQS fork of OpenSSL is not endorsed by the OpenSSL project.
 
 Proofs of TLS such as [[JKSS12]](https://eprint.iacr.org/2011/219) and [[KPW13]](https://eprint.iacr.org/2013/339) require a key exchange mechanism that has a form of active security, either in the form of the PRF-ODH assumption, or an IND-CCA KEM.  Most basic post-quantum key exchange mechanisms do not achieve active security, and would need to have an IND-CPA to IND-CCA KEM transform applied or be protected from active attacks using a signature scheme.  The `DEFAULT` KEM built in liboqs may not necessarily provide active security, in which case existing proofs of security of TLS against active attackers do not apply.
 

@@ -3,7 +3,7 @@ OQS-OpenSSL\_1\_0\_2-stable
 
 **OpenSSL** ([https://openssl.org/](https://openssl.org/)) is an open-source TLS/SSL and crypto library [https://openssl.org/](https://openssl.org/).  (View the original [README file](https://github.com/open-quantum-safe/openssl/blob/OQS-OpenSSL_1_0_2-stable/README) for OpenSSL.)
 
-This branch (OQS-OpenSSL\_1\_0\_2-stable) is a fork of OpenSSL 1.0.2 (currently in sync with the OpenSSL_1_0_2r tag) that adds the following:
+This branch (OQS-OpenSSL\_1\_0\_2-stable) is a fork of OpenSSL 1.0.2 (currently in sync with the OpenSSL_1_0_2s tag) that adds the following:
 
 - post-quantum key exchange in TLS 1.2
 - hybrid (post-quantum + elliptic curve) key exchange in TLS 1.2
@@ -56,7 +56,7 @@ In addition, implementations that we have included on nist-branch of liboqs have
 
 The integration of liboqs into our fork of OpenSSL is currently at an experimental stage, and has not received significant review.  At this stage, we do not recommend relying on it in any production environment or to protect any sensitive data.
 
-The OQS fork of OpenSSL is not endorsed by with the OpenSSL project.
+The OQS fork of OpenSSL is not endorsed by the OpenSSL project.
 
 Proofs of TLS such as [[JKSS12]](https://eprint.iacr.org/2011/219) and [[KPW13]](https://eprint.iacr.org/2013/339) require a key exchange mechanism that has a form of active security, either in the form of the PRF-ODH assumption, or an IND-CCA KEM.  Most basic post-quantum key exchange mechanisms do not achieve active security, and would need to have an IND-CPA to IND-CCA KEM transform applied or be protected from active attacks using a signature scheme.  The `DEFAULT` KEM built in liboqs may not necessarily provide active security, in which case existing proofs of security of TLS against active attackers do not apply.
 

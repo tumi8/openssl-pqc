@@ -105,7 +105,7 @@ For the **master branch**:
     make -j
     make install
 
-Building liboqs requires your system to have OpenSSL already installed.  configure will detect it if it is located in a standard location, such as `/usr` or `/usr/local/opt/openssl` (for brew on macOS).  Otherwise, you may need to specify it with `--with-openssl=<path-to-system-openssl-dir>`.
+Building liboqs requires your system to have OpenSSL already installed.  configure will detect it if it is located in a standard location, such as `/usr` or `/usr/local/opt/openssl` (for brew on macOS).  Otherwise, you may need to specify it with `--with-openssl=<path-to-system-openssl-dir>`.  If your system version of OpenSSL is 1.1.1, you may need to add the `--with-sha3=c` option to the liboqs `./configure` command above.
 
 For the **nist branch**:
 

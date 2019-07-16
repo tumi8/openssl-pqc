@@ -101,7 +101,7 @@ For the **master branch**:
     git clone --branch master https://github.com/open-quantum-safe/liboqs.git
     cd liboqs
     autoreconf -i
-    ./configure --prefix=<path-to-openssl-dir>/oqs --enable-shared=no
+    ./configure --prefix=<path-to-openssl-dir>/oqs --enable-shared=no --with-sha3=c
     make -j
     make install
 
@@ -122,13 +122,13 @@ For **Ubuntu**:
 
     cd <path-to-openssl-dir>
     ./Configure no-shared linux-x86_64 -lm
-    make -j
+    make
     
 For **macOS**:
 
     cd <path-to-openssl-dir>
     ./Configure no-shared darwin64-x86_64-cc
-    make -j
+    make
     
 The OQS fork of OpenSSL can also be built with shared libraries, but we have used `no-shared` in the instructions above to avoid having to get the shared libraries in the right place for the runtime linker.
 

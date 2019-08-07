@@ -20,7 +20,7 @@ OPENSSL_DIR=${OPENSSL_DIR:-"`pwd`/../oqs"}
 
 cd tmp/liboqs
 autoreconf -i
-./configure --prefix=${OPENSSL_DIR} --enable-shared=no --with-openssl=${OPENSSL_SYS_DIR} --with-sha3=c
+./configure --enable-silent-rules --prefix=${OPENSSL_DIR} --enable-shared=no --with-openssl=${OPENSSL_SYS_DIR} --with-sha3=c
 if [ "x${CIRCLECI}" == "xtrue" ] || [ "x${TRAVIS}" == "xtrue" ]; then
     make -j2
 else

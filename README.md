@@ -32,7 +32,7 @@ Both liboqs and this fork are part of the **Open Quantum Safe (OQS) project**, w
 
 ## Status
 
-This fork is currently in sync with the [OpenSSL\_1\_0\_2s tag](https://github.com/openssl/openssl/tree/OpenSSL_1_0_2s), and adds the following:
+This fork is currently in sync with the [OpenSSL\_1\_0\_2t tag](https://github.com/openssl/openssl/tree/OpenSSL_1_0_2t), and adds the following:
 
 - quantum-safe key exchange in TLS 1.2
 - hybrid (quantum-safe + elliptic curve) key exchange in TLS 1.2

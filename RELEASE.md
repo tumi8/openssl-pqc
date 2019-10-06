@@ -33,4 +33,4 @@ This release updates algorithms based on liboqs master 0.2.0, which has added an
 Future work
 -----------
 
-Snapshot releases of OQS-OpenSSL\_1\_0\_2-stable will be made approximately bi-monthly.  These will include syncing the branch with upstream releases of OpenSSL, and changes required to sync with new releases of liboqs.
+This is intended to be the last release of OQS-OpenSSL\_1\_0\_2-stable.  The OpenSSL project will stop supporting the OpenSSL 1.0.2 series as of January 1, 2020, so we will plan to discontinue releases of our fork of OpenSSL 1.0.2.  Projects relying on post-quantum key exchange in TLS should switch to the OQS-OpenSSL\_1\_1\_1-stable branch.

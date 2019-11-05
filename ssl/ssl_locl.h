@@ -479,9 +479,9 @@
 #define NID_OQS_bike1l3cpa 0x0207
 #define NID_OQS_bike1l1fo 0x0223
 #define NID_OQS_bike1l3fo 0x0224
-#define NID_OQS_kyber512 0x020F
-#define NID_OQS_kyber768 0x0210
-#define NID_OQS_kyber1024 0x0211
+#define NID_OQS_kyber512_90s 0x020F
+#define NID_OQS_kyber768_90s 0x0210
+#define NID_OQS_kyber1024_90s 0x0211
 #define NID_OQS_newhope512cca 0x0212
 #define NID_OQS_newhope1024cca 0x0213
 #define NID_OQS_ntru_hps2048509 0x0214
@@ -515,9 +515,9 @@
 #define NID_OQS_p256_bike1l3cpa 0x0307
 #define NID_OQS_p256_bike1l1fo 0x0323
 #define NID_OQS_p256_bike1l3fo 0x0324
-#define NID_OQS_p256_kyber512 0x030F
-#define NID_OQS_p256_kyber768 0x0310
-#define NID_OQS_p256_kyber1024 0x0311
+#define NID_OQS_p256_kyber512_90s 0x030F
+#define NID_OQS_p256_kyber768_90s 0x0310
+#define NID_OQS_p256_kyber1024_90s 0x0311
 #define NID_OQS_p256_newhope512cca 0x0312
 #define NID_OQS_p256_newhope1024cca 0x0313
 #define NID_OQS_p256_ntru_hps2048509 0x0314
@@ -559,9 +559,9 @@
   (nid == NID_OQS_bike1l3cpa ? 0x0207 : \
   (nid == NID_OQS_bike1l1fo ? 0x0223 : \
   (nid == NID_OQS_bike1l3fo ? 0x0224 : \
-  (nid == NID_OQS_kyber512 ? 0x020F : \
-  (nid == NID_OQS_kyber768 ? 0x0210 : \
-  (nid == NID_OQS_kyber1024 ? 0x0211 : \
+  (nid == NID_OQS_kyber512_90s ? 0x020F : \
+  (nid == NID_OQS_kyber768_90s ? 0x0210 : \
+  (nid == NID_OQS_kyber1024_90s ? 0x0211 : \
   (nid == NID_OQS_newhope512cca ? 0x0212 : \
   (nid == NID_OQS_newhope1024cca ? 0x0213 : \
   (nid == NID_OQS_ntru_hps2048509 ? 0x0214 : \
@@ -596,9 +596,9 @@
   (nid == NID_OQS_p256_bike1l3cpa ? 0x0307 : \
   (nid == NID_OQS_p256_bike1l1fo ? 0x0323 : \
   (nid == NID_OQS_p256_bike1l3fo ? 0x0324 : \
-  (nid == NID_OQS_p256_kyber512 ? 0x030F : \
-  (nid == NID_OQS_p256_kyber768 ? 0x0310 : \
-  (nid == NID_OQS_p256_kyber1024 ? 0x0311 : \
+  (nid == NID_OQS_p256_kyber512_90s ? 0x030F : \
+  (nid == NID_OQS_p256_kyber768_90s ? 0x0310 : \
+  (nid == NID_OQS_p256_kyber1024_90s ? 0x0311 : \
   (nid == NID_OQS_p256_newhope512cca ? 0x0312 : \
   (nid == NID_OQS_p256_newhope1024cca ? 0x0313 : \
   (nid == NID_OQS_p256_ntru_hps2048509 ? 0x0314 : \
@@ -634,9 +634,9 @@
   (curveID == 0x0207 || curveID == 0x0307 ? NID_OQS_bike1l3cpa : \
   (curveID == 0x0223 || curveID == 0x0323 ? NID_OQS_bike1l1fo : \
   (curveID == 0x0224 || curveID == 0x0324 ? NID_OQS_bike1l3fo : \
-  (curveID == 0x020F || curveID == 0x030F ? NID_OQS_kyber512 : \
-  (curveID == 0x0210 || curveID == 0x0310 ? NID_OQS_kyber768 : \
-  (curveID == 0x0211 || curveID == 0x0311 ? NID_OQS_kyber1024 : \
+  (curveID == 0x020F || curveID == 0x030F ? NID_OQS_kyber512_90s : \
+  (curveID == 0x0210 || curveID == 0x0310 ? NID_OQS_kyber768_90s : \
+  (curveID == 0x0211 || curveID == 0x0311 ? NID_OQS_kyber1024_90s : \
   (curveID == 0x0212 || curveID == 0x0312 ? NID_OQS_newhope512cca : \
   (curveID == 0x0213 || curveID == 0x0313 ? NID_OQS_newhope1024cca : \
   (curveID == 0x0214 || curveID == 0x0314 ? NID_OQS_ntru_hps2048509 : \
@@ -678,9 +678,9 @@
   (nid == NID_OQS_bike1l3cpa ? OQS_KEM_alg_bike1_l3_cpa : \
   (nid == NID_OQS_bike1l1fo ? OQS_KEM_alg_bike1_l1_fo : \
   (nid == NID_OQS_bike1l3fo ? OQS_KEM_alg_bike1_l3_fo : \
-  (nid == NID_OQS_kyber512 ? OQS_KEM_alg_kyber_512 : \
-  (nid == NID_OQS_kyber768 ? OQS_KEM_alg_kyber_768 : \
-  (nid == NID_OQS_kyber1024 ? OQS_KEM_alg_kyber_1024 : \
+  (nid == NID_OQS_kyber512_90s ? OQS_KEM_alg_kyber_512_90s : \
+  (nid == NID_OQS_kyber768_90s ? OQS_KEM_alg_kyber_768_90s : \
+  (nid == NID_OQS_kyber1024_90s ? OQS_KEM_alg_kyber_1024_90s : \
   (nid == NID_OQS_newhope512cca ? OQS_KEM_alg_newhope_512cca : \
   (nid == NID_OQS_newhope1024cca ? OQS_KEM_alg_newhope_1024cca : \
   (nid == NID_OQS_ntru_hps2048509 ? OQS_KEM_alg_ntru_hps2048509 : \

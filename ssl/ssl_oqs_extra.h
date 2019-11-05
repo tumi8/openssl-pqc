@@ -27,12 +27,12 @@ static int OQS_nid_from_string(const char *value) {
     nid = NID_OQS_bike1l1fo;
   } else if (strncmp(value, "bike1l3fo", len) == 0) {
     nid = NID_OQS_bike1l3fo;
-  } else if (strncmp(value, "kyber512", len) == 0) {
-    nid = NID_OQS_kyber512;
-  } else if (strncmp(value, "kyber768", len) == 0) {
-    nid = NID_OQS_kyber768;
-  } else if (strncmp(value, "kyber1024", len) == 0) {
-    nid = NID_OQS_kyber1024;
+  } else if (strncmp(value, "kyber512_90s", len) == 0) {
+    nid = NID_OQS_kyber512_90s;
+  } else if (strncmp(value, "kyber768_90s", len) == 0) {
+    nid = NID_OQS_kyber768_90s;
+  } else if (strncmp(value, "kyber1024_90s", len) == 0) {
+    nid = NID_OQS_kyber1024_90s;
   } else if (strncmp(value, "newhope512cca", len) == 0) {
     nid = NID_OQS_newhope512cca;
   } else if (strncmp(value, "newhope1024cca", len) == 0) {
@@ -92,12 +92,12 @@ static int OQS_nid_from_string(const char *value) {
     nid = NID_OQS_p256_bike1l1fo;
   } else if (strncmp(value, "p256-bike1l3fo", len) == 0) {
     nid = NID_OQS_p256_bike1l3fo;
-  } else if (strncmp(value, "p256-kyber512", len) == 0) {
-    nid = NID_OQS_p256_kyber512;
-  } else if (strncmp(value, "p256-kyber768", len) == 0) {
-    nid = NID_OQS_p256_kyber768;
-  } else if (strncmp(value, "p256-kyber1024", len) == 0) {
-    nid = NID_OQS_p256_kyber1024;
+  } else if (strncmp(value, "p256-kyber512_90s", len) == 0) {
+    nid = NID_OQS_p256_kyber512_90s;
+  } else if (strncmp(value, "p256-kyber768_90s", len) == 0) {
+    nid = NID_OQS_p256_kyber768_90s;
+  } else if (strncmp(value, "p256-kyber1024_90s", len) == 0) {
+    nid = NID_OQS_p256_kyber1024_90s;
   } else if (strncmp(value, "p256-newhope512cca", len) == 0) {
     nid = NID_OQS_p256_newhope512cca;
   } else if (strncmp(value, "p256-newhope1024cca", len) == 0) {

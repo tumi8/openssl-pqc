@@ -187,9 +187,9 @@ static const TLS_GROUP_INFO oqs_nid_list[] = {
     {NID_OQS_bike1l3cpa, 192, TLS_CURVE_CUSTOM}, /* bike1l3cpa (0x0207) */
     {NID_OQS_bike1l1fo, 128, TLS_CURVE_CUSTOM}, /* bike1l1fo (0x0223) */
     {NID_OQS_bike1l3fo, 192, TLS_CURVE_CUSTOM}, /* bike1l3fo (0x0224) */
-    {NID_OQS_kyber512, 128, TLS_CURVE_CUSTOM}, /* kyber512 (0x020F) */
-    {NID_OQS_kyber768, 192, TLS_CURVE_CUSTOM}, /* kyber768 (0x0210) */
-    {NID_OQS_kyber1024, 256, TLS_CURVE_CUSTOM}, /* kyber1024 (0x0211) */
+    {NID_OQS_kyber512_90s, 128, TLS_CURVE_CUSTOM}, /* kyber512_90s (0x020F) */
+    {NID_OQS_kyber768_90s, 192, TLS_CURVE_CUSTOM}, /* kyber768_90s (0x0210) */
+    {NID_OQS_kyber1024_90s, 256, TLS_CURVE_CUSTOM}, /* kyber1024_90s (0x0211) */
     {NID_OQS_newhope512cca, 128, TLS_CURVE_CUSTOM}, /* newhope512cca (0x0212) */
     {NID_OQS_newhope1024cca, 256, TLS_CURVE_CUSTOM}, /* newhope1024cca (0x0213) */
     {NID_OQS_ntru_hps2048509, 128, TLS_CURVE_CUSTOM}, /* ntru_hps2048509 (0x0214) */
@@ -223,9 +223,9 @@ static const TLS_GROUP_INFO oqs_hybrid_nid_list[] = {
     {NID_OQS_p256_bike1l3cpa, 192, TLS_CURVE_CUSTOM}, /* p256 + bike1l3cpa hybrid (0x0207) */
     {NID_OQS_p256_bike1l1fo, 128, TLS_CURVE_CUSTOM}, /* p256 + bike1l1fo hybrid (0x0223) */
     {NID_OQS_p256_bike1l3fo, 192, TLS_CURVE_CUSTOM}, /* p256 + bike1l3fo hybrid (0x0224) */
-    {NID_OQS_p256_kyber512, 128, TLS_CURVE_CUSTOM}, /* p256 + kyber512 hybrid (0x020F) */
-    {NID_OQS_p256_kyber768, 192, TLS_CURVE_CUSTOM}, /* p256 + kyber768 hybrid (0x0210) */
-    {NID_OQS_p256_kyber1024, 256, TLS_CURVE_CUSTOM}, /* p256 + kyber1024 hybrid (0x0211) */
+    {NID_OQS_p256_kyber512_90s, 128, TLS_CURVE_CUSTOM}, /* p256 + kyber512_90s hybrid (0x020F) */
+    {NID_OQS_p256_kyber768_90s, 192, TLS_CURVE_CUSTOM}, /* p256 + kyber768_90s hybrid (0x0210) */
+    {NID_OQS_p256_kyber1024_90s, 256, TLS_CURVE_CUSTOM}, /* p256 + kyber1024_90s hybrid (0x0211) */
     {NID_OQS_p256_newhope512cca, 128, TLS_CURVE_CUSTOM}, /* p256 + newhope512cca hybrid (0x0212) */
     {NID_OQS_p256_newhope1024cca, 256, TLS_CURVE_CUSTOM}, /* p256 + newhope1024cca hybrid (0x0213) */
     {NID_OQS_p256_ntru_hps2048509, 128, TLS_CURVE_CUSTOM}, /* p256 + ntru_hps2048509 hybrid (0x0214) */
@@ -273,9 +273,9 @@ static const uint16_t eccurves_default[] = {
     0x0207, /* OQS bike1l3cpa */
     0x0223, /* OQS bike1l1fo */
     0x0224, /* OQS bike1l3fo */
-    0x020F, /* OQS kyber512 */
-    0x0210, /* OQS kyber768 */
-    0x0211, /* OQS kyber1024 */
+    0x020F, /* OQS kyber512_90s */
+    0x0210, /* OQS kyber768_90s */
+    0x0211, /* OQS kyber1024_90s */
     0x0212, /* OQS newhope512cca */
     0x0213, /* OQS newhope1024cca */
     0x0214, /* OQS ntru_hps2048509 */
@@ -306,9 +306,9 @@ static const uint16_t eccurves_default[] = {
     0x0307, /* p256 - OQS bike1l3cpa hybrid */
     0x0323, /* p256 - OQS bike1l1fo hybrid */
     0x0324, /* p256 - OQS bike1l3fo hybrid */
-    0x030F, /* p256 - OQS kyber512 hybrid */
-    0x0310, /* p256 - OQS kyber768 hybrid */
-    0x0311, /* p256 - OQS kyber1024 hybrid */
+    0x030F, /* p256 - OQS kyber512_90s hybrid */
+    0x0310, /* p256 - OQS kyber768_90s hybrid */
+    0x0311, /* p256 - OQS kyber1024_90s hybrid */
     0x0312, /* p256 - OQS newhope512cca hybrid */
     0x0313, /* p256 - OQS newhope1024cca hybrid */
     0x0314, /* p256 - OQS ntru_hps2048509 hybrid */

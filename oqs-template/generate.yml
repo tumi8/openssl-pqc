@@ -60,22 +60,22 @@ kems:
     oqs_alg: "OQS_KEM_alg_bike1_l3_fo"
     bit_security: 192
   -
-    name_group: "kyber512"
+    name_group: "kyber512_90s"
     nid: "0x020F"
     nid_hybrid_p256: "0x030F"
-    oqs_alg: "OQS_KEM_alg_kyber_512"
+    oqs_alg: "OQS_KEM_alg_kyber_512_90s"
     bit_security: 128
   -
-    name_group: "kyber768"
+    name_group: "kyber768_90s"
     nid: "0x0210"
     nid_hybrid_p256: "0x0310"
-    oqs_alg: "OQS_KEM_alg_kyber_768"
+    oqs_alg: "OQS_KEM_alg_kyber_768_90s"
     bit_security: 192
   -
-    name_group: "kyber1024"
+    name_group: "kyber1024_90s"
     nid: "0x0211"
     nid_hybrid_p256: "0x0311"
-    oqs_alg: "OQS_KEM_alg_kyber_1024"
+    oqs_alg: "OQS_KEM_alg_kyber_1024_90s"
     bit_security: 256
   -
     name_group: "newhope512cca"

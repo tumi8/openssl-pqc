@@ -5,14 +5,32 @@ version: 2
     - image: ${IMAGE}
   steps:
     - checkout
+    # we need to first build and install OpenSSL 1.0.2 to ensure that liboqs is compiled against OpenSSL 1.0.2, then compile OQS-OpenSSL 1.0.2 against liboqs
+    - run:
+        name: Clone plain OpenSSL 1.0.2
+        command: |
+          mkdir /tmp-build
+          cd /tmp-build
+          git clone --single-branch --branch OpenSSL_1_0_2t https://github.com/openssl/openssl.git
+    - run:
+        name: Build plain OpenSSL 1.0.2
+        command: |
+          mkdir /tmp-install
+          cd /tmp-build
+          cd openssl
+          ./Configure no-shared --prefix=/tmp-install linux-x86_64 -lm
+          make
+          make install_sw
     - run:
         name: Clone liboqs
         command: cd oqs_test && scripts/clone_liboqs.sh
     - run:
         name: Build liboqs
+        environment:
+          OPENSSL_SYS_DIR: /tmp-install
         command: cd oqs_test && scripts/build_liboqs.sh
     - run:
-        name: Build OpenSSL
+        name: Build OQS-OpenSSL 1.0.2
         command: cd oqs_test && scripts/build_openssl.sh
     - run:
         name: Run unit tests

@@ -13,6 +13,17 @@
 /tmp.*
 /configdata.pm
 
+# OQS and test files
+/oqs
+/*.sh
+/*.crt
+/*.csr
+/*.crt
+/*.key
+/*.srl
+/oqs-template/generate.yml
+
+
 # Links under apps
 /apps/CA.pl
 /apps/tsget

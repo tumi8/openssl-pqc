@@ -1,223 +1,60 @@
-Welcome to the OpenSSL Project
-==============================
+OQS-OpenSSL3
+==================================
 
-[![openssl logo]][www.openssl.org]
+[OpenSSL](https://openssl.org/) is an open-source implementation of the TLS protocol and various cryptographic algorithms ([View the original README](https://github.com/openssl/openssl/blob/master/README.md))
 
-[![travis badge]][travis jobs]
-[![appveyor badge]][appveyor jobs]
+OQS-OpenSSL3 is a fork of OpenSSL 3 (alpha/master branch) that adds quantum-safe key exchange and authentication algorithms using [liboqs](https://github.com/open-quantum-safe/liboqs) for prototyping and evaluation purposes. This fork is not endorsed by the OpenSSL project.
 
-OpenSSL is a robust, commercial-grade, full-featured Open Source Toolkit
-for the Transport Layer Security (TLS) protocol formerly known as the
-Secure Sockets Layer (SSL) protocol. The protocol implementation is based
-on a full-strength general purpose cryptographic library, which can also
-be used stand-alone.
+## Overview 
 
-OpenSSL is descended from the SSLeay library developed by Eric A. Young
-and Tim J. Hudson.
+This implementation utilizes the [OpenSSL Provider concept](https://www.openssl.org/docs/manmaster/man7/provider.html) for this integration. As [KEM providers](https://www.openssl.org/docs/manmaster/man7/provider-kem.html) are fully integrated into OpenSSL3, KEM-based TLS session establishment using algorithms from liboqs is fully supported. As the same level of provider integration is not yet available for signature algorithms, liboqs signature provider support, e.g., for certificate generation or CMS, is not yet available in this branch. Parties interested in such functionality should check out the [primary supported, OQS-OpenSSL1_1_1 branch of the OQS-OpenSSL project](https://github.com/open-quantum-safe/openssl).
 
-The official Home Page of the OpenSSL Project is [www.openssl.org].
+## Status
 
-Table of Contents
-=================
+This fork is currently in sync with [OpenSSL master](https://github.com/openssl/openssl), and adds the following:
 
- - [Overview](#overview)
- - [Download](#download)
- - [Build and Install](#build-and-install)
- - [Documentation](#documentation)
- - [License](#license)
- - [Support](#support)
- - [Contributing](#contributing)
- - [Legalities](#legalities)
+- quantum-safe key exchange in TLS 1.3 using OpenSSL3 KEM provider interface
+- quantum-safe key management using OpenSSL3 provider interface
 
-Overview
-========
+## Building 
 
-The OpenSSL toolkit includes:
+This branch can be built using a standard openssl `Configure` command, e.g., `./Configure --prefix=/opt/ossl3 --openssldir=/opt/ossl3 '-Wl,-rpath,$(LIBRPATH)'`, followed by an equally standard `make install_sw` instruction.
 
-- **libssl**
-  an implementation of all TLS protocol versions up to TLSv1.3 ([RFC 8446]).
+Note that providing an install location (`/opt/ossl3` in this example) is required to permit the resultant openssl binaries and configuration files to be properly picked up. Most notably, the OQS provider library needs to be activated by the `openssl.cnf` file. Proper installation can be verified by running `/opt/ossl3/bin/openssl list -providers`: The OQS provider must be listed if the build succeeded.
 
-- **libcrypto**
-  a full-strength general purpose cryptographic library. It constitutes the
-  basis of the TLS implementation, but can also be used independently.
+Further note that presence of liboqs' libraries and include files in the folder `oqs` [as documented here](https://github.com/open-quantum-safe/openssl#step-1-build-and-install-liboqs) is a prerequisite to a successful build.
 
-- **openssl**
-  the OpenSSL command line tool, a swiss army knife for cryptographic tasks,
-  testing and analyzing. It can be used for
-  - creation of key parameters
-  - creation of X.509 certificates, CSRs and CRLs
-  - calculation of message digests
-  - encryption and decryption
-  - SSL/TLS client and server tests
-  - handling of S/MIME signed or encrypted mail
-  - and more...
+Final note: This branch is work in progress; building has only been tested on Linux, a CI integration is not yet done.
 
-Download
-========
+## Running
 
-For Production Use
-------------------
+All standard openssl commands can be utilized. In addition, all [KEM algorithms provided by liboqs](https://github.com/open-quantum-safe/openssl#key-exchange) (at this time, without support for hybrid algorithms) can be triggered for session establishment.
 
-Source code tarballs of the official releases can be downloaded from
-[www.openssl.org/source](https://www.openssl.org/source).
-The OpenSSL project does not distribute the toolkit in binary form.
+Assuming standard creation of RSA server certificates, these commands show proper operation of OQS-based TLS session establishment:
 
-However, for a large variety of operating systems precompiled versions
-of the OpenSSL toolkit are available. In particular on Linux and other
-Unix operating systems it is normally recommended to link against the
-precompiled shared libraries provided by the distributor or vendor.
+Example server start: `/opt/ossl3/bin/openssl s_server -cert rsa_srv.crt -key rsa_srv.key -www -tls1_3 -groups kyber768:frodo640shake`
+Example client start: `/opt/ossl3/bin/openssl s_client -groups frodo640shake`
 
-For Testing and Development
----------------------------
+## Third-party integration
 
-Although testing and development could in theory also be done using
-the source tarballs, having a local copy of the git repository with
-the entire project history gives you much more insight into the
-code base.
+As OpenSSL3 has not yet reached beta status, no further application integrations are available.
 
-The official OpenSSL Git Repository is located at [git.openssl.org].
-There is a GitHub mirror of the repository at [github.com/openssl/openssl],
-which is updated automatically from the former on every commit.
+## License
 
-A local copy of the Git Repository can be obtained by cloning it from
-the original OpenSSL repository using
+All modifications to this repository are released under the same terms as OpenSSL, namely as described in the file [LICENSE](LICENSE.txt).
 
-    git clone git://git.openssl.org/openssl.git
+## Team
 
-or from the GitHub mirror using
+The Open Quantum Safe project is led by [Douglas Stebila](https://www.douglas.stebila.ca/research/) and [Michele Mosca](http://faculty.iqc.uwaterloo.ca/mmosca/) at the University of Waterloo.
 
-    git clone https://github.com/openssl/openssl.git
+Contributors to OQS-OpenSSL3 include:
 
-If you intend to contribute to OpenSSL, either to fix bugs or contribute
-new features, you need to fork the OpenSSL repository openssl/openssl on
-GitHub and clone your public fork instead.
+- Michael Baentsch 
 
-    git clone https://github.com/yourname/openssl.git
+## Acknowledgments
 
-This is necessary, because all development of OpenSSL nowadays is done via
-GitHub pull requests. For more details, see [Contributing](#contributing).
+Financial support for the development of Open Quantum Safe has been provided by Amazon Web Services and the Tutte Institute for Mathematics and Computing.
 
-Build and Install
-=================
+We'd like to make a special acknowledgement to the companies who have dedicated programmer time to contribute source code to OQS, including Amazon Web Services, evolutionQ, Microsoft Research, Cisco Systems, and IBM Research.
 
-After obtaining the Source, have a look at the [INSTALL](INSTALL.md) file for
-detailed instructions about building and installing OpenSSL. For some
-platforms, the installation instructions are amended by a platform specific
-document.
-
- * [NOTES-Android.md](NOTES-Android.md)
- * [NOTES-DJGPP.md](NOTES-DJGPP.md)
- * [NOTES-Unix.md](NOTES-Unix.md)
- * [NOTES-VMS.md](NOTES-VMS.md)
- * [NOTES-Windows.txt](NOTES-Windows.txt)
- * [NOTES-Perl.md](NOTES-Perl.md)
- * [NOTES-Valgrind.md](NOTES-Valgrind.md)
-
-Specific notes on upgrading to OpenSSL 3.0 from previous versions, as well as
-known issues are available on the [OpenSSL 3.0 Wiki] page.
-
-Documentation
-=============
-
-Manual Pages
-------------
-
-The manual pages for the master branch and all current stable releases are
-available online.
-
-- [OpenSSL master](https://www.openssl.org/docs/manmaster)
-- [OpenSSL 1.1.1](https://www.openssl.org/docs/man1.1.1)
-
-Wiki
-----
-
-There is a Wiki at [wiki.openssl.org] which is currently not very active.
-It contains a lot of useful information, not all of which is up to date.
-
-License
-=======
-
-OpenSSL is licensed under the Apache License 2.0, which means that
-you are free to get and use it for commercial and non-commercial
-purposes as long as you fulfill its conditions.
-
-See the [LICENSE.txt](LICENSE.txt) file for more details.
-
-Support
-=======
-
-There are various ways to get in touch. The correct channel depends on
-your requirement. see the [SUPPORT](SUPPORT.md) file for more details.
-
-Contributing
-============
-
-If you are interested and willing to contribute to the OpenSSL project,
-please take a look at the [CONTRIBUTING](CONTRIBUTING.md) file.
-
-Legalities
-==========
-
-A number of nations restrict the use or export of cryptography. If you are
-potentially subject to such restrictions you should seek legal advice before
-attempting to develop or distribute cryptographic code.
-
-Copyright
-=========
-
-Copyright (c) 1998-2020 The OpenSSL Project
-
-Copyright (c) 1995-1998 Eric A. Young, Tim J. Hudson
-
-All rights reserved.
-
-<!-- Links  -->
-
-[www.openssl.org]:
-    <https://www.openssl.org>
-    "OpenSSL Homepage"
-
-[git.openssl.org]:
-    <https://git.openssl.org>
-    "OpenSSL Git Repository"
-
-[git.openssl.org]:
-    <https://git.openssl.org>
-    "OpenSSL Git Repository"
-
-[github.com/openssl/openssl]:
-    <https://github.com/openssl/openssl>
-    "OpenSSL GitHub Mirror"
-
-[wiki.openssl.org]:
-    <https://wiki.openssl.org>
-    "OpenSSL Wiki"
-
-[OpenSSL 3.0 Wiki]:
-    <https://wiki.openssl.org/index.php/OpenSSL_3.0>
-    "OpenSSL 3.0 Wiki"
-
-[RFC 8446]:
-     <https://tools.ietf.org/html/rfc8446>
-
-<!-- Logos and Badges -->
-
-[openssl logo]:
-    doc/images/openssl.svg
-    "OpenSSL Logo"
-
-[travis badge]:
-    <https://travis-ci.com/openssl/openssl.svg?branch=master>
-    "Travis Build Status"
-
-[travis jobs]:
-    <https://travis-ci.com/openssl/openssl>
-    "Travis Jobs"
-
-[appveyor badge]:
-    <https://ci.appveyor.com/api/projects/status/8e10o7xfrg73v98f/branch/master?svg=true>
-    "AppVeyor Build Status"
-
-[appveyor jobs]:
-    <https://ci.appveyor.com/project/openssl/openssl/branch/master>
-    "AppVeyor Jobs"
+Research projects which developed specific components of OQS have been supported by various research grants, including funding from the Natural Sciences and Engineering Research Council of Canada (NSERC); see [here](https://openquantumsafe.org/papers/SAC-SteMos16.pdf) and [here](https://openquantumsafe.org/papers/NISTPQC-CroPaqSte19.pdf) for funding acknowledgments.

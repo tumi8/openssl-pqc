@@ -27,6 +27,7 @@
 # libnonfips.a          Corresponds to libfips.a, but built with
 #                       FIPS_MODULE undefined.  The default and legacy
 #                       providers use this.
+# liboqs.a              Contains OQS implementation integration.
 #
 # This is how different provider modules should be linked:
 #
@@ -58,6 +59,7 @@ $LIBIMPLEMENTATIONS=libimplementations.a
 $LIBLEGACY=liblegacy.a
 $LIBNONFIPS=libnonfips.a
 $LIBFIPS=libfips.a
+$LIBOQSPROVIDER=liboqsprovider.a
 
 # Enough of our implementations include prov/ciphercommon.h (present in
 # providers/implementations/include), which includes crypto/*_platform.h
@@ -70,6 +72,7 @@ INCLUDE[$LIBIMPLEMENTATIONS]=.. $COMMON_INCLUDES
 INCLUDE[$LIBLEGACY]=.. $COMMON_INCLUDES
 INCLUDE[$LIBNONFIPS]=.. $COMMON_INCLUDES
 INCLUDE[$LIBFIPS]=.. $COMMON_INCLUDES
+INCLUDE[$LIBOQSPROVIDER]=.. $COMMON_INCLUDES ../oqs/include
 DEFINE[$LIBFIPS]=FIPS_MODULE
 
 # Weak dependencies to provide library order information.
@@ -180,6 +183,44 @@ IF[{- !$disabled{legacy} -}]
   # takes.
   SOURCE[$LEGACYGOAL]=legacyprov.c
   INCLUDE[$LEGACYGOAL]=../include implementations/include common/include
+ENDIF
+
+#
+# OQS provider stuff
+#
+IF[{- !$disabled{oqs} -}]
+  # The oqsprovider implementation library
+  LIBS{noinst}=$LIBOQSPROVIDER
+  DEPEND[$LIBOQSPROVIDER]=$LIBCOMMON $LIBNONFIPS ../oqs/lib/liboqs.a
+
+  # The OQS provider
+  IF[{- $disabled{module} -}]
+    # Become built in
+    # In this case, we need to do the same thing a for the default provider,
+    # and make the liboqsprovider object files end up in libcrypto.  We could also
+    # just say that for the built-in oqs provider, we put the source directly in
+    # libcrypto instead of going via liboqsprovider, but that makes writing the
+    # implementation specific build.info files harder to write, so we don't.
+    $OQSPROVIDERGOAL=../libcrypto
+    SOURCE[$OQSPROVIDERGOAL]=$LIBOQSPROVIDER
+    DEFINE[$LIBOQSPROVIDER]=STATIC_OQSPROVIDER
+    DEFINE[$OQSPROVIDERGOAL]=STATIC_OQSPROVIDER
+  ELSE
+    # Become a module
+    # In this case, we can work with dependencies
+    $OQSPROVIDERGOAL=oqsprovider
+    MODULES=$OQSPROVIDERGOAL
+    DEPEND[$OQSPROVIDERGOAL]=$LIBOQSPROVIDER
+    IF[{- defined $target{shared_defflag} -}]
+      SOURCE[oqsprovider]=oqsprovider.ld
+      GENERATE[oqsprovider.ld]=../util/providers.num
+    ENDIF
+  ENDIF
+
+  # Common things that are valid no matter what form the OQS provider
+  # takes.
+  SOURCE[$OQSPROVIDERGOAL]=oqsprov.c oqsprov_keys.c oqsprov_groups.c
+  INCLUDE[$OQSPROVIDERGOAL]=../include implementations/include common/include ../oqs/include
 ENDIF
 
 #

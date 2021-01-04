@@ -4,6 +4,7 @@
 $DSA_GOAL=../../libimplementations.a
 $EC_GOAL=../../libimplementations.a
 $SM2SIG_GOAL=../../libimplementations.a
+$OQS_GOAL=../../liboqsprovider.a
 
 IF[{- !$disabled{dsa} -}]
   SOURCE[$DSA_GOAL]=dsa.c
@@ -25,6 +26,8 @@ DEPEND[dsa.o]=../../common/include/prov/der_dsa.h
 DEPEND[ecdsa.o]=../../common/include/prov/der_ec.h
 DEPEND[eddsa.o]=../../common/include/prov/der_ecx.h
 DEPEND[sm2sig.o]=../../common/include/prov/der_sm2.h
+
+SOURCE[$OQS_GOAL]=oqs_sig.c
 
 SOURCE[../../libfips.a]=mac_legacy.c
 SOURCE[../../libnonfips.a]=mac_legacy.c

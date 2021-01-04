@@ -4,3 +4,7 @@
 $RSA_KEM_GOAL=../../libimplementations.a
 
 SOURCE[$RSA_KEM_GOAL]=rsa_kem.c
+
+$OQS_KEM_GOAL=../../liboqsprovider.a
+
+SOURCE[$OQS_KEM_GOAL]=oqs_kem.c

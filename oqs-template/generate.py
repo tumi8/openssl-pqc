@@ -49,10 +49,11 @@ def load_config():
 config = load_config()
 
 # For now, only activate providers:
-populate('providers/implementations/include/prov/implementations.h', config, '/////')
+populate('test/oqs_test.c', config, '/////')
 populate('providers/oqsprov.c', config, '/////')
 populate('providers/oqsprov_groups.c', config, '/////')
 populate('providers/implementations/keymgmt/oqs_kmgmt.c', config, '/////')
+populate('providers/implementations/signature/oqs_sig.c', config, '/////')
 
 # ToDo: Re-activate after adapting to OSSL3 code
 # sigs

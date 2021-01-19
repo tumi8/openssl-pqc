@@ -3,6 +3,8 @@
  *
  * Code strongly inspired by OpenSSL common provider capabilities.
  *
+ * TBC: OQS license
+ *
  * ToDo: Interop testing.
  */
 
@@ -13,9 +15,9 @@
 /* For TLS1_VERSION etc */
 #include <openssl/ssl.h>
 #include <openssl/params.h>
-#include "internal/nelem.h"
-#include "internal/tlsgroups.h"
-#include "prov/providercommon.h"
+
+// internal, but useful OSSL define:
+# define OSSL_NELEM(x)    (sizeof(x)/sizeof((x)[0]))
 
 typedef struct oqs_group_constants_st {
     unsigned int group_id;   /* Group ID */
@@ -163,7 +165,7 @@ static int oqs_group_capability(OSSL_CALLBACK *cb, void *arg)
 int oqs_provider_get_capabilities(void *provctx, const char *capability,
                               OSSL_CALLBACK *cb, void *arg)
 {
-    printf("OQSPROV: get_capabilities...\n");
+    //printf("OQSPROV: get_capabilities...\n");
     if (strcasecmp(capability, "TLS-GROUP") == 0)
         return oqs_group_capability(cb, arg);
 

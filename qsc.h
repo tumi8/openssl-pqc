@@ -77,39 +77,90 @@
 	oid_add_from_string("dilithium2", "1.3.6.1.4.1.2.267.7.4.4"); \
 	oid_add_from_string("p256_dilithium2", "1.3.9999.2.7.1"); \
 	oid_add_from_string("rsa3072_dilithium2", "1.3.9999.2.7.2"); \
-	oid_add_from_string("dilithium3", "1.3.6.1.4.1.2.267.7.6.5"); \
-	oid_add_from_string("p384_dilithium3", "1.3.9999.2.7.3"); \
-	oid_add_from_string("dilithium5", "1.3.6.1.4.1.2.267.7.8.7"); \
-	oid_add_from_string("p521_dilithium5", "1.3.9999.2.7.4"); \
-	oid_add_from_string("dilithium2_aes", "1.3.6.1.4.1.2.267.11.4.4"); \
-	oid_add_from_string("p256_dilithium2_aes", "1.3.9999.2.11.1"); \
-	oid_add_from_string("rsa3072_dilithium2_aes", "1.3.9999.2.11.2"); \
-	oid_add_from_string("dilithium3_aes", "1.3.6.1.4.1.2.267.11.6.5"); \
-	oid_add_from_string("p384_dilithium3_aes", "1.3.9999.2.11.3"); \
-	oid_add_from_string("dilithium5_aes", "1.3.6.1.4.1.2.267.11.8.7"); \
-	oid_add_from_string("p521_dilithium5_aes", "1.3.9999.2.11.4"); \
-	oid_add_from_string("falcon512", "1.3.9999.3.1"); \
-	oid_add_from_string("p256_falcon512", "1.3.9999.3.2"); \
-	oid_add_from_string("rsa3072_falcon512", "1.3.9999.3.3"); \
-	oid_add_from_string("falcon1024", "1.3.9999.3.4"); \
-	oid_add_from_string("p521_falcon1024", "1.3.9999.3.5"); \
-	oid_add_from_string("picnicl1full", "1.3.6.1.4.1.311.89.2.1.7"); \
-	oid_add_from_string("p256_picnicl1full", "1.3.6.1.4.1.311.89.2.1.8"); \
-	oid_add_from_string("rsa3072_picnicl1full", "1.3.6.1.4.1.311.89.2.1.9"); \
-	oid_add_from_string("picnic3l1", "1.3.6.1.4.1.311.89.2.1.21"); \
-	oid_add_from_string("p256_picnic3l1", "1.3.6.1.4.1.311.89.2.1.22"); \
-	oid_add_from_string("rsa3072_picnic3l1", "1.3.6.1.4.1.311.89.2.1.23"); \
-	oid_add_from_string("rainbowVclassic", "1.3.9999.5.3.1.1"); \
-	oid_add_from_string("p521_rainbowVclassic", "1.3.9999.5.3.2.1"); \
 	oid_add_from_string("sphincsharaka128frobust", "1.3.9999.6.1.1"); \
 	oid_add_from_string("p256_sphincsharaka128frobust", "1.3.9999.6.1.2"); \
 	oid_add_from_string("rsa3072_sphincsharaka128frobust", "1.3.9999.6.1.3"); \
+	oid_add_from_string("sphincsharaka128fsimple", "1.3.9999.6.1.4"); \
+	oid_add_from_string("p256_sphincsharaka128fsimple", "1.3.9999.6.1.5"); \
+	oid_add_from_string("rsa3072_sphincsharaka128fsimple", "1.3.9999.6.1.6"); \
+	oid_add_from_string("sphincsharaka128srobust", "1.3.9999.6.1.7"); \
+	oid_add_from_string("p256_sphincsharaka128srobust", "1.3.9999.6.1.8"); \
+	oid_add_from_string("rsa3072_sphincsharaka128srobust", "1.3.9999.6.1.9"); \
+	oid_add_from_string("sphincsharaka128ssimple", "1.3.9999.6.1.10"); \
+	oid_add_from_string("p256_sphincsharaka128ssimple", "1.3.9999.6.1.11"); \
+	oid_add_from_string("rsa3072_sphincsharaka128ssimple", "1.3.9999.6.1.12"); \
+	oid_add_from_string("sphincsharaka192frobust", "1.3.9999.6.2.1"); \
+	oid_add_from_string("p384_sphincsharaka192frobust", "1.3.9999.6.2.2"); \
+	oid_add_from_string("sphincsharaka192fsimple", "1.3.9999.6.2.3"); \
+	oid_add_from_string("p384_sphincsharaka192fsimple", "1.3.9999.6.2.4"); \
+	oid_add_from_string("sphincsharaka192srobust", "1.3.9999.6.2.5"); \
+	oid_add_from_string("p384_sphincsharaka192srobust", "1.3.9999.6.2.6"); \
+	oid_add_from_string("sphincsharaka192ssimple", "1.3.9999.6.2.7"); \
+	oid_add_from_string("p384_sphincsharaka192ssimple", "1.3.9999.6.2.8"); \
+	oid_add_from_string("sphincsharaka256frobust", "1.3.9999.6.3.1"); \
+	oid_add_from_string("p521_sphincsharaka256frobust", "1.3.9999.6.3.2"); \
+	oid_add_from_string("sphincsharaka256fsimple", "1.3.9999.6.3.3"); \
+	oid_add_from_string("p521_sphincsharaka256fsimple", "1.3.9999.6.3.4"); \
+	oid_add_from_string("sphincsharaka256srobust", "1.3.9999.6.3.5"); \
+	oid_add_from_string("p521_sphincsharaka256srobust", "1.3.9999.6.3.6"); \
+	oid_add_from_string("sphincsharaka256ssimple", "1.3.9999.6.3.7"); \
+	oid_add_from_string("p521_sphincsharaka256ssimple", "1.3.9999.6.3.8"); \
 	oid_add_from_string("sphincssha256128frobust", "1.3.9999.6.4.1"); \
 	oid_add_from_string("p256_sphincssha256128frobust", "1.3.9999.6.4.2"); \
 	oid_add_from_string("rsa3072_sphincssha256128frobust", "1.3.9999.6.4.3"); \
+	oid_add_from_string("sphincssha256128fsimple", "1.3.9999.6.4.4"); \
+	oid_add_from_string("p256_sphincssha256128fsimple", "1.3.9999.6.4.5"); \
+	oid_add_from_string("rsa3072_sphincssha256128fsimple", "1.3.9999.6.4.6"); \
+	oid_add_from_string("sphincssha256128srobust", "1.3.9999.6.4.7"); \
+	oid_add_from_string("p256_sphincssha256128srobust", "1.3.9999.6.4.8"); \
+	oid_add_from_string("rsa3072_sphincssha256128srobust", "1.3.9999.6.4.9"); \
+	oid_add_from_string("sphincssha256128ssimple", "1.3.9999.6.4.10"); \
+	oid_add_from_string("p256_sphincssha256128ssimple", "1.3.9999.6.4.11"); \
+	oid_add_from_string("rsa3072_sphincssha256128ssimple", "1.3.9999.6.4.12"); \
+	oid_add_from_string("sphincssha256192frobust", "1.3.9999.6.5.1"); \
+	oid_add_from_string("p384_sphincssha256192frobust", "1.3.9999.6.5.2"); \
+	oid_add_from_string("sphincssha256192fsimple", "1.3.9999.6.5.3"); \
+	oid_add_from_string("p384_sphincssha256192fsimple", "1.3.9999.6.5.4"); \
+	oid_add_from_string("sphincssha256192srobust", "1.3.9999.6.5.5"); \
+	oid_add_from_string("p384_sphincssha256192srobust", "1.3.9999.6.5.6"); \
+	oid_add_from_string("sphincssha256192ssimple", "1.3.9999.6.5.7"); \
+	oid_add_from_string("p384_sphincssha256192ssimple", "1.3.9999.6.5.8"); \
+	oid_add_from_string("sphincssha256256frobust", "1.3.9999.6.6.1"); \
+	oid_add_from_string("p521_sphincssha256256frobust", "1.3.9999.6.6.2"); \
+	oid_add_from_string("sphincssha256256fsimple", "1.3.9999.6.6.3"); \
+	oid_add_from_string("p521_sphincssha256256fsimple", "1.3.9999.6.6.4"); \
+	oid_add_from_string("sphincssha256256srobust", "1.3.9999.6.6.5"); \
+	oid_add_from_string("p521_sphincssha256256srobust", "1.3.9999.6.6.6"); \
+	oid_add_from_string("sphincssha256256ssimple", "1.3.9999.6.6.7"); \
+	oid_add_from_string("p521_sphincssha256256ssimple", "1.3.9999.6.6.8"); \
 	oid_add_from_string("sphincsshake256128frobust", "1.3.9999.6.7.1"); \
 	oid_add_from_string("p256_sphincsshake256128frobust", "1.3.9999.6.7.2"); \
 	oid_add_from_string("rsa3072_sphincsshake256128frobust", "1.3.9999.6.7.3"); \
+	oid_add_from_string("sphincsshake256128fsimple", "1.3.9999.6.7.4"); \
+	oid_add_from_string("p256_sphincsshake256128fsimple", "1.3.9999.6.7.5"); \
+	oid_add_from_string("rsa3072_sphincsshake256128fsimple", "1.3.9999.6.7.6"); \
+	oid_add_from_string("sphincsshake256128srobust", "1.3.9999.6.7.7"); \
+	oid_add_from_string("p256_sphincsshake256128srobust", "1.3.9999.6.7.8"); \
+	oid_add_from_string("rsa3072_sphincsshake256128srobust", "1.3.9999.6.7.9"); \
+	oid_add_from_string("sphincsshake256128ssimple", "1.3.9999.6.7.10"); \
+	oid_add_from_string("p256_sphincsshake256128ssimple", "1.3.9999.6.7.11"); \
+	oid_add_from_string("rsa3072_sphincsshake256128ssimple", "1.3.9999.6.7.12"); \
+	oid_add_from_string("sphincsshake256192frobust", "1.3.9999.6.8.1"); \
+	oid_add_from_string("p384_sphincsshake256192frobust", "1.3.9999.6.8.2"); \
+	oid_add_from_string("sphincsshake256192fsimple", "1.3.9999.6.8.3"); \
+	oid_add_from_string("p384_sphincsshake256192fsimple", "1.3.9999.6.8.4"); \
+	oid_add_from_string("sphincsshake256192srobust", "1.3.9999.6.8.5"); \
+	oid_add_from_string("p384_sphincsshake256192srobust", "1.3.9999.6.8.6"); \
+	oid_add_from_string("sphincsshake256192ssimple", "1.3.9999.6.8.7"); \
+	oid_add_from_string("p384_sphincsshake256192ssimple", "1.3.9999.6.8.8"); \
+	oid_add_from_string("sphincsshake256256frobust", "1.3.9999.6.9.1"); \
+	oid_add_from_string("p521_sphincsshake256256frobust", "1.3.9999.6.9.2"); \
+	oid_add_from_string("sphincsshake256256fsimple", "1.3.9999.6.9.3"); \
+	oid_add_from_string("p521_sphincsshake256256fsimple", "1.3.9999.6.9.4"); \
+	oid_add_from_string("sphincsshake256256srobust", "1.3.9999.6.9.5"); \
+	oid_add_from_string("p521_sphincsshake256256srobust", "1.3.9999.6.9.6"); \
+	oid_add_from_string("sphincsshake256256ssimple", "1.3.9999.6.9.7"); \
+	oid_add_from_string("p521_sphincsshake256256ssimple", "1.3.9999.6.9.8"); \
 
 
 ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_OIDS_END

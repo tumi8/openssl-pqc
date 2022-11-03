@@ -1751,37 +1751,88 @@ dstu4145le 2 9 : uacurve9 : DSTU curve 9
 1 3 6 1 4 1 2 267 7 4 4 : dilithium2 : dilithium2
 1 3 9999 2 7 1 : p256_dilithium2 : p256_dilithium2
 1 3 9999 2 7 2 : rsa3072_dilithium2 : rsa3072_dilithium2
-1 3 6 1 4 1 2 267 7 6 5 : dilithium3 : dilithium3
-1 3 9999 2 7 3 : p384_dilithium3 : p384_dilithium3
-1 3 6 1 4 1 2 267 7 8 7 : dilithium5 : dilithium5
-1 3 9999 2 7 4 : p521_dilithium5 : p521_dilithium5
-1 3 6 1 4 1 2 267 11 4 4 : dilithium2_aes : dilithium2_aes
-1 3 9999 2 11 1 : p256_dilithium2_aes : p256_dilithium2_aes
-1 3 9999 2 11 2 : rsa3072_dilithium2_aes : rsa3072_dilithium2_aes
-1 3 6 1 4 1 2 267 11 6 5 : dilithium3_aes : dilithium3_aes
-1 3 9999 2 11 3 : p384_dilithium3_aes : p384_dilithium3_aes
-1 3 6 1 4 1 2 267 11 8 7 : dilithium5_aes : dilithium5_aes
-1 3 9999 2 11 4 : p521_dilithium5_aes : p521_dilithium5_aes
-1 3 9999 3 1 : falcon512 : falcon512
-1 3 9999 3 2 : p256_falcon512 : p256_falcon512
-1 3 9999 3 3 : rsa3072_falcon512 : rsa3072_falcon512
-1 3 9999 3 4 : falcon1024 : falcon1024
-1 3 9999 3 5 : p521_falcon1024 : p521_falcon1024
-1 3 6 1 4 1 311 89 2 1 7 : picnicl1full : picnicl1full
-1 3 6 1 4 1 311 89 2 1 8 : p256_picnicl1full : p256_picnicl1full
-1 3 6 1 4 1 311 89 2 1 9 : rsa3072_picnicl1full : rsa3072_picnicl1full
-1 3 6 1 4 1 311 89 2 1 21 : picnic3l1 : picnic3l1
-1 3 6 1 4 1 311 89 2 1 22 : p256_picnic3l1 : p256_picnic3l1
-1 3 6 1 4 1 311 89 2 1 23 : rsa3072_picnic3l1 : rsa3072_picnic3l1
-1 3 9999 5 3 1 1 : rainbowVclassic : rainbowVclassic
-1 3 9999 5 3 2 1 : p521_rainbowVclassic : p521_rainbowVclassic
 1 3 9999 6 1 1 : sphincsharaka128frobust : sphincsharaka128frobust
 1 3 9999 6 1 2 : p256_sphincsharaka128frobust : p256_sphincsharaka128frobust
 1 3 9999 6 1 3 : rsa3072_sphincsharaka128frobust : rsa3072_sphincsharaka128frobust
+1 3 9999 6 1 4 : sphincsharaka128fsimple : sphincsharaka128fsimple
+1 3 9999 6 1 5 : p256_sphincsharaka128fsimple : p256_sphincsharaka128fsimple
+1 3 9999 6 1 6 : rsa3072_sphincsharaka128fsimple : rsa3072_sphincsharaka128fsimple
+1 3 9999 6 1 7 : sphincsharaka128srobust : sphincsharaka128srobust
+1 3 9999 6 1 8 : p256_sphincsharaka128srobust : p256_sphincsharaka128srobust
+1 3 9999 6 1 9 : rsa3072_sphincsharaka128srobust : rsa3072_sphincsharaka128srobust
+1 3 9999 6 1 10 : sphincsharaka128ssimple : sphincsharaka128ssimple
+1 3 9999 6 1 11 : p256_sphincsharaka128ssimple : p256_sphincsharaka128ssimple
+1 3 9999 6 1 12 : rsa3072_sphincsharaka128ssimple : rsa3072_sphincsharaka128ssimple
+1 3 9999 6 2 1 : sphincsharaka192frobust : sphincsharaka192frobust
+1 3 9999 6 2 2 : p384_sphincsharaka192frobust : p384_sphincsharaka192frobust
+1 3 9999 6 2 3 : sphincsharaka192fsimple : sphincsharaka192fsimple
+1 3 9999 6 2 4 : p384_sphincsharaka192fsimple : p384_sphincsharaka192fsimple
+1 3 9999 6 2 5 : sphincsharaka192srobust : sphincsharaka192srobust
+1 3 9999 6 2 6 : p384_sphincsharaka192srobust : p384_sphincsharaka192srobust
+1 3 9999 6 2 7 : sphincsharaka192ssimple : sphincsharaka192ssimple
+1 3 9999 6 2 8 : p384_sphincsharaka192ssimple : p384_sphincsharaka192ssimple
+1 3 9999 6 3 1 : sphincsharaka256frobust : sphincsharaka256frobust
+1 3 9999 6 3 2 : p521_sphincsharaka256frobust : p521_sphincsharaka256frobust
+1 3 9999 6 3 3 : sphincsharaka256fsimple : sphincsharaka256fsimple
+1 3 9999 6 3 4 : p521_sphincsharaka256fsimple : p521_sphincsharaka256fsimple
+1 3 9999 6 3 5 : sphincsharaka256srobust : sphincsharaka256srobust
+1 3 9999 6 3 6 : p521_sphincsharaka256srobust : p521_sphincsharaka256srobust
+1 3 9999 6 3 7 : sphincsharaka256ssimple : sphincsharaka256ssimple
+1 3 9999 6 3 8 : p521_sphincsharaka256ssimple : p521_sphincsharaka256ssimple
 1 3 9999 6 4 1 : sphincssha256128frobust : sphincssha256128frobust
 1 3 9999 6 4 2 : p256_sphincssha256128frobust : p256_sphincssha256128frobust
 1 3 9999 6 4 3 : rsa3072_sphincssha256128frobust : rsa3072_sphincssha256128frobust
+1 3 9999 6 4 4 : sphincssha256128fsimple : sphincssha256128fsimple
+1 3 9999 6 4 5 : p256_sphincssha256128fsimple : p256_sphincssha256128fsimple
+1 3 9999 6 4 6 : rsa3072_sphincssha256128fsimple : rsa3072_sphincssha256128fsimple
+1 3 9999 6 4 7 : sphincssha256128srobust : sphincssha256128srobust
+1 3 9999 6 4 8 : p256_sphincssha256128srobust : p256_sphincssha256128srobust
+1 3 9999 6 4 9 : rsa3072_sphincssha256128srobust : rsa3072_sphincssha256128srobust
+1 3 9999 6 4 10 : sphincssha256128ssimple : sphincssha256128ssimple
+1 3 9999 6 4 11 : p256_sphincssha256128ssimple : p256_sphincssha256128ssimple
+1 3 9999 6 4 12 : rsa3072_sphincssha256128ssimple : rsa3072_sphincssha256128ssimple
+1 3 9999 6 5 1 : sphincssha256192frobust : sphincssha256192frobust
+1 3 9999 6 5 2 : p384_sphincssha256192frobust : p384_sphincssha256192frobust
+1 3 9999 6 5 3 : sphincssha256192fsimple : sphincssha256192fsimple
+1 3 9999 6 5 4 : p384_sphincssha256192fsimple : p384_sphincssha256192fsimple
+1 3 9999 6 5 5 : sphincssha256192srobust : sphincssha256192srobust
+1 3 9999 6 5 6 : p384_sphincssha256192srobust : p384_sphincssha256192srobust
+1 3 9999 6 5 7 : sphincssha256192ssimple : sphincssha256192ssimple
+1 3 9999 6 5 8 : p384_sphincssha256192ssimple : p384_sphincssha256192ssimple
+1 3 9999 6 6 1 : sphincssha256256frobust : sphincssha256256frobust
+1 3 9999 6 6 2 : p521_sphincssha256256frobust : p521_sphincssha256256frobust
+1 3 9999 6 6 3 : sphincssha256256fsimple : sphincssha256256fsimple
+1 3 9999 6 6 4 : p521_sphincssha256256fsimple : p521_sphincssha256256fsimple
+1 3 9999 6 6 5 : sphincssha256256srobust : sphincssha256256srobust
+1 3 9999 6 6 6 : p521_sphincssha256256srobust : p521_sphincssha256256srobust
+1 3 9999 6 6 7 : sphincssha256256ssimple : sphincssha256256ssimple
+1 3 9999 6 6 8 : p521_sphincssha256256ssimple : p521_sphincssha256256ssimple
 1 3 9999 6 7 1 : sphincsshake256128frobust : sphincsshake256128frobust
 1 3 9999 6 7 2 : p256_sphincsshake256128frobust : p256_sphincsshake256128frobust
 1 3 9999 6 7 3 : rsa3072_sphincsshake256128frobust : rsa3072_sphincsshake256128frobust
+1 3 9999 6 7 4 : sphincsshake256128fsimple : sphincsshake256128fsimple
+1 3 9999 6 7 5 : p256_sphincsshake256128fsimple : p256_sphincsshake256128fsimple
+1 3 9999 6 7 6 : rsa3072_sphincsshake256128fsimple : rsa3072_sphincsshake256128fsimple
+1 3 9999 6 7 7 : sphincsshake256128srobust : sphincsshake256128srobust
+1 3 9999 6 7 8 : p256_sphincsshake256128srobust : p256_sphincsshake256128srobust
+1 3 9999 6 7 9 : rsa3072_sphincsshake256128srobust : rsa3072_sphincsshake256128srobust
+1 3 9999 6 7 10 : sphincsshake256128ssimple : sphincsshake256128ssimple
+1 3 9999 6 7 11 : p256_sphincsshake256128ssimple : p256_sphincsshake256128ssimple
+1 3 9999 6 7 12 : rsa3072_sphincsshake256128ssimple : rsa3072_sphincsshake256128ssimple
+1 3 9999 6 8 1 : sphincsshake256192frobust : sphincsshake256192frobust
+1 3 9999 6 8 2 : p384_sphincsshake256192frobust : p384_sphincsshake256192frobust
+1 3 9999 6 8 3 : sphincsshake256192fsimple : sphincsshake256192fsimple
+1 3 9999 6 8 4 : p384_sphincsshake256192fsimple : p384_sphincsshake256192fsimple
+1 3 9999 6 8 5 : sphincsshake256192srobust : sphincsshake256192srobust
+1 3 9999 6 8 6 : p384_sphincsshake256192srobust : p384_sphincsshake256192srobust
+1 3 9999 6 8 7 : sphincsshake256192ssimple : sphincsshake256192ssimple
+1 3 9999 6 8 8 : p384_sphincsshake256192ssimple : p384_sphincsshake256192ssimple
+1 3 9999 6 9 1 : sphincsshake256256frobust : sphincsshake256256frobust
+1 3 9999 6 9 2 : p521_sphincsshake256256frobust : p521_sphincsshake256256frobust
+1 3 9999 6 9 3 : sphincsshake256256fsimple : sphincsshake256256fsimple
+1 3 9999 6 9 4 : p521_sphincsshake256256fsimple : p521_sphincsshake256256fsimple
+1 3 9999 6 9 5 : sphincsshake256256srobust : sphincsshake256256srobust
+1 3 9999 6 9 6 : p521_sphincsshake256256srobust : p521_sphincsshake256256srobust
+1 3 9999 6 9 7 : sphincsshake256256ssimple : sphincsshake256256ssimple
+1 3 9999 6 9 8 : p521_sphincsshake256256ssimple : p521_sphincsshake256256ssimple
 ##### OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_OIDS_END

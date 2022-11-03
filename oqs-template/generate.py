@@ -35,7 +35,7 @@ def populate(filename, config, delimiter, overwrite=False):
 
         preamble = contents[:contents.find(identifier_start)]
         postamble = contents[contents.find(identifier_end):]
-
+        print(config['sigs'][0])
         if overwrite == True:
             contents = preamble + Jinja2.get_template(fragment).render({'config': config}) + postamble.replace(identifier_end + '\n', '')
         else:

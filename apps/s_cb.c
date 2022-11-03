@@ -252,72 +252,174 @@ static const char *get_sigtype(int nid)
         return "ECDSA p256 - Dilithium2";
     case NID_rsa3072_dilithium2:
         return "RSA3072 - Dilithium2";
-    case NID_dilithium3:
-        return "Dilithium3";
-    case NID_p384_dilithium3:
-        return "ECDSA p384 - Dilithium3";
-    case NID_dilithium5:
-        return "Dilithium5";
-    case NID_p521_dilithium5:
-        return "ECDSA p521 - Dilithium5";
-    case NID_dilithium2_aes:
-        return "Dilithium2_AES";
-    case NID_p256_dilithium2_aes:
-        return "ECDSA p256 - Dilithium2_AES";
-    case NID_rsa3072_dilithium2_aes:
-        return "RSA3072 - Dilithium2_AES";
-    case NID_dilithium3_aes:
-        return "Dilithium3_AES";
-    case NID_p384_dilithium3_aes:
-        return "ECDSA p384 - Dilithium3_AES";
-    case NID_dilithium5_aes:
-        return "Dilithium5_AES";
-    case NID_p521_dilithium5_aes:
-        return "ECDSA p521 - Dilithium5_AES";
-    case NID_falcon512:
-        return "Falcon-512";
-    case NID_p256_falcon512:
-        return "ECDSA p256 - Falcon-512";
-    case NID_rsa3072_falcon512:
-        return "RSA3072 - Falcon-512";
-    case NID_falcon1024:
-        return "Falcon-1024";
-    case NID_p521_falcon1024:
-        return "ECDSA p521 - Falcon-1024";
-    case NID_picnicl1full:
-        return "Picnic L1 full";
-    case NID_p256_picnicl1full:
-        return "ECDSA p256 - Picnic L1 full";
-    case NID_rsa3072_picnicl1full:
-        return "RSA3072 - Picnic L1 full";
-    case NID_picnic3l1:
-        return "Picnic3 L1";
-    case NID_p256_picnic3l1:
-        return "ECDSA p256 - Picnic3 L1";
-    case NID_rsa3072_picnic3l1:
-        return "RSA3072 - Picnic3 L1";
-    case NID_rainbowVclassic:
-        return "Rainbow-V-Classic";
-    case NID_p521_rainbowVclassic:
-        return "ECDSA p521 - Rainbow-V-Classic";
     case NID_sphincsharaka128frobust:
         return "SPHINCS+-Haraka-128f-robust";
     case NID_p256_sphincsharaka128frobust:
         return "ECDSA p256 - SPHINCS+-Haraka-128f-robust";
     case NID_rsa3072_sphincsharaka128frobust:
         return "RSA3072 - SPHINCS+-Haraka-128f-robust";
+    case NID_sphincsharaka128fsimple:
+        return "SPHINCS+-Haraka-128f-simple";
+    case NID_p256_sphincsharaka128fsimple:
+        return "ECDSA p256 - SPHINCS+-Haraka-128f-simple";
+    case NID_rsa3072_sphincsharaka128fsimple:
+        return "RSA3072 - SPHINCS+-Haraka-128f-simple";
+    case NID_sphincsharaka128srobust:
+        return "SPHINCS+-Haraka-128s-robust";
+    case NID_p256_sphincsharaka128srobust:
+        return "ECDSA p256 - SPHINCS+-Haraka-128s-robust";
+    case NID_rsa3072_sphincsharaka128srobust:
+        return "RSA3072 - SPHINCS+-Haraka-128s-robust";
+    case NID_sphincsharaka128ssimple:
+        return "SPHINCS+-Haraka-128s-simple";
+    case NID_p256_sphincsharaka128ssimple:
+        return "ECDSA p256 - SPHINCS+-Haraka-128s-simple";
+    case NID_rsa3072_sphincsharaka128ssimple:
+        return "RSA3072 - SPHINCS+-Haraka-128s-simple";
+    case NID_sphincsharaka192frobust:
+        return "SPHINCS+-Haraka-192f-robust";
+    case NID_p384_sphincsharaka192frobust:
+        return "ECDSA p384 - SPHINCS+-Haraka-192f-robust";
+    case NID_sphincsharaka192fsimple:
+        return "SPHINCS+-Haraka-192f-simple";
+    case NID_p384_sphincsharaka192fsimple:
+        return "ECDSA p384 - SPHINCS+-Haraka-192f-simple";
+    case NID_sphincsharaka192srobust:
+        return "SPHINCS+-Haraka-192s-robust";
+    case NID_p384_sphincsharaka192srobust:
+        return "ECDSA p384 - SPHINCS+-Haraka-192s-robust";
+    case NID_sphincsharaka192ssimple:
+        return "SPHINCS+-Haraka-192s-simple";
+    case NID_p384_sphincsharaka192ssimple:
+        return "ECDSA p384 - SPHINCS+-Haraka-192s-simple";
+    case NID_sphincsharaka256frobust:
+        return "SPHINCS+-Haraka-256f-robust";
+    case NID_p521_sphincsharaka256frobust:
+        return "ECDSA p521 - SPHINCS+-Haraka-256f-robust";
+    case NID_sphincsharaka256fsimple:
+        return "SPHINCS+-Haraka-256f-simple";
+    case NID_p521_sphincsharaka256fsimple:
+        return "ECDSA p521 - SPHINCS+-Haraka-256f-simple";
+    case NID_sphincsharaka256srobust:
+        return "SPHINCS+-Haraka-256s-robust";
+    case NID_p521_sphincsharaka256srobust:
+        return "ECDSA p521 - SPHINCS+-Haraka-256s-robust";
+    case NID_sphincsharaka256ssimple:
+        return "SPHINCS+-Haraka-256s-simple";
+    case NID_p521_sphincsharaka256ssimple:
+        return "ECDSA p521 - SPHINCS+-Haraka-256s-simple";
     case NID_sphincssha256128frobust:
         return "SPHINCS+-SHA256-128f-robust";
     case NID_p256_sphincssha256128frobust:
         return "ECDSA p256 - SPHINCS+-SHA256-128f-robust";
     case NID_rsa3072_sphincssha256128frobust:
         return "RSA3072 - SPHINCS+-SHA256-128f-robust";
+    case NID_sphincssha256128fsimple:
+        return "SPHINCS+-SHA256-128f-simple";
+    case NID_p256_sphincssha256128fsimple:
+        return "ECDSA p256 - SPHINCS+-SHA256-128f-simple";
+    case NID_rsa3072_sphincssha256128fsimple:
+        return "RSA3072 - SPHINCS+-SHA256-128f-simple";
+    case NID_sphincssha256128srobust:
+        return "SPHINCS+-SHA256-128s-robust";
+    case NID_p256_sphincssha256128srobust:
+        return "ECDSA p256 - SPHINCS+-SHA256-128s-robust";
+    case NID_rsa3072_sphincssha256128srobust:
+        return "RSA3072 - SPHINCS+-SHA256-128s-robust";
+    case NID_sphincssha256128ssimple:
+        return "SPHINCS+-SHA256-128s-simple";
+    case NID_p256_sphincssha256128ssimple:
+        return "ECDSA p256 - SPHINCS+-SHA256-128s-simple";
+    case NID_rsa3072_sphincssha256128ssimple:
+        return "RSA3072 - SPHINCS+-SHA256-128s-simple";
+    case NID_sphincssha256192frobust:
+        return "SPHINCS+-SHA256-192f-robust";
+    case NID_p384_sphincssha256192frobust:
+        return "ECDSA p384 - SPHINCS+-SHA256-192f-robust";
+    case NID_sphincssha256192fsimple:
+        return "SPHINCS+-SHA256-192f-simple";
+    case NID_p384_sphincssha256192fsimple:
+        return "ECDSA p384 - SPHINCS+-SHA256-192f-simple";
+    case NID_sphincssha256192srobust:
+        return "SPHINCS+-SHA256-192s-robust";
+    case NID_p384_sphincssha256192srobust:
+        return "ECDSA p384 - SPHINCS+-SHA256-192s-robust";
+    case NID_sphincssha256192ssimple:
+        return "SPHINCS+-SHA256-192s-simple";
+    case NID_p384_sphincssha256192ssimple:
+        return "ECDSA p384 - SPHINCS+-SHA256-192s-simple";
+    case NID_sphincssha256256frobust:
+        return "SPHINCS+-SHA256-256f-robust";
+    case NID_p521_sphincssha256256frobust:
+        return "ECDSA p521 - SPHINCS+-SHA256-256f-robust";
+    case NID_sphincssha256256fsimple:
+        return "SPHINCS+-SHA256-256f-simple";
+    case NID_p521_sphincssha256256fsimple:
+        return "ECDSA p521 - SPHINCS+-SHA256-256f-simple";
+    case NID_sphincssha256256srobust:
+        return "SPHINCS+-SHA256-256s-robust";
+    case NID_p521_sphincssha256256srobust:
+        return "ECDSA p521 - SPHINCS+-SHA256-256s-robust";
+    case NID_sphincssha256256ssimple:
+        return "SPHINCS+-SHA256-256s-simple";
+    case NID_p521_sphincssha256256ssimple:
+        return "ECDSA p521 - SPHINCS+-SHA256-256s-simple";
     case NID_sphincsshake256128frobust:
         return "SPHINCS+-SHAKE256-128f-robust";
     case NID_p256_sphincsshake256128frobust:
         return "ECDSA p256 - SPHINCS+-SHAKE256-128f-robust";
     case NID_rsa3072_sphincsshake256128frobust:
         return "RSA3072 - SPHINCS+-SHAKE256-128f-robust";
+    case NID_sphincsshake256128fsimple:
+        return "SPHINCS+-SHAKE256-128f-simple";
+    case NID_p256_sphincsshake256128fsimple:
+        return "ECDSA p256 - SPHINCS+-SHAKE256-128f-simple";
+    case NID_rsa3072_sphincsshake256128fsimple:
+        return "RSA3072 - SPHINCS+-SHAKE256-128f-simple";
+    case NID_sphincsshake256128srobust:
+        return "SPHINCS+-SHAKE256-128s-robust";
+    case NID_p256_sphincsshake256128srobust:
+        return "ECDSA p256 - SPHINCS+-SHAKE256-128s-robust";
+    case NID_rsa3072_sphincsshake256128srobust:
+        return "RSA3072 - SPHINCS+-SHAKE256-128s-robust";
+    case NID_sphincsshake256128ssimple:
+        return "SPHINCS+-SHAKE256-128s-simple";
+    case NID_p256_sphincsshake256128ssimple:
+        return "ECDSA p256 - SPHINCS+-SHAKE256-128s-simple";
+    case NID_rsa3072_sphincsshake256128ssimple:
+        return "RSA3072 - SPHINCS+-SHAKE256-128s-simple";
+    case NID_sphincsshake256192frobust:
+        return "SPHINCS+-SHAKE256-192f-robust";
+    case NID_p384_sphincsshake256192frobust:
+        return "ECDSA p384 - SPHINCS+-SHAKE256-192f-robust";
+    case NID_sphincsshake256192fsimple:
+        return "SPHINCS+-SHAKE256-192f-simple";
+    case NID_p384_sphincsshake256192fsimple:
+        return "ECDSA p384 - SPHINCS+-SHAKE256-192f-simple";
+    case NID_sphincsshake256192srobust:
+        return "SPHINCS+-SHAKE256-192s-robust";
+    case NID_p384_sphincsshake256192srobust:
+        return "ECDSA p384 - SPHINCS+-SHAKE256-192s-robust";
+    case NID_sphincsshake256192ssimple:
+        return "SPHINCS+-SHAKE256-192s-simple";
+    case NID_p384_sphincsshake256192ssimple:
+        return "ECDSA p384 - SPHINCS+-SHAKE256-192s-simple";
+    case NID_sphincsshake256256frobust:
+        return "SPHINCS+-SHAKE256-256f-robust";
+    case NID_p521_sphincsshake256256frobust:
+        return "ECDSA p521 - SPHINCS+-SHAKE256-256f-robust";
+    case NID_sphincsshake256256fsimple:
+        return "SPHINCS+-SHAKE256-256f-simple";
+    case NID_p521_sphincsshake256256fsimple:
+        return "ECDSA p521 - SPHINCS+-SHAKE256-256f-simple";
+    case NID_sphincsshake256256srobust:
+        return "SPHINCS+-SHAKE256-256s-robust";
+    case NID_p521_sphincsshake256256srobust:
+        return "ECDSA p521 - SPHINCS+-SHAKE256-256s-robust";
+    case NID_sphincsshake256256ssimple:
+        return "SPHINCS+-SHAKE256-256s-simple";
+    case NID_p521_sphincsshake256256ssimple:
+        return "ECDSA p521 - SPHINCS+-SHAKE256-256s-simple";
 ///// OQS_TEMPLATE_FRAGMENT_SIG_NAME_STR_END
     default:
         return NULL;

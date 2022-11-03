@@ -79,39 +79,90 @@ int oqssl_sig_nids_list[] = {
         NID_dilithium2,
         NID_p256_dilithium2,
         NID_rsa3072_dilithium2,
-        NID_dilithium3,
-        NID_p384_dilithium3,
-        NID_dilithium5,
-        NID_p521_dilithium5,
-        NID_dilithium2_aes,
-        NID_p256_dilithium2_aes,
-        NID_rsa3072_dilithium2_aes,
-        NID_dilithium3_aes,
-        NID_p384_dilithium3_aes,
-        NID_dilithium5_aes,
-        NID_p521_dilithium5_aes,
-        NID_falcon512,
-        NID_p256_falcon512,
-        NID_rsa3072_falcon512,
-        NID_falcon1024,
-        NID_p521_falcon1024,
-        NID_picnicl1full,
-        NID_p256_picnicl1full,
-        NID_rsa3072_picnicl1full,
-        NID_picnic3l1,
-        NID_p256_picnic3l1,
-        NID_rsa3072_picnic3l1,
-        NID_rainbowVclassic,
-        NID_p521_rainbowVclassic,
         NID_sphincsharaka128frobust,
         NID_p256_sphincsharaka128frobust,
         NID_rsa3072_sphincsharaka128frobust,
+        NID_sphincsharaka128fsimple,
+        NID_p256_sphincsharaka128fsimple,
+        NID_rsa3072_sphincsharaka128fsimple,
+        NID_sphincsharaka128srobust,
+        NID_p256_sphincsharaka128srobust,
+        NID_rsa3072_sphincsharaka128srobust,
+        NID_sphincsharaka128ssimple,
+        NID_p256_sphincsharaka128ssimple,
+        NID_rsa3072_sphincsharaka128ssimple,
+        NID_sphincsharaka192frobust,
+        NID_p384_sphincsharaka192frobust,
+        NID_sphincsharaka192fsimple,
+        NID_p384_sphincsharaka192fsimple,
+        NID_sphincsharaka192srobust,
+        NID_p384_sphincsharaka192srobust,
+        NID_sphincsharaka192ssimple,
+        NID_p384_sphincsharaka192ssimple,
+        NID_sphincsharaka256frobust,
+        NID_p521_sphincsharaka256frobust,
+        NID_sphincsharaka256fsimple,
+        NID_p521_sphincsharaka256fsimple,
+        NID_sphincsharaka256srobust,
+        NID_p521_sphincsharaka256srobust,
+        NID_sphincsharaka256ssimple,
+        NID_p521_sphincsharaka256ssimple,
         NID_sphincssha256128frobust,
         NID_p256_sphincssha256128frobust,
         NID_rsa3072_sphincssha256128frobust,
+        NID_sphincssha256128fsimple,
+        NID_p256_sphincssha256128fsimple,
+        NID_rsa3072_sphincssha256128fsimple,
+        NID_sphincssha256128srobust,
+        NID_p256_sphincssha256128srobust,
+        NID_rsa3072_sphincssha256128srobust,
+        NID_sphincssha256128ssimple,
+        NID_p256_sphincssha256128ssimple,
+        NID_rsa3072_sphincssha256128ssimple,
+        NID_sphincssha256192frobust,
+        NID_p384_sphincssha256192frobust,
+        NID_sphincssha256192fsimple,
+        NID_p384_sphincssha256192fsimple,
+        NID_sphincssha256192srobust,
+        NID_p384_sphincssha256192srobust,
+        NID_sphincssha256192ssimple,
+        NID_p384_sphincssha256192ssimple,
+        NID_sphincssha256256frobust,
+        NID_p521_sphincssha256256frobust,
+        NID_sphincssha256256fsimple,
+        NID_p521_sphincssha256256fsimple,
+        NID_sphincssha256256srobust,
+        NID_p521_sphincssha256256srobust,
+        NID_sphincssha256256ssimple,
+        NID_p521_sphincssha256256ssimple,
         NID_sphincsshake256128frobust,
         NID_p256_sphincsshake256128frobust,
         NID_rsa3072_sphincsshake256128frobust,
+        NID_sphincsshake256128fsimple,
+        NID_p256_sphincsshake256128fsimple,
+        NID_rsa3072_sphincsshake256128fsimple,
+        NID_sphincsshake256128srobust,
+        NID_p256_sphincsshake256128srobust,
+        NID_rsa3072_sphincsshake256128srobust,
+        NID_sphincsshake256128ssimple,
+        NID_p256_sphincsshake256128ssimple,
+        NID_rsa3072_sphincsshake256128ssimple,
+        NID_sphincsshake256192frobust,
+        NID_p384_sphincsshake256192frobust,
+        NID_sphincsshake256192fsimple,
+        NID_p384_sphincsshake256192fsimple,
+        NID_sphincsshake256192srobust,
+        NID_p384_sphincsshake256192srobust,
+        NID_sphincsshake256192ssimple,
+        NID_p384_sphincsshake256192ssimple,
+        NID_sphincsshake256256frobust,
+        NID_p521_sphincsshake256256frobust,
+        NID_sphincsshake256256fsimple,
+        NID_p521_sphincsshake256256fsimple,
+        NID_sphincsshake256256srobust,
+        NID_p521_sphincsshake256256srobust,
+        NID_sphincsshake256256ssimple,
+        NID_p521_sphincsshake256256ssimple,
 /////// OQS_TEMPLATE_FRAGMENT_LIST_KNOWN_NIDS_END
 };
 
@@ -185,52 +236,126 @@ char* get_oqs_alg_name(int openssl_nid)
     case NID_p256_dilithium2:
     case NID_rsa3072_dilithium2:
       return OQS_SIG_alg_dilithium_2;
-    case NID_dilithium3:
-    case NID_p384_dilithium3:
-      return OQS_SIG_alg_dilithium_3;
-    case NID_dilithium5:
-    case NID_p521_dilithium5:
-      return OQS_SIG_alg_dilithium_5;
-    case NID_dilithium2_aes:
-    case NID_p256_dilithium2_aes:
-    case NID_rsa3072_dilithium2_aes:
-      return OQS_SIG_alg_dilithium_2_aes;
-    case NID_dilithium3_aes:
-    case NID_p384_dilithium3_aes:
-      return OQS_SIG_alg_dilithium_3_aes;
-    case NID_dilithium5_aes:
-    case NID_p521_dilithium5_aes:
-      return OQS_SIG_alg_dilithium_5_aes;
-    case NID_falcon512:
-    case NID_p256_falcon512:
-    case NID_rsa3072_falcon512:
-      return OQS_SIG_alg_falcon_512;
-    case NID_falcon1024:
-    case NID_p521_falcon1024:
-      return OQS_SIG_alg_falcon_1024;
-    case NID_picnicl1full:
-    case NID_p256_picnicl1full:
-    case NID_rsa3072_picnicl1full:
-      return OQS_SIG_alg_picnic_L1_full;
-    case NID_picnic3l1:
-    case NID_p256_picnic3l1:
-    case NID_rsa3072_picnic3l1:
-      return OQS_SIG_alg_picnic3_L1;
-    case NID_rainbowVclassic:
-    case NID_p521_rainbowVclassic:
-      return OQS_SIG_alg_rainbow_V_classic;
     case NID_sphincsharaka128frobust:
     case NID_p256_sphincsharaka128frobust:
     case NID_rsa3072_sphincsharaka128frobust:
       return OQS_SIG_alg_sphincs_haraka_128f_robust;
+    case NID_sphincsharaka128fsimple:
+    case NID_p256_sphincsharaka128fsimple:
+    case NID_rsa3072_sphincsharaka128fsimple:
+      return OQS_SIG_alg_sphincs_haraka_128f_simple;
+    case NID_sphincsharaka128srobust:
+    case NID_p256_sphincsharaka128srobust:
+    case NID_rsa3072_sphincsharaka128srobust:
+      return OQS_SIG_alg_sphincs_haraka_128s_robust;
+    case NID_sphincsharaka128ssimple:
+    case NID_p256_sphincsharaka128ssimple:
+    case NID_rsa3072_sphincsharaka128ssimple:
+      return OQS_SIG_alg_sphincs_haraka_128s_simple;
+    case NID_sphincsharaka192frobust:
+    case NID_p384_sphincsharaka192frobust:
+      return OQS_SIG_alg_sphincs_haraka_192f_robust;
+    case NID_sphincsharaka192fsimple:
+    case NID_p384_sphincsharaka192fsimple:
+      return OQS_SIG_alg_sphincs_haraka_192f_simple;
+    case NID_sphincsharaka192srobust:
+    case NID_p384_sphincsharaka192srobust:
+      return OQS_SIG_alg_sphincs_haraka_192s_robust;
+    case NID_sphincsharaka192ssimple:
+    case NID_p384_sphincsharaka192ssimple:
+      return OQS_SIG_alg_sphincs_haraka_192s_simple;
+    case NID_sphincsharaka256frobust:
+    case NID_p521_sphincsharaka256frobust:
+      return OQS_SIG_alg_sphincs_haraka_256f_robust;
+    case NID_sphincsharaka256fsimple:
+    case NID_p521_sphincsharaka256fsimple:
+      return OQS_SIG_alg_sphincs_haraka_256f_simple;
+    case NID_sphincsharaka256srobust:
+    case NID_p521_sphincsharaka256srobust:
+      return OQS_SIG_alg_sphincs_haraka_256s_robust;
+    case NID_sphincsharaka256ssimple:
+    case NID_p521_sphincsharaka256ssimple:
+      return OQS_SIG_alg_sphincs_haraka_256s_simple;
     case NID_sphincssha256128frobust:
     case NID_p256_sphincssha256128frobust:
     case NID_rsa3072_sphincssha256128frobust:
       return OQS_SIG_alg_sphincs_sha256_128f_robust;
+    case NID_sphincssha256128fsimple:
+    case NID_p256_sphincssha256128fsimple:
+    case NID_rsa3072_sphincssha256128fsimple:
+      return OQS_SIG_alg_sphincs_sha256_128f_simple;
+    case NID_sphincssha256128srobust:
+    case NID_p256_sphincssha256128srobust:
+    case NID_rsa3072_sphincssha256128srobust:
+      return OQS_SIG_alg_sphincs_sha256_128s_robust;
+    case NID_sphincssha256128ssimple:
+    case NID_p256_sphincssha256128ssimple:
+    case NID_rsa3072_sphincssha256128ssimple:
+      return OQS_SIG_alg_sphincs_sha256_128s_simple;
+    case NID_sphincssha256192frobust:
+    case NID_p384_sphincssha256192frobust:
+      return OQS_SIG_alg_sphincs_sha256_192f_robust;
+    case NID_sphincssha256192fsimple:
+    case NID_p384_sphincssha256192fsimple:
+      return OQS_SIG_alg_sphincs_sha256_192f_simple;
+    case NID_sphincssha256192srobust:
+    case NID_p384_sphincssha256192srobust:
+      return OQS_SIG_alg_sphincs_sha256_192s_robust;
+    case NID_sphincssha256192ssimple:
+    case NID_p384_sphincssha256192ssimple:
+      return OQS_SIG_alg_sphincs_sha256_192s_simple;
+    case NID_sphincssha256256frobust:
+    case NID_p521_sphincssha256256frobust:
+      return OQS_SIG_alg_sphincs_sha256_256f_robust;
+    case NID_sphincssha256256fsimple:
+    case NID_p521_sphincssha256256fsimple:
+      return OQS_SIG_alg_sphincs_sha256_256f_simple;
+    case NID_sphincssha256256srobust:
+    case NID_p521_sphincssha256256srobust:
+      return OQS_SIG_alg_sphincs_sha256_256s_robust;
+    case NID_sphincssha256256ssimple:
+    case NID_p521_sphincssha256256ssimple:
+      return OQS_SIG_alg_sphincs_sha256_256s_simple;
     case NID_sphincsshake256128frobust:
     case NID_p256_sphincsshake256128frobust:
     case NID_rsa3072_sphincsshake256128frobust:
       return OQS_SIG_alg_sphincs_shake256_128f_robust;
+    case NID_sphincsshake256128fsimple:
+    case NID_p256_sphincsshake256128fsimple:
+    case NID_rsa3072_sphincsshake256128fsimple:
+      return OQS_SIG_alg_sphincs_shake256_128f_simple;
+    case NID_sphincsshake256128srobust:
+    case NID_p256_sphincsshake256128srobust:
+    case NID_rsa3072_sphincsshake256128srobust:
+      return OQS_SIG_alg_sphincs_shake256_128s_robust;
+    case NID_sphincsshake256128ssimple:
+    case NID_p256_sphincsshake256128ssimple:
+    case NID_rsa3072_sphincsshake256128ssimple:
+      return OQS_SIG_alg_sphincs_shake256_128s_simple;
+    case NID_sphincsshake256192frobust:
+    case NID_p384_sphincsshake256192frobust:
+      return OQS_SIG_alg_sphincs_shake256_192f_robust;
+    case NID_sphincsshake256192fsimple:
+    case NID_p384_sphincsshake256192fsimple:
+      return OQS_SIG_alg_sphincs_shake256_192f_simple;
+    case NID_sphincsshake256192srobust:
+    case NID_p384_sphincsshake256192srobust:
+      return OQS_SIG_alg_sphincs_shake256_192s_robust;
+    case NID_sphincsshake256192ssimple:
+    case NID_p384_sphincsshake256192ssimple:
+      return OQS_SIG_alg_sphincs_shake256_192s_simple;
+    case NID_sphincsshake256256frobust:
+    case NID_p521_sphincsshake256256frobust:
+      return OQS_SIG_alg_sphincs_shake256_256f_robust;
+    case NID_sphincsshake256256fsimple:
+    case NID_p521_sphincsshake256256fsimple:
+      return OQS_SIG_alg_sphincs_shake256_256f_simple;
+    case NID_sphincsshake256256srobust:
+    case NID_p521_sphincsshake256256srobust:
+      return OQS_SIG_alg_sphincs_shake256_256s_robust;
+    case NID_sphincsshake256256ssimple:
+    case NID_p521_sphincsshake256256ssimple:
+      return OQS_SIG_alg_sphincs_shake256_256s_simple;
     case NID_frodo640aes:
     case NID_p256_frodo640aes:
       return OQS_KEM_alg_frodokem_640_aes;
@@ -346,26 +471,54 @@ static int is_oqs_hybrid_alg(int openssl_nid)
 ///// OQS_TEMPLATE_FRAGMENT_LIST_HYBRID_NIDS_START
     case NID_p256_dilithium2:
     case NID_rsa3072_dilithium2:
-    case NID_p384_dilithium3:
-    case NID_p521_dilithium5:
-    case NID_p256_dilithium2_aes:
-    case NID_rsa3072_dilithium2_aes:
-    case NID_p384_dilithium3_aes:
-    case NID_p521_dilithium5_aes:
-    case NID_p256_falcon512:
-    case NID_rsa3072_falcon512:
-    case NID_p521_falcon1024:
-    case NID_p256_picnicl1full:
-    case NID_rsa3072_picnicl1full:
-    case NID_p256_picnic3l1:
-    case NID_rsa3072_picnic3l1:
-    case NID_p521_rainbowVclassic:
     case NID_p256_sphincsharaka128frobust:
     case NID_rsa3072_sphincsharaka128frobust:
+    case NID_p256_sphincsharaka128fsimple:
+    case NID_rsa3072_sphincsharaka128fsimple:
+    case NID_p256_sphincsharaka128srobust:
+    case NID_rsa3072_sphincsharaka128srobust:
+    case NID_p256_sphincsharaka128ssimple:
+    case NID_rsa3072_sphincsharaka128ssimple:
+    case NID_p384_sphincsharaka192frobust:
+    case NID_p384_sphincsharaka192fsimple:
+    case NID_p384_sphincsharaka192srobust:
+    case NID_p384_sphincsharaka192ssimple:
+    case NID_p521_sphincsharaka256frobust:
+    case NID_p521_sphincsharaka256fsimple:
+    case NID_p521_sphincsharaka256srobust:
+    case NID_p521_sphincsharaka256ssimple:
     case NID_p256_sphincssha256128frobust:
     case NID_rsa3072_sphincssha256128frobust:
+    case NID_p256_sphincssha256128fsimple:
+    case NID_rsa3072_sphincssha256128fsimple:
+    case NID_p256_sphincssha256128srobust:
+    case NID_rsa3072_sphincssha256128srobust:
+    case NID_p256_sphincssha256128ssimple:
+    case NID_rsa3072_sphincssha256128ssimple:
+    case NID_p384_sphincssha256192frobust:
+    case NID_p384_sphincssha256192fsimple:
+    case NID_p384_sphincssha256192srobust:
+    case NID_p384_sphincssha256192ssimple:
+    case NID_p521_sphincssha256256frobust:
+    case NID_p521_sphincssha256256fsimple:
+    case NID_p521_sphincssha256256srobust:
+    case NID_p521_sphincssha256256ssimple:
     case NID_p256_sphincsshake256128frobust:
     case NID_rsa3072_sphincsshake256128frobust:
+    case NID_p256_sphincsshake256128fsimple:
+    case NID_rsa3072_sphincsshake256128fsimple:
+    case NID_p256_sphincsshake256128srobust:
+    case NID_rsa3072_sphincsshake256128srobust:
+    case NID_p256_sphincsshake256128ssimple:
+    case NID_rsa3072_sphincsshake256128ssimple:
+    case NID_p384_sphincsshake256192frobust:
+    case NID_p384_sphincsshake256192fsimple:
+    case NID_p384_sphincsshake256192srobust:
+    case NID_p384_sphincsshake256192ssimple:
+    case NID_p521_sphincsshake256256frobust:
+    case NID_p521_sphincsshake256256fsimple:
+    case NID_p521_sphincsshake256256srobust:
+    case NID_p521_sphincsshake256256ssimple:
 ///// OQS_TEMPLATE_FRAGMENT_LIST_HYBRID_NIDS_END
       return 1;
     default:
@@ -380,30 +533,58 @@ static int get_classical_nid(int hybrid_id)
   {
 ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_CLASSICAL_NIDS_START
     case NID_rsa3072_dilithium2:
-    case NID_rsa3072_dilithium2_aes:
-    case NID_rsa3072_falcon512:
-    case NID_rsa3072_picnicl1full:
-    case NID_rsa3072_picnic3l1:
     case NID_rsa3072_sphincsharaka128frobust:
+    case NID_rsa3072_sphincsharaka128fsimple:
+    case NID_rsa3072_sphincsharaka128srobust:
+    case NID_rsa3072_sphincsharaka128ssimple:
     case NID_rsa3072_sphincssha256128frobust:
+    case NID_rsa3072_sphincssha256128fsimple:
+    case NID_rsa3072_sphincssha256128srobust:
+    case NID_rsa3072_sphincssha256128ssimple:
     case NID_rsa3072_sphincsshake256128frobust:
+    case NID_rsa3072_sphincsshake256128fsimple:
+    case NID_rsa3072_sphincsshake256128srobust:
+    case NID_rsa3072_sphincsshake256128ssimple:
       return NID_rsaEncryption;
     case NID_p256_dilithium2:
-    case NID_p256_dilithium2_aes:
-    case NID_p256_falcon512:
-    case NID_p256_picnicl1full:
-    case NID_p256_picnic3l1:
     case NID_p256_sphincsharaka128frobust:
+    case NID_p256_sphincsharaka128fsimple:
+    case NID_p256_sphincsharaka128srobust:
+    case NID_p256_sphincsharaka128ssimple:
     case NID_p256_sphincssha256128frobust:
+    case NID_p256_sphincssha256128fsimple:
+    case NID_p256_sphincssha256128srobust:
+    case NID_p256_sphincssha256128ssimple:
     case NID_p256_sphincsshake256128frobust:
+    case NID_p256_sphincsshake256128fsimple:
+    case NID_p256_sphincsshake256128srobust:
+    case NID_p256_sphincsshake256128ssimple:
       return NID_X9_62_prime256v1;
-    case NID_p384_dilithium3:
-    case NID_p384_dilithium3_aes:
+    case NID_p384_sphincsharaka192frobust:
+    case NID_p384_sphincsharaka192fsimple:
+    case NID_p384_sphincsharaka192srobust:
+    case NID_p384_sphincsharaka192ssimple:
+    case NID_p384_sphincssha256192frobust:
+    case NID_p384_sphincssha256192fsimple:
+    case NID_p384_sphincssha256192srobust:
+    case NID_p384_sphincssha256192ssimple:
+    case NID_p384_sphincsshake256192frobust:
+    case NID_p384_sphincsshake256192fsimple:
+    case NID_p384_sphincsshake256192srobust:
+    case NID_p384_sphincsshake256192ssimple:
       return NID_secp384r1;
-    case NID_p521_dilithium5:
-    case NID_p521_dilithium5_aes:
-    case NID_p521_falcon1024:
-    case NID_p521_rainbowVclassic:
+    case NID_p521_sphincsharaka256frobust:
+    case NID_p521_sphincsharaka256fsimple:
+    case NID_p521_sphincsharaka256srobust:
+    case NID_p521_sphincsharaka256ssimple:
+    case NID_p521_sphincssha256256frobust:
+    case NID_p521_sphincssha256256fsimple:
+    case NID_p521_sphincssha256256srobust:
+    case NID_p521_sphincssha256256ssimple:
+    case NID_p521_sphincsshake256256frobust:
+    case NID_p521_sphincsshake256256fsimple:
+    case NID_p521_sphincsshake256256srobust:
+    case NID_p521_sphincsshake256256ssimple:
       return NID_secp521r1;///// OQS_TEMPLATE_FRAGMENT_ASSIGN_CLASSICAL_NIDS_END
     default:
       return 0;
@@ -418,39 +599,90 @@ static int get_oqs_nid(int hybrid_id)
     case NID_p256_dilithium2:
     case NID_rsa3072_dilithium2:
       return NID_dilithium2;
-    case NID_p384_dilithium3:
-      return NID_dilithium3;
-    case NID_p521_dilithium5:
-      return NID_dilithium5;
-    case NID_p256_dilithium2_aes:
-    case NID_rsa3072_dilithium2_aes:
-      return NID_dilithium2_aes;
-    case NID_p384_dilithium3_aes:
-      return NID_dilithium3_aes;
-    case NID_p521_dilithium5_aes:
-      return NID_dilithium5_aes;
-    case NID_p256_falcon512:
-    case NID_rsa3072_falcon512:
-      return NID_falcon512;
-    case NID_p521_falcon1024:
-      return NID_falcon1024;
-    case NID_p256_picnicl1full:
-    case NID_rsa3072_picnicl1full:
-      return NID_picnicl1full;
-    case NID_p256_picnic3l1:
-    case NID_rsa3072_picnic3l1:
-      return NID_picnic3l1;
-    case NID_p521_rainbowVclassic:
-      return NID_rainbowVclassic;
     case NID_p256_sphincsharaka128frobust:
     case NID_rsa3072_sphincsharaka128frobust:
       return NID_sphincsharaka128frobust;
+    case NID_p256_sphincsharaka128fsimple:
+    case NID_rsa3072_sphincsharaka128fsimple:
+      return NID_sphincsharaka128fsimple;
+    case NID_p256_sphincsharaka128srobust:
+    case NID_rsa3072_sphincsharaka128srobust:
+      return NID_sphincsharaka128srobust;
+    case NID_p256_sphincsharaka128ssimple:
+    case NID_rsa3072_sphincsharaka128ssimple:
+      return NID_sphincsharaka128ssimple;
+    case NID_p384_sphincsharaka192frobust:
+      return NID_sphincsharaka192frobust;
+    case NID_p384_sphincsharaka192fsimple:
+      return NID_sphincsharaka192fsimple;
+    case NID_p384_sphincsharaka192srobust:
+      return NID_sphincsharaka192srobust;
+    case NID_p384_sphincsharaka192ssimple:
+      return NID_sphincsharaka192ssimple;
+    case NID_p521_sphincsharaka256frobust:
+      return NID_sphincsharaka256frobust;
+    case NID_p521_sphincsharaka256fsimple:
+      return NID_sphincsharaka256fsimple;
+    case NID_p521_sphincsharaka256srobust:
+      return NID_sphincsharaka256srobust;
+    case NID_p521_sphincsharaka256ssimple:
+      return NID_sphincsharaka256ssimple;
     case NID_p256_sphincssha256128frobust:
     case NID_rsa3072_sphincssha256128frobust:
       return NID_sphincssha256128frobust;
+    case NID_p256_sphincssha256128fsimple:
+    case NID_rsa3072_sphincssha256128fsimple:
+      return NID_sphincssha256128fsimple;
+    case NID_p256_sphincssha256128srobust:
+    case NID_rsa3072_sphincssha256128srobust:
+      return NID_sphincssha256128srobust;
+    case NID_p256_sphincssha256128ssimple:
+    case NID_rsa3072_sphincssha256128ssimple:
+      return NID_sphincssha256128ssimple;
+    case NID_p384_sphincssha256192frobust:
+      return NID_sphincssha256192frobust;
+    case NID_p384_sphincssha256192fsimple:
+      return NID_sphincssha256192fsimple;
+    case NID_p384_sphincssha256192srobust:
+      return NID_sphincssha256192srobust;
+    case NID_p384_sphincssha256192ssimple:
+      return NID_sphincssha256192ssimple;
+    case NID_p521_sphincssha256256frobust:
+      return NID_sphincssha256256frobust;
+    case NID_p521_sphincssha256256fsimple:
+      return NID_sphincssha256256fsimple;
+    case NID_p521_sphincssha256256srobust:
+      return NID_sphincssha256256srobust;
+    case NID_p521_sphincssha256256ssimple:
+      return NID_sphincssha256256ssimple;
     case NID_p256_sphincsshake256128frobust:
     case NID_rsa3072_sphincsshake256128frobust:
       return NID_sphincsshake256128frobust;
+    case NID_p256_sphincsshake256128fsimple:
+    case NID_rsa3072_sphincsshake256128fsimple:
+      return NID_sphincsshake256128fsimple;
+    case NID_p256_sphincsshake256128srobust:
+    case NID_rsa3072_sphincsshake256128srobust:
+      return NID_sphincsshake256128srobust;
+    case NID_p256_sphincsshake256128ssimple:
+    case NID_rsa3072_sphincsshake256128ssimple:
+      return NID_sphincsshake256128ssimple;
+    case NID_p384_sphincsshake256192frobust:
+      return NID_sphincsshake256192frobust;
+    case NID_p384_sphincsshake256192fsimple:
+      return NID_sphincsshake256192fsimple;
+    case NID_p384_sphincsshake256192srobust:
+      return NID_sphincsshake256192srobust;
+    case NID_p384_sphincsshake256192ssimple:
+      return NID_sphincsshake256192ssimple;
+    case NID_p521_sphincsshake256256frobust:
+      return NID_sphincsshake256256frobust;
+    case NID_p521_sphincsshake256256fsimple:
+      return NID_sphincsshake256256fsimple;
+    case NID_p521_sphincsshake256256srobust:
+      return NID_sphincsshake256256srobust;
+    case NID_p521_sphincsshake256256ssimple:
+      return NID_sphincsshake256256ssimple;
 ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_OQS_NID_END
     default:
       return 0;
@@ -572,52 +804,126 @@ static int get_oqs_security_bits(int openssl_nid)
     case NID_p256_dilithium2:
     case NID_rsa3072_dilithium2:
       return 128;
-    case NID_dilithium3:
-    case NID_p384_dilithium3:
-      return 192;
-    case NID_dilithium5:
-    case NID_p521_dilithium5:
-      return 256;
-    case NID_dilithium2_aes:
-    case NID_p256_dilithium2_aes:
-    case NID_rsa3072_dilithium2_aes:
-      return 128;
-    case NID_dilithium3_aes:
-    case NID_p384_dilithium3_aes:
-      return 192;
-    case NID_dilithium5_aes:
-    case NID_p521_dilithium5_aes:
-      return 256;
-    case NID_falcon512:
-    case NID_p256_falcon512:
-    case NID_rsa3072_falcon512:
-      return 128;
-    case NID_falcon1024:
-    case NID_p521_falcon1024:
-      return 256;
-    case NID_picnicl1full:
-    case NID_p256_picnicl1full:
-    case NID_rsa3072_picnicl1full:
-      return 128;
-    case NID_picnic3l1:
-    case NID_p256_picnic3l1:
-    case NID_rsa3072_picnic3l1:
-      return 128;
-    case NID_rainbowVclassic:
-    case NID_p521_rainbowVclassic:
-      return 256;
     case NID_sphincsharaka128frobust:
     case NID_p256_sphincsharaka128frobust:
     case NID_rsa3072_sphincsharaka128frobust:
       return 128;
+    case NID_sphincsharaka128fsimple:
+    case NID_p256_sphincsharaka128fsimple:
+    case NID_rsa3072_sphincsharaka128fsimple:
+      return 128;
+    case NID_sphincsharaka128srobust:
+    case NID_p256_sphincsharaka128srobust:
+    case NID_rsa3072_sphincsharaka128srobust:
+      return 128;
+    case NID_sphincsharaka128ssimple:
+    case NID_p256_sphincsharaka128ssimple:
+    case NID_rsa3072_sphincsharaka128ssimple:
+      return 128;
+    case NID_sphincsharaka192frobust:
+    case NID_p384_sphincsharaka192frobust:
+      return 192;
+    case NID_sphincsharaka192fsimple:
+    case NID_p384_sphincsharaka192fsimple:
+      return 192;
+    case NID_sphincsharaka192srobust:
+    case NID_p384_sphincsharaka192srobust:
+      return 192;
+    case NID_sphincsharaka192ssimple:
+    case NID_p384_sphincsharaka192ssimple:
+      return 192;
+    case NID_sphincsharaka256frobust:
+    case NID_p521_sphincsharaka256frobust:
+      return 256;
+    case NID_sphincsharaka256fsimple:
+    case NID_p521_sphincsharaka256fsimple:
+      return 256;
+    case NID_sphincsharaka256srobust:
+    case NID_p521_sphincsharaka256srobust:
+      return 256;
+    case NID_sphincsharaka256ssimple:
+    case NID_p521_sphincsharaka256ssimple:
+      return 256;
     case NID_sphincssha256128frobust:
     case NID_p256_sphincssha256128frobust:
     case NID_rsa3072_sphincssha256128frobust:
       return 128;
+    case NID_sphincssha256128fsimple:
+    case NID_p256_sphincssha256128fsimple:
+    case NID_rsa3072_sphincssha256128fsimple:
+      return 128;
+    case NID_sphincssha256128srobust:
+    case NID_p256_sphincssha256128srobust:
+    case NID_rsa3072_sphincssha256128srobust:
+      return 128;
+    case NID_sphincssha256128ssimple:
+    case NID_p256_sphincssha256128ssimple:
+    case NID_rsa3072_sphincssha256128ssimple:
+      return 128;
+    case NID_sphincssha256192frobust:
+    case NID_p384_sphincssha256192frobust:
+      return 192;
+    case NID_sphincssha256192fsimple:
+    case NID_p384_sphincssha256192fsimple:
+      return 192;
+    case NID_sphincssha256192srobust:
+    case NID_p384_sphincssha256192srobust:
+      return 192;
+    case NID_sphincssha256192ssimple:
+    case NID_p384_sphincssha256192ssimple:
+      return 192;
+    case NID_sphincssha256256frobust:
+    case NID_p521_sphincssha256256frobust:
+      return 256;
+    case NID_sphincssha256256fsimple:
+    case NID_p521_sphincssha256256fsimple:
+      return 256;
+    case NID_sphincssha256256srobust:
+    case NID_p521_sphincssha256256srobust:
+      return 256;
+    case NID_sphincssha256256ssimple:
+    case NID_p521_sphincssha256256ssimple:
+      return 256;
     case NID_sphincsshake256128frobust:
     case NID_p256_sphincsshake256128frobust:
     case NID_rsa3072_sphincsshake256128frobust:
       return 128;
+    case NID_sphincsshake256128fsimple:
+    case NID_p256_sphincsshake256128fsimple:
+    case NID_rsa3072_sphincsshake256128fsimple:
+      return 128;
+    case NID_sphincsshake256128srobust:
+    case NID_p256_sphincsshake256128srobust:
+    case NID_rsa3072_sphincsshake256128srobust:
+      return 128;
+    case NID_sphincsshake256128ssimple:
+    case NID_p256_sphincsshake256128ssimple:
+    case NID_rsa3072_sphincsshake256128ssimple:
+      return 128;
+    case NID_sphincsshake256192frobust:
+    case NID_p384_sphincsshake256192frobust:
+      return 192;
+    case NID_sphincsshake256192fsimple:
+    case NID_p384_sphincsshake256192fsimple:
+      return 192;
+    case NID_sphincsshake256192srobust:
+    case NID_p384_sphincsshake256192srobust:
+      return 192;
+    case NID_sphincsshake256192ssimple:
+    case NID_p384_sphincsshake256192ssimple:
+      return 192;
+    case NID_sphincsshake256256frobust:
+    case NID_p521_sphincsshake256256frobust:
+      return 256;
+    case NID_sphincsshake256256fsimple:
+    case NID_p521_sphincsshake256256fsimple:
+      return 256;
+    case NID_sphincsshake256256srobust:
+    case NID_p521_sphincsshake256256srobust:
+      return 256;
+    case NID_sphincsshake256256ssimple:
+    case NID_p521_sphincsshake256256ssimple:
+      return 256;
 ///// OQS_TEMPLATE_FRAGMENT_GET_SIG_SECURITY_BITS_END
     default:
       return 0;
@@ -1193,39 +1499,90 @@ static int oqs_item_verify(EVP_MD_CTX *ctx, const ASN1_ITEM *it, void *asn,
         nid != NID_dilithium2 &&
         nid != NID_p256_dilithium2 &&
         nid != NID_rsa3072_dilithium2 &&
-        nid != NID_dilithium3 &&
-        nid != NID_p384_dilithium3 &&
-        nid != NID_dilithium5 &&
-        nid != NID_p521_dilithium5 &&
-        nid != NID_dilithium2_aes &&
-        nid != NID_p256_dilithium2_aes &&
-        nid != NID_rsa3072_dilithium2_aes &&
-        nid != NID_dilithium3_aes &&
-        nid != NID_p384_dilithium3_aes &&
-        nid != NID_dilithium5_aes &&
-        nid != NID_p521_dilithium5_aes &&
-        nid != NID_falcon512 &&
-        nid != NID_p256_falcon512 &&
-        nid != NID_rsa3072_falcon512 &&
-        nid != NID_falcon1024 &&
-        nid != NID_p521_falcon1024 &&
-        nid != NID_picnicl1full &&
-        nid != NID_p256_picnicl1full &&
-        nid != NID_rsa3072_picnicl1full &&
-        nid != NID_picnic3l1 &&
-        nid != NID_p256_picnic3l1 &&
-        nid != NID_rsa3072_picnic3l1 &&
-        nid != NID_rainbowVclassic &&
-        nid != NID_p521_rainbowVclassic &&
         nid != NID_sphincsharaka128frobust &&
         nid != NID_p256_sphincsharaka128frobust &&
         nid != NID_rsa3072_sphincsharaka128frobust &&
+        nid != NID_sphincsharaka128fsimple &&
+        nid != NID_p256_sphincsharaka128fsimple &&
+        nid != NID_rsa3072_sphincsharaka128fsimple &&
+        nid != NID_sphincsharaka128srobust &&
+        nid != NID_p256_sphincsharaka128srobust &&
+        nid != NID_rsa3072_sphincsharaka128srobust &&
+        nid != NID_sphincsharaka128ssimple &&
+        nid != NID_p256_sphincsharaka128ssimple &&
+        nid != NID_rsa3072_sphincsharaka128ssimple &&
+        nid != NID_sphincsharaka192frobust &&
+        nid != NID_p384_sphincsharaka192frobust &&
+        nid != NID_sphincsharaka192fsimple &&
+        nid != NID_p384_sphincsharaka192fsimple &&
+        nid != NID_sphincsharaka192srobust &&
+        nid != NID_p384_sphincsharaka192srobust &&
+        nid != NID_sphincsharaka192ssimple &&
+        nid != NID_p384_sphincsharaka192ssimple &&
+        nid != NID_sphincsharaka256frobust &&
+        nid != NID_p521_sphincsharaka256frobust &&
+        nid != NID_sphincsharaka256fsimple &&
+        nid != NID_p521_sphincsharaka256fsimple &&
+        nid != NID_sphincsharaka256srobust &&
+        nid != NID_p521_sphincsharaka256srobust &&
+        nid != NID_sphincsharaka256ssimple &&
+        nid != NID_p521_sphincsharaka256ssimple &&
         nid != NID_sphincssha256128frobust &&
         nid != NID_p256_sphincssha256128frobust &&
         nid != NID_rsa3072_sphincssha256128frobust &&
+        nid != NID_sphincssha256128fsimple &&
+        nid != NID_p256_sphincssha256128fsimple &&
+        nid != NID_rsa3072_sphincssha256128fsimple &&
+        nid != NID_sphincssha256128srobust &&
+        nid != NID_p256_sphincssha256128srobust &&
+        nid != NID_rsa3072_sphincssha256128srobust &&
+        nid != NID_sphincssha256128ssimple &&
+        nid != NID_p256_sphincssha256128ssimple &&
+        nid != NID_rsa3072_sphincssha256128ssimple &&
+        nid != NID_sphincssha256192frobust &&
+        nid != NID_p384_sphincssha256192frobust &&
+        nid != NID_sphincssha256192fsimple &&
+        nid != NID_p384_sphincssha256192fsimple &&
+        nid != NID_sphincssha256192srobust &&
+        nid != NID_p384_sphincssha256192srobust &&
+        nid != NID_sphincssha256192ssimple &&
+        nid != NID_p384_sphincssha256192ssimple &&
+        nid != NID_sphincssha256256frobust &&
+        nid != NID_p521_sphincssha256256frobust &&
+        nid != NID_sphincssha256256fsimple &&
+        nid != NID_p521_sphincssha256256fsimple &&
+        nid != NID_sphincssha256256srobust &&
+        nid != NID_p521_sphincssha256256srobust &&
+        nid != NID_sphincssha256256ssimple &&
+        nid != NID_p521_sphincssha256256ssimple &&
         nid != NID_sphincsshake256128frobust &&
         nid != NID_p256_sphincsshake256128frobust &&
         nid != NID_rsa3072_sphincsshake256128frobust &&
+        nid != NID_sphincsshake256128fsimple &&
+        nid != NID_p256_sphincsshake256128fsimple &&
+        nid != NID_rsa3072_sphincsshake256128fsimple &&
+        nid != NID_sphincsshake256128srobust &&
+        nid != NID_p256_sphincsshake256128srobust &&
+        nid != NID_rsa3072_sphincsshake256128srobust &&
+        nid != NID_sphincsshake256128ssimple &&
+        nid != NID_p256_sphincsshake256128ssimple &&
+        nid != NID_rsa3072_sphincsshake256128ssimple &&
+        nid != NID_sphincsshake256192frobust &&
+        nid != NID_p384_sphincsshake256192frobust &&
+        nid != NID_sphincsshake256192fsimple &&
+        nid != NID_p384_sphincsshake256192fsimple &&
+        nid != NID_sphincsshake256192srobust &&
+        nid != NID_p384_sphincsshake256192srobust &&
+        nid != NID_sphincsshake256192ssimple &&
+        nid != NID_p384_sphincsshake256192ssimple &&
+        nid != NID_sphincsshake256256frobust &&
+        nid != NID_p521_sphincsshake256256frobust &&
+        nid != NID_sphincsshake256256fsimple &&
+        nid != NID_p521_sphincsshake256256fsimple &&
+        nid != NID_sphincsshake256256srobust &&
+        nid != NID_p521_sphincsshake256256srobust &&
+        nid != NID_sphincsshake256256ssimple &&
+        nid != NID_p521_sphincsshake256256ssimple &&
         1 /* This is just to faciliate templating. */
 ///// OQS_TEMPLATE_FRAGMENT_CHECK_IF_KNOWN_NID_END
     ) || ptype != V_ASN1_UNDEF) {
@@ -1789,37 +2146,88 @@ DEFINE_OQS_EVP_PKEY_ASN1_METHOD(ALG, NID_ALG, SHORT_NAME, LONG_NAME)
 DEFINE_OQS_EVP_METHODS(dilithium2, NID_dilithium2, "dilithium2", "OpenSSL Dilithium2 algorithm")
 DEFINE_OQS_EVP_METHODS(p256_dilithium2, NID_p256_dilithium2, "p256_dilithium2", "OpenSSL ECDSA p256 Dilithium2 algorithm")
 DEFINE_OQS_EVP_METHODS(rsa3072_dilithium2, NID_rsa3072_dilithium2, "rsa3072_dilithium2", "OpenSSL RSA3072 Dilithium2 algorithm")
-DEFINE_OQS_EVP_METHODS(dilithium3, NID_dilithium3, "dilithium3", "OpenSSL Dilithium3 algorithm")
-DEFINE_OQS_EVP_METHODS(p384_dilithium3, NID_p384_dilithium3, "p384_dilithium3", "OpenSSL ECDSA p384 Dilithium3 algorithm")
-DEFINE_OQS_EVP_METHODS(dilithium5, NID_dilithium5, "dilithium5", "OpenSSL Dilithium5 algorithm")
-DEFINE_OQS_EVP_METHODS(p521_dilithium5, NID_p521_dilithium5, "p521_dilithium5", "OpenSSL ECDSA p521 Dilithium5 algorithm")
-DEFINE_OQS_EVP_METHODS(dilithium2_aes, NID_dilithium2_aes, "dilithium2_aes", "OpenSSL Dilithium2_AES algorithm")
-DEFINE_OQS_EVP_METHODS(p256_dilithium2_aes, NID_p256_dilithium2_aes, "p256_dilithium2_aes", "OpenSSL ECDSA p256 Dilithium2_AES algorithm")
-DEFINE_OQS_EVP_METHODS(rsa3072_dilithium2_aes, NID_rsa3072_dilithium2_aes, "rsa3072_dilithium2_aes", "OpenSSL RSA3072 Dilithium2_AES algorithm")
-DEFINE_OQS_EVP_METHODS(dilithium3_aes, NID_dilithium3_aes, "dilithium3_aes", "OpenSSL Dilithium3_AES algorithm")
-DEFINE_OQS_EVP_METHODS(p384_dilithium3_aes, NID_p384_dilithium3_aes, "p384_dilithium3_aes", "OpenSSL ECDSA p384 Dilithium3_AES algorithm")
-DEFINE_OQS_EVP_METHODS(dilithium5_aes, NID_dilithium5_aes, "dilithium5_aes", "OpenSSL Dilithium5_AES algorithm")
-DEFINE_OQS_EVP_METHODS(p521_dilithium5_aes, NID_p521_dilithium5_aes, "p521_dilithium5_aes", "OpenSSL ECDSA p521 Dilithium5_AES algorithm")
-DEFINE_OQS_EVP_METHODS(falcon512, NID_falcon512, "falcon512", "OpenSSL Falcon-512 algorithm")
-DEFINE_OQS_EVP_METHODS(p256_falcon512, NID_p256_falcon512, "p256_falcon512", "OpenSSL ECDSA p256 Falcon-512 algorithm")
-DEFINE_OQS_EVP_METHODS(rsa3072_falcon512, NID_rsa3072_falcon512, "rsa3072_falcon512", "OpenSSL RSA3072 Falcon-512 algorithm")
-DEFINE_OQS_EVP_METHODS(falcon1024, NID_falcon1024, "falcon1024", "OpenSSL Falcon-1024 algorithm")
-DEFINE_OQS_EVP_METHODS(p521_falcon1024, NID_p521_falcon1024, "p521_falcon1024", "OpenSSL ECDSA p521 Falcon-1024 algorithm")
-DEFINE_OQS_EVP_METHODS(picnicl1full, NID_picnicl1full, "picnicl1full", "OpenSSL Picnic L1 full algorithm")
-DEFINE_OQS_EVP_METHODS(p256_picnicl1full, NID_p256_picnicl1full, "p256_picnicl1full", "OpenSSL ECDSA p256 Picnic L1 full algorithm")
-DEFINE_OQS_EVP_METHODS(rsa3072_picnicl1full, NID_rsa3072_picnicl1full, "rsa3072_picnicl1full", "OpenSSL RSA3072 Picnic L1 full algorithm")
-DEFINE_OQS_EVP_METHODS(picnic3l1, NID_picnic3l1, "picnic3l1", "OpenSSL Picnic3 L1 algorithm")
-DEFINE_OQS_EVP_METHODS(p256_picnic3l1, NID_p256_picnic3l1, "p256_picnic3l1", "OpenSSL ECDSA p256 Picnic3 L1 algorithm")
-DEFINE_OQS_EVP_METHODS(rsa3072_picnic3l1, NID_rsa3072_picnic3l1, "rsa3072_picnic3l1", "OpenSSL RSA3072 Picnic3 L1 algorithm")
-DEFINE_OQS_EVP_METHODS(rainbowVclassic, NID_rainbowVclassic, "rainbowVclassic", "OpenSSL Rainbow-V-Classic algorithm")
-DEFINE_OQS_EVP_METHODS(p521_rainbowVclassic, NID_p521_rainbowVclassic, "p521_rainbowVclassic", "OpenSSL ECDSA p521 Rainbow-V-Classic algorithm")
 DEFINE_OQS_EVP_METHODS(sphincsharaka128frobust, NID_sphincsharaka128frobust, "sphincsharaka128frobust", "OpenSSL SPHINCS+-Haraka-128f-robust algorithm")
 DEFINE_OQS_EVP_METHODS(p256_sphincsharaka128frobust, NID_p256_sphincsharaka128frobust, "p256_sphincsharaka128frobust", "OpenSSL ECDSA p256 SPHINCS+-Haraka-128f-robust algorithm")
 DEFINE_OQS_EVP_METHODS(rsa3072_sphincsharaka128frobust, NID_rsa3072_sphincsharaka128frobust, "rsa3072_sphincsharaka128frobust", "OpenSSL RSA3072 SPHINCS+-Haraka-128f-robust algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsharaka128fsimple, NID_sphincsharaka128fsimple, "sphincsharaka128fsimple", "OpenSSL SPHINCS+-Haraka-128f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(p256_sphincsharaka128fsimple, NID_p256_sphincsharaka128fsimple, "p256_sphincsharaka128fsimple", "OpenSSL ECDSA p256 SPHINCS+-Haraka-128f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(rsa3072_sphincsharaka128fsimple, NID_rsa3072_sphincsharaka128fsimple, "rsa3072_sphincsharaka128fsimple", "OpenSSL RSA3072 SPHINCS+-Haraka-128f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsharaka128srobust, NID_sphincsharaka128srobust, "sphincsharaka128srobust", "OpenSSL SPHINCS+-Haraka-128s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(p256_sphincsharaka128srobust, NID_p256_sphincsharaka128srobust, "p256_sphincsharaka128srobust", "OpenSSL ECDSA p256 SPHINCS+-Haraka-128s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(rsa3072_sphincsharaka128srobust, NID_rsa3072_sphincsharaka128srobust, "rsa3072_sphincsharaka128srobust", "OpenSSL RSA3072 SPHINCS+-Haraka-128s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsharaka128ssimple, NID_sphincsharaka128ssimple, "sphincsharaka128ssimple", "OpenSSL SPHINCS+-Haraka-128s-simple algorithm")
+DEFINE_OQS_EVP_METHODS(p256_sphincsharaka128ssimple, NID_p256_sphincsharaka128ssimple, "p256_sphincsharaka128ssimple", "OpenSSL ECDSA p256 SPHINCS+-Haraka-128s-simple algorithm")
+DEFINE_OQS_EVP_METHODS(rsa3072_sphincsharaka128ssimple, NID_rsa3072_sphincsharaka128ssimple, "rsa3072_sphincsharaka128ssimple", "OpenSSL RSA3072 SPHINCS+-Haraka-128s-simple algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsharaka192frobust, NID_sphincsharaka192frobust, "sphincsharaka192frobust", "OpenSSL SPHINCS+-Haraka-192f-robust algorithm")
+DEFINE_OQS_EVP_METHODS(p384_sphincsharaka192frobust, NID_p384_sphincsharaka192frobust, "p384_sphincsharaka192frobust", "OpenSSL ECDSA p384 SPHINCS+-Haraka-192f-robust algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsharaka192fsimple, NID_sphincsharaka192fsimple, "sphincsharaka192fsimple", "OpenSSL SPHINCS+-Haraka-192f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(p384_sphincsharaka192fsimple, NID_p384_sphincsharaka192fsimple, "p384_sphincsharaka192fsimple", "OpenSSL ECDSA p384 SPHINCS+-Haraka-192f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsharaka192srobust, NID_sphincsharaka192srobust, "sphincsharaka192srobust", "OpenSSL SPHINCS+-Haraka-192s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(p384_sphincsharaka192srobust, NID_p384_sphincsharaka192srobust, "p384_sphincsharaka192srobust", "OpenSSL ECDSA p384 SPHINCS+-Haraka-192s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsharaka192ssimple, NID_sphincsharaka192ssimple, "sphincsharaka192ssimple", "OpenSSL SPHINCS+-Haraka-192s-simple algorithm")
+DEFINE_OQS_EVP_METHODS(p384_sphincsharaka192ssimple, NID_p384_sphincsharaka192ssimple, "p384_sphincsharaka192ssimple", "OpenSSL ECDSA p384 SPHINCS+-Haraka-192s-simple algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsharaka256frobust, NID_sphincsharaka256frobust, "sphincsharaka256frobust", "OpenSSL SPHINCS+-Haraka-256f-robust algorithm")
+DEFINE_OQS_EVP_METHODS(p521_sphincsharaka256frobust, NID_p521_sphincsharaka256frobust, "p521_sphincsharaka256frobust", "OpenSSL ECDSA p521 SPHINCS+-Haraka-256f-robust algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsharaka256fsimple, NID_sphincsharaka256fsimple, "sphincsharaka256fsimple", "OpenSSL SPHINCS+-Haraka-256f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(p521_sphincsharaka256fsimple, NID_p521_sphincsharaka256fsimple, "p521_sphincsharaka256fsimple", "OpenSSL ECDSA p521 SPHINCS+-Haraka-256f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsharaka256srobust, NID_sphincsharaka256srobust, "sphincsharaka256srobust", "OpenSSL SPHINCS+-Haraka-256s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(p521_sphincsharaka256srobust, NID_p521_sphincsharaka256srobust, "p521_sphincsharaka256srobust", "OpenSSL ECDSA p521 SPHINCS+-Haraka-256s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsharaka256ssimple, NID_sphincsharaka256ssimple, "sphincsharaka256ssimple", "OpenSSL SPHINCS+-Haraka-256s-simple algorithm")
+DEFINE_OQS_EVP_METHODS(p521_sphincsharaka256ssimple, NID_p521_sphincsharaka256ssimple, "p521_sphincsharaka256ssimple", "OpenSSL ECDSA p521 SPHINCS+-Haraka-256s-simple algorithm")
 DEFINE_OQS_EVP_METHODS(sphincssha256128frobust, NID_sphincssha256128frobust, "sphincssha256128frobust", "OpenSSL SPHINCS+-SHA256-128f-robust algorithm")
 DEFINE_OQS_EVP_METHODS(p256_sphincssha256128frobust, NID_p256_sphincssha256128frobust, "p256_sphincssha256128frobust", "OpenSSL ECDSA p256 SPHINCS+-SHA256-128f-robust algorithm")
 DEFINE_OQS_EVP_METHODS(rsa3072_sphincssha256128frobust, NID_rsa3072_sphincssha256128frobust, "rsa3072_sphincssha256128frobust", "OpenSSL RSA3072 SPHINCS+-SHA256-128f-robust algorithm")
+DEFINE_OQS_EVP_METHODS(sphincssha256128fsimple, NID_sphincssha256128fsimple, "sphincssha256128fsimple", "OpenSSL SPHINCS+-SHA256-128f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(p256_sphincssha256128fsimple, NID_p256_sphincssha256128fsimple, "p256_sphincssha256128fsimple", "OpenSSL ECDSA p256 SPHINCS+-SHA256-128f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(rsa3072_sphincssha256128fsimple, NID_rsa3072_sphincssha256128fsimple, "rsa3072_sphincssha256128fsimple", "OpenSSL RSA3072 SPHINCS+-SHA256-128f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(sphincssha256128srobust, NID_sphincssha256128srobust, "sphincssha256128srobust", "OpenSSL SPHINCS+-SHA256-128s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(p256_sphincssha256128srobust, NID_p256_sphincssha256128srobust, "p256_sphincssha256128srobust", "OpenSSL ECDSA p256 SPHINCS+-SHA256-128s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(rsa3072_sphincssha256128srobust, NID_rsa3072_sphincssha256128srobust, "rsa3072_sphincssha256128srobust", "OpenSSL RSA3072 SPHINCS+-SHA256-128s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(sphincssha256128ssimple, NID_sphincssha256128ssimple, "sphincssha256128ssimple", "OpenSSL SPHINCS+-SHA256-128s-simple algorithm")
+DEFINE_OQS_EVP_METHODS(p256_sphincssha256128ssimple, NID_p256_sphincssha256128ssimple, "p256_sphincssha256128ssimple", "OpenSSL ECDSA p256 SPHINCS+-SHA256-128s-simple algorithm")
+DEFINE_OQS_EVP_METHODS(rsa3072_sphincssha256128ssimple, NID_rsa3072_sphincssha256128ssimple, "rsa3072_sphincssha256128ssimple", "OpenSSL RSA3072 SPHINCS+-SHA256-128s-simple algorithm")
+DEFINE_OQS_EVP_METHODS(sphincssha256192frobust, NID_sphincssha256192frobust, "sphincssha256192frobust", "OpenSSL SPHINCS+-SHA256-192f-robust algorithm")
+DEFINE_OQS_EVP_METHODS(p384_sphincssha256192frobust, NID_p384_sphincssha256192frobust, "p384_sphincssha256192frobust", "OpenSSL ECDSA p384 SPHINCS+-SHA256-192f-robust algorithm")
+DEFINE_OQS_EVP_METHODS(sphincssha256192fsimple, NID_sphincssha256192fsimple, "sphincssha256192fsimple", "OpenSSL SPHINCS+-SHA256-192f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(p384_sphincssha256192fsimple, NID_p384_sphincssha256192fsimple, "p384_sphincssha256192fsimple", "OpenSSL ECDSA p384 SPHINCS+-SHA256-192f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(sphincssha256192srobust, NID_sphincssha256192srobust, "sphincssha256192srobust", "OpenSSL SPHINCS+-SHA256-192s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(p384_sphincssha256192srobust, NID_p384_sphincssha256192srobust, "p384_sphincssha256192srobust", "OpenSSL ECDSA p384 SPHINCS+-SHA256-192s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(sphincssha256192ssimple, NID_sphincssha256192ssimple, "sphincssha256192ssimple", "OpenSSL SPHINCS+-SHA256-192s-simple algorithm")
+DEFINE_OQS_EVP_METHODS(p384_sphincssha256192ssimple, NID_p384_sphincssha256192ssimple, "p384_sphincssha256192ssimple", "OpenSSL ECDSA p384 SPHINCS+-SHA256-192s-simple algorithm")
+DEFINE_OQS_EVP_METHODS(sphincssha256256frobust, NID_sphincssha256256frobust, "sphincssha256256frobust", "OpenSSL SPHINCS+-SHA256-256f-robust algorithm")
+DEFINE_OQS_EVP_METHODS(p521_sphincssha256256frobust, NID_p521_sphincssha256256frobust, "p521_sphincssha256256frobust", "OpenSSL ECDSA p521 SPHINCS+-SHA256-256f-robust algorithm")
+DEFINE_OQS_EVP_METHODS(sphincssha256256fsimple, NID_sphincssha256256fsimple, "sphincssha256256fsimple", "OpenSSL SPHINCS+-SHA256-256f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(p521_sphincssha256256fsimple, NID_p521_sphincssha256256fsimple, "p521_sphincssha256256fsimple", "OpenSSL ECDSA p521 SPHINCS+-SHA256-256f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(sphincssha256256srobust, NID_sphincssha256256srobust, "sphincssha256256srobust", "OpenSSL SPHINCS+-SHA256-256s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(p521_sphincssha256256srobust, NID_p521_sphincssha256256srobust, "p521_sphincssha256256srobust", "OpenSSL ECDSA p521 SPHINCS+-SHA256-256s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(sphincssha256256ssimple, NID_sphincssha256256ssimple, "sphincssha256256ssimple", "OpenSSL SPHINCS+-SHA256-256s-simple algorithm")
+DEFINE_OQS_EVP_METHODS(p521_sphincssha256256ssimple, NID_p521_sphincssha256256ssimple, "p521_sphincssha256256ssimple", "OpenSSL ECDSA p521 SPHINCS+-SHA256-256s-simple algorithm")
 DEFINE_OQS_EVP_METHODS(sphincsshake256128frobust, NID_sphincsshake256128frobust, "sphincsshake256128frobust", "OpenSSL SPHINCS+-SHAKE256-128f-robust algorithm")
 DEFINE_OQS_EVP_METHODS(p256_sphincsshake256128frobust, NID_p256_sphincsshake256128frobust, "p256_sphincsshake256128frobust", "OpenSSL ECDSA p256 SPHINCS+-SHAKE256-128f-robust algorithm")
 DEFINE_OQS_EVP_METHODS(rsa3072_sphincsshake256128frobust, NID_rsa3072_sphincsshake256128frobust, "rsa3072_sphincsshake256128frobust", "OpenSSL RSA3072 SPHINCS+-SHAKE256-128f-robust algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsshake256128fsimple, NID_sphincsshake256128fsimple, "sphincsshake256128fsimple", "OpenSSL SPHINCS+-SHAKE256-128f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(p256_sphincsshake256128fsimple, NID_p256_sphincsshake256128fsimple, "p256_sphincsshake256128fsimple", "OpenSSL ECDSA p256 SPHINCS+-SHAKE256-128f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(rsa3072_sphincsshake256128fsimple, NID_rsa3072_sphincsshake256128fsimple, "rsa3072_sphincsshake256128fsimple", "OpenSSL RSA3072 SPHINCS+-SHAKE256-128f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsshake256128srobust, NID_sphincsshake256128srobust, "sphincsshake256128srobust", "OpenSSL SPHINCS+-SHAKE256-128s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(p256_sphincsshake256128srobust, NID_p256_sphincsshake256128srobust, "p256_sphincsshake256128srobust", "OpenSSL ECDSA p256 SPHINCS+-SHAKE256-128s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(rsa3072_sphincsshake256128srobust, NID_rsa3072_sphincsshake256128srobust, "rsa3072_sphincsshake256128srobust", "OpenSSL RSA3072 SPHINCS+-SHAKE256-128s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsshake256128ssimple, NID_sphincsshake256128ssimple, "sphincsshake256128ssimple", "OpenSSL SPHINCS+-SHAKE256-128s-simple algorithm")
+DEFINE_OQS_EVP_METHODS(p256_sphincsshake256128ssimple, NID_p256_sphincsshake256128ssimple, "p256_sphincsshake256128ssimple", "OpenSSL ECDSA p256 SPHINCS+-SHAKE256-128s-simple algorithm")
+DEFINE_OQS_EVP_METHODS(rsa3072_sphincsshake256128ssimple, NID_rsa3072_sphincsshake256128ssimple, "rsa3072_sphincsshake256128ssimple", "OpenSSL RSA3072 SPHINCS+-SHAKE256-128s-simple algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsshake256192frobust, NID_sphincsshake256192frobust, "sphincsshake256192frobust", "OpenSSL SPHINCS+-SHAKE256-192f-robust algorithm")
+DEFINE_OQS_EVP_METHODS(p384_sphincsshake256192frobust, NID_p384_sphincsshake256192frobust, "p384_sphincsshake256192frobust", "OpenSSL ECDSA p384 SPHINCS+-SHAKE256-192f-robust algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsshake256192fsimple, NID_sphincsshake256192fsimple, "sphincsshake256192fsimple", "OpenSSL SPHINCS+-SHAKE256-192f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(p384_sphincsshake256192fsimple, NID_p384_sphincsshake256192fsimple, "p384_sphincsshake256192fsimple", "OpenSSL ECDSA p384 SPHINCS+-SHAKE256-192f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsshake256192srobust, NID_sphincsshake256192srobust, "sphincsshake256192srobust", "OpenSSL SPHINCS+-SHAKE256-192s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(p384_sphincsshake256192srobust, NID_p384_sphincsshake256192srobust, "p384_sphincsshake256192srobust", "OpenSSL ECDSA p384 SPHINCS+-SHAKE256-192s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsshake256192ssimple, NID_sphincsshake256192ssimple, "sphincsshake256192ssimple", "OpenSSL SPHINCS+-SHAKE256-192s-simple algorithm")
+DEFINE_OQS_EVP_METHODS(p384_sphincsshake256192ssimple, NID_p384_sphincsshake256192ssimple, "p384_sphincsshake256192ssimple", "OpenSSL ECDSA p384 SPHINCS+-SHAKE256-192s-simple algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsshake256256frobust, NID_sphincsshake256256frobust, "sphincsshake256256frobust", "OpenSSL SPHINCS+-SHAKE256-256f-robust algorithm")
+DEFINE_OQS_EVP_METHODS(p521_sphincsshake256256frobust, NID_p521_sphincsshake256256frobust, "p521_sphincsshake256256frobust", "OpenSSL ECDSA p521 SPHINCS+-SHAKE256-256f-robust algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsshake256256fsimple, NID_sphincsshake256256fsimple, "sphincsshake256256fsimple", "OpenSSL SPHINCS+-SHAKE256-256f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(p521_sphincsshake256256fsimple, NID_p521_sphincsshake256256fsimple, "p521_sphincsshake256256fsimple", "OpenSSL ECDSA p521 SPHINCS+-SHAKE256-256f-simple algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsshake256256srobust, NID_sphincsshake256256srobust, "sphincsshake256256srobust", "OpenSSL SPHINCS+-SHAKE256-256s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(p521_sphincsshake256256srobust, NID_p521_sphincsshake256256srobust, "p521_sphincsshake256256srobust", "OpenSSL ECDSA p521 SPHINCS+-SHAKE256-256s-robust algorithm")
+DEFINE_OQS_EVP_METHODS(sphincsshake256256ssimple, NID_sphincsshake256256ssimple, "sphincsshake256256ssimple", "OpenSSL SPHINCS+-SHAKE256-256s-simple algorithm")
+DEFINE_OQS_EVP_METHODS(p521_sphincsshake256256ssimple, NID_p521_sphincsshake256256ssimple, "p521_sphincsshake256256ssimple", "OpenSSL ECDSA p521 SPHINCS+-SHAKE256-256s-simple algorithm")
 ///// OQS_TEMPLATE_FRAGMENT_DEFINE_OQS_EVP_METHS_END

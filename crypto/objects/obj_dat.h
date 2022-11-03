@@ -10,7 +10,7 @@
  */
 
 /* Serialized OID's */
-static const unsigned char so[8035] = {
+static const unsigned char so[8289] = {
     0x2A,0x86,0x48,0x86,0xF7,0x0D,                 /* [    0] OBJ_rsadsi */
     0x2A,0x86,0x48,0x86,0xF7,0x0D,0x01,            /* [    6] OBJ_pkcs */
     0x2A,0x86,0x48,0x86,0xF7,0x0D,0x02,0x02,       /* [   13] OBJ_md2 */
@@ -1079,42 +1079,93 @@ static const unsigned char so[8035] = {
     0x2B,0x06,0x01,0x04,0x01,0x02,0x82,0x0B,0x07,0x04,0x04,  /* [ 7761] OBJ_dilithium2 */
     0x2B,0xCE,0x0F,0x02,0x07,0x01,                 /* [ 7772] OBJ_p256_dilithium2 */
     0x2B,0xCE,0x0F,0x02,0x07,0x02,                 /* [ 7778] OBJ_rsa3072_dilithium2 */
-    0x2B,0x06,0x01,0x04,0x01,0x02,0x82,0x0B,0x07,0x06,0x05,  /* [ 7784] OBJ_dilithium3 */
-    0x2B,0xCE,0x0F,0x02,0x07,0x03,                 /* [ 7795] OBJ_p384_dilithium3 */
-    0x2B,0x06,0x01,0x04,0x01,0x02,0x82,0x0B,0x07,0x08,0x07,  /* [ 7801] OBJ_dilithium5 */
-    0x2B,0xCE,0x0F,0x02,0x07,0x04,                 /* [ 7812] OBJ_p521_dilithium5 */
-    0x2B,0x06,0x01,0x04,0x01,0x02,0x82,0x0B,0x0B,0x04,0x04,  /* [ 7818] OBJ_dilithium2_aes */
-    0x2B,0xCE,0x0F,0x02,0x0B,0x01,                 /* [ 7829] OBJ_p256_dilithium2_aes */
-    0x2B,0xCE,0x0F,0x02,0x0B,0x02,                 /* [ 7835] OBJ_rsa3072_dilithium2_aes */
-    0x2B,0x06,0x01,0x04,0x01,0x02,0x82,0x0B,0x0B,0x06,0x05,  /* [ 7841] OBJ_dilithium3_aes */
-    0x2B,0xCE,0x0F,0x02,0x0B,0x03,                 /* [ 7852] OBJ_p384_dilithium3_aes */
-    0x2B,0x06,0x01,0x04,0x01,0x02,0x82,0x0B,0x0B,0x08,0x07,  /* [ 7858] OBJ_dilithium5_aes */
-    0x2B,0xCE,0x0F,0x02,0x0B,0x04,                 /* [ 7869] OBJ_p521_dilithium5_aes */
-    0x2B,0xCE,0x0F,0x03,0x01,                      /* [ 7875] OBJ_falcon512 */
-    0x2B,0xCE,0x0F,0x03,0x02,                      /* [ 7880] OBJ_p256_falcon512 */
-    0x2B,0xCE,0x0F,0x03,0x03,                      /* [ 7885] OBJ_rsa3072_falcon512 */
-    0x2B,0xCE,0x0F,0x03,0x04,                      /* [ 7890] OBJ_falcon1024 */
-    0x2B,0xCE,0x0F,0x03,0x05,                      /* [ 7895] OBJ_p521_falcon1024 */
-    0x2B,0x06,0x01,0x04,0x01,0x82,0x37,0x59,0x02,0x01,0x07,  /* [ 7900] OBJ_picnicl1full */
-    0x2B,0x06,0x01,0x04,0x01,0x82,0x37,0x59,0x02,0x01,0x08,  /* [ 7911] OBJ_p256_picnicl1full */
-    0x2B,0x06,0x01,0x04,0x01,0x82,0x37,0x59,0x02,0x01,0x09,  /* [ 7922] OBJ_rsa3072_picnicl1full */
-    0x2B,0x06,0x01,0x04,0x01,0x82,0x37,0x59,0x02,0x01,0x15,  /* [ 7933] OBJ_picnic3l1 */
-    0x2B,0x06,0x01,0x04,0x01,0x82,0x37,0x59,0x02,0x01,0x16,  /* [ 7944] OBJ_p256_picnic3l1 */
-    0x2B,0x06,0x01,0x04,0x01,0x82,0x37,0x59,0x02,0x01,0x17,  /* [ 7955] OBJ_rsa3072_picnic3l1 */
-    0x2B,0xCE,0x0F,0x05,0x03,0x01,0x01,            /* [ 7966] OBJ_rainbowVclassic */
-    0x2B,0xCE,0x0F,0x05,0x03,0x02,0x01,            /* [ 7973] OBJ_p521_rainbowVclassic */
-    0x2B,0xCE,0x0F,0x06,0x01,0x01,                 /* [ 7980] OBJ_sphincsharaka128frobust */
-    0x2B,0xCE,0x0F,0x06,0x01,0x02,                 /* [ 7986] OBJ_p256_sphincsharaka128frobust */
-    0x2B,0xCE,0x0F,0x06,0x01,0x03,                 /* [ 7992] OBJ_rsa3072_sphincsharaka128frobust */
-    0x2B,0xCE,0x0F,0x06,0x04,0x01,                 /* [ 7998] OBJ_sphincssha256128frobust */
-    0x2B,0xCE,0x0F,0x06,0x04,0x02,                 /* [ 8004] OBJ_p256_sphincssha256128frobust */
-    0x2B,0xCE,0x0F,0x06,0x04,0x03,                 /* [ 8010] OBJ_rsa3072_sphincssha256128frobust */
-    0x2B,0xCE,0x0F,0x06,0x07,0x01,                 /* [ 8016] OBJ_sphincsshake256128frobust */
-    0x2B,0xCE,0x0F,0x06,0x07,0x02,                 /* [ 8022] OBJ_p256_sphincsshake256128frobust */
-    0x2B,0xCE,0x0F,0x06,0x07,0x03,                 /* [ 8028] OBJ_rsa3072_sphincsshake256128frobust */
+    0x2B,0xCE,0x0F,0x06,0x01,0x01,                 /* [ 7784] OBJ_sphincsharaka128frobust */
+    0x2B,0xCE,0x0F,0x06,0x01,0x02,                 /* [ 7790] OBJ_p256_sphincsharaka128frobust */
+    0x2B,0xCE,0x0F,0x06,0x01,0x03,                 /* [ 7796] OBJ_rsa3072_sphincsharaka128frobust */
+    0x2B,0xCE,0x0F,0x06,0x01,0x04,                 /* [ 7802] OBJ_sphincsharaka128fsimple */
+    0x2B,0xCE,0x0F,0x06,0x01,0x05,                 /* [ 7808] OBJ_p256_sphincsharaka128fsimple */
+    0x2B,0xCE,0x0F,0x06,0x01,0x06,                 /* [ 7814] OBJ_rsa3072_sphincsharaka128fsimple */
+    0x2B,0xCE,0x0F,0x06,0x01,0x07,                 /* [ 7820] OBJ_sphincsharaka128srobust */
+    0x2B,0xCE,0x0F,0x06,0x01,0x08,                 /* [ 7826] OBJ_p256_sphincsharaka128srobust */
+    0x2B,0xCE,0x0F,0x06,0x01,0x09,                 /* [ 7832] OBJ_rsa3072_sphincsharaka128srobust */
+    0x2B,0xCE,0x0F,0x06,0x01,0x0A,                 /* [ 7838] OBJ_sphincsharaka128ssimple */
+    0x2B,0xCE,0x0F,0x06,0x01,0x0B,                 /* [ 7844] OBJ_p256_sphincsharaka128ssimple */
+    0x2B,0xCE,0x0F,0x06,0x01,0x0C,                 /* [ 7850] OBJ_rsa3072_sphincsharaka128ssimple */
+    0x2B,0xCE,0x0F,0x06,0x02,0x01,                 /* [ 7856] OBJ_sphincsharaka192frobust */
+    0x2B,0xCE,0x0F,0x06,0x02,0x02,                 /* [ 7862] OBJ_p384_sphincsharaka192frobust */
+    0x2B,0xCE,0x0F,0x06,0x02,0x03,                 /* [ 7868] OBJ_sphincsharaka192fsimple */
+    0x2B,0xCE,0x0F,0x06,0x02,0x04,                 /* [ 7874] OBJ_p384_sphincsharaka192fsimple */
+    0x2B,0xCE,0x0F,0x06,0x02,0x05,                 /* [ 7880] OBJ_sphincsharaka192srobust */
+    0x2B,0xCE,0x0F,0x06,0x02,0x06,                 /* [ 7886] OBJ_p384_sphincsharaka192srobust */
+    0x2B,0xCE,0x0F,0x06,0x02,0x07,                 /* [ 7892] OBJ_sphincsharaka192ssimple */
+    0x2B,0xCE,0x0F,0x06,0x02,0x08,                 /* [ 7898] OBJ_p384_sphincsharaka192ssimple */
+    0x2B,0xCE,0x0F,0x06,0x03,0x01,                 /* [ 7904] OBJ_sphincsharaka256frobust */
+    0x2B,0xCE,0x0F,0x06,0x03,0x02,                 /* [ 7910] OBJ_p521_sphincsharaka256frobust */
+    0x2B,0xCE,0x0F,0x06,0x03,0x03,                 /* [ 7916] OBJ_sphincsharaka256fsimple */
+    0x2B,0xCE,0x0F,0x06,0x03,0x04,                 /* [ 7922] OBJ_p521_sphincsharaka256fsimple */
+    0x2B,0xCE,0x0F,0x06,0x03,0x05,                 /* [ 7928] OBJ_sphincsharaka256srobust */
+    0x2B,0xCE,0x0F,0x06,0x03,0x06,                 /* [ 7934] OBJ_p521_sphincsharaka256srobust */
+    0x2B,0xCE,0x0F,0x06,0x03,0x07,                 /* [ 7940] OBJ_sphincsharaka256ssimple */
+    0x2B,0xCE,0x0F,0x06,0x03,0x08,                 /* [ 7946] OBJ_p521_sphincsharaka256ssimple */
+    0x2B,0xCE,0x0F,0x06,0x04,0x01,                 /* [ 7952] OBJ_sphincssha256128frobust */
+    0x2B,0xCE,0x0F,0x06,0x04,0x02,                 /* [ 7958] OBJ_p256_sphincssha256128frobust */
+    0x2B,0xCE,0x0F,0x06,0x04,0x03,                 /* [ 7964] OBJ_rsa3072_sphincssha256128frobust */
+    0x2B,0xCE,0x0F,0x06,0x04,0x04,                 /* [ 7970] OBJ_sphincssha256128fsimple */
+    0x2B,0xCE,0x0F,0x06,0x04,0x05,                 /* [ 7976] OBJ_p256_sphincssha256128fsimple */
+    0x2B,0xCE,0x0F,0x06,0x04,0x06,                 /* [ 7982] OBJ_rsa3072_sphincssha256128fsimple */
+    0x2B,0xCE,0x0F,0x06,0x04,0x07,                 /* [ 7988] OBJ_sphincssha256128srobust */
+    0x2B,0xCE,0x0F,0x06,0x04,0x08,                 /* [ 7994] OBJ_p256_sphincssha256128srobust */
+    0x2B,0xCE,0x0F,0x06,0x04,0x09,                 /* [ 8000] OBJ_rsa3072_sphincssha256128srobust */
+    0x2B,0xCE,0x0F,0x06,0x04,0x0A,                 /* [ 8006] OBJ_sphincssha256128ssimple */
+    0x2B,0xCE,0x0F,0x06,0x04,0x0B,                 /* [ 8012] OBJ_p256_sphincssha256128ssimple */
+    0x2B,0xCE,0x0F,0x06,0x04,0x0C,                 /* [ 8018] OBJ_rsa3072_sphincssha256128ssimple */
+    0x2B,0xCE,0x0F,0x06,0x05,0x01,                 /* [ 8024] OBJ_sphincssha256192frobust */
+    0x2B,0xCE,0x0F,0x06,0x05,0x02,                 /* [ 8030] OBJ_p384_sphincssha256192frobust */
+    0x2B,0xCE,0x0F,0x06,0x05,0x03,                 /* [ 8036] OBJ_sphincssha256192fsimple */
+    0x2B,0xCE,0x0F,0x06,0x05,0x04,                 /* [ 8042] OBJ_p384_sphincssha256192fsimple */
+    0x2B,0xCE,0x0F,0x06,0x05,0x05,                 /* [ 8048] OBJ_sphincssha256192srobust */
+    0x2B,0xCE,0x0F,0x06,0x05,0x06,                 /* [ 8054] OBJ_p384_sphincssha256192srobust */
+    0x2B,0xCE,0x0F,0x06,0x05,0x07,                 /* [ 8060] OBJ_sphincssha256192ssimple */
+    0x2B,0xCE,0x0F,0x06,0x05,0x08,                 /* [ 8066] OBJ_p384_sphincssha256192ssimple */
+    0x2B,0xCE,0x0F,0x06,0x06,0x01,                 /* [ 8072] OBJ_sphincssha256256frobust */
+    0x2B,0xCE,0x0F,0x06,0x06,0x02,                 /* [ 8078] OBJ_p521_sphincssha256256frobust */
+    0x2B,0xCE,0x0F,0x06,0x06,0x03,                 /* [ 8084] OBJ_sphincssha256256fsimple */
+    0x2B,0xCE,0x0F,0x06,0x06,0x04,                 /* [ 8090] OBJ_p521_sphincssha256256fsimple */
+    0x2B,0xCE,0x0F,0x06,0x06,0x05,                 /* [ 8096] OBJ_sphincssha256256srobust */
+    0x2B,0xCE,0x0F,0x06,0x06,0x06,                 /* [ 8102] OBJ_p521_sphincssha256256srobust */
+    0x2B,0xCE,0x0F,0x06,0x06,0x07,                 /* [ 8108] OBJ_sphincssha256256ssimple */
+    0x2B,0xCE,0x0F,0x06,0x06,0x08,                 /* [ 8114] OBJ_p521_sphincssha256256ssimple */
+    0x2B,0xCE,0x0F,0x06,0x07,0x01,                 /* [ 8120] OBJ_sphincsshake256128frobust */
+    0x2B,0xCE,0x0F,0x06,0x07,0x02,                 /* [ 8126] OBJ_p256_sphincsshake256128frobust */
+    0x2B,0xCE,0x0F,0x06,0x07,0x03,                 /* [ 8132] OBJ_rsa3072_sphincsshake256128frobust */
+    0x2B,0xCE,0x0F,0x06,0x07,0x04,                 /* [ 8138] OBJ_sphincsshake256128fsimple */
+    0x2B,0xCE,0x0F,0x06,0x07,0x05,                 /* [ 8144] OBJ_p256_sphincsshake256128fsimple */
+    0x2B,0xCE,0x0F,0x06,0x07,0x06,                 /* [ 8150] OBJ_rsa3072_sphincsshake256128fsimple */
+    0x2B,0xCE,0x0F,0x06,0x07,0x07,                 /* [ 8156] OBJ_sphincsshake256128srobust */
+    0x2B,0xCE,0x0F,0x06,0x07,0x08,                 /* [ 8162] OBJ_p256_sphincsshake256128srobust */
+    0x2B,0xCE,0x0F,0x06,0x07,0x09,                 /* [ 8168] OBJ_rsa3072_sphincsshake256128srobust */
+    0x2B,0xCE,0x0F,0x06,0x07,0x0A,                 /* [ 8174] OBJ_sphincsshake256128ssimple */
+    0x2B,0xCE,0x0F,0x06,0x07,0x0B,                 /* [ 8180] OBJ_p256_sphincsshake256128ssimple */
+    0x2B,0xCE,0x0F,0x06,0x07,0x0C,                 /* [ 8186] OBJ_rsa3072_sphincsshake256128ssimple */
+    0x2B,0xCE,0x0F,0x06,0x08,0x01,                 /* [ 8192] OBJ_sphincsshake256192frobust */
+    0x2B,0xCE,0x0F,0x06,0x08,0x02,                 /* [ 8198] OBJ_p384_sphincsshake256192frobust */
+    0x2B,0xCE,0x0F,0x06,0x08,0x03,                 /* [ 8204] OBJ_sphincsshake256192fsimple */
+    0x2B,0xCE,0x0F,0x06,0x08,0x04,                 /* [ 8210] OBJ_p384_sphincsshake256192fsimple */
+    0x2B,0xCE,0x0F,0x06,0x08,0x05,                 /* [ 8216] OBJ_sphincsshake256192srobust */
+    0x2B,0xCE,0x0F,0x06,0x08,0x06,                 /* [ 8222] OBJ_p384_sphincsshake256192srobust */
+    0x2B,0xCE,0x0F,0x06,0x08,0x07,                 /* [ 8228] OBJ_sphincsshake256192ssimple */
+    0x2B,0xCE,0x0F,0x06,0x08,0x08,                 /* [ 8234] OBJ_p384_sphincsshake256192ssimple */
+    0x2B,0xCE,0x0F,0x06,0x09,0x01,                 /* [ 8240] OBJ_sphincsshake256256frobust */
+    0x2B,0xCE,0x0F,0x06,0x09,0x02,                 /* [ 8246] OBJ_p521_sphincsshake256256frobust */
+    0x2B,0xCE,0x0F,0x06,0x09,0x03,                 /* [ 8252] OBJ_sphincsshake256256fsimple */
+    0x2B,0xCE,0x0F,0x06,0x09,0x04,                 /* [ 8258] OBJ_p521_sphincsshake256256fsimple */
+    0x2B,0xCE,0x0F,0x06,0x09,0x05,                 /* [ 8264] OBJ_sphincsshake256256srobust */
+    0x2B,0xCE,0x0F,0x06,0x09,0x06,                 /* [ 8270] OBJ_p521_sphincsshake256256srobust */
+    0x2B,0xCE,0x0F,0x06,0x09,0x07,                 /* [ 8276] OBJ_sphincsshake256256ssimple */
+    0x2B,0xCE,0x0F,0x06,0x09,0x08,                 /* [ 8282] OBJ_p521_sphincsshake256256ssimple */
 };
 
-#define NUM_NID 1301
+#define NUM_NID 1352
 static const ASN1_OBJECT nid_objs[NUM_NID] = {
     {"UNDEF", "undefined", NID_undef},
     {"rsadsi", "RSA Data Security, Inc.", NID_rsadsi, 6, &so[0]},
@@ -2384,42 +2435,93 @@ static const ASN1_OBJECT nid_objs[NUM_NID] = {
     {"dilithium2", "dilithium2", NID_dilithium2, 11, &so[7761]},
     {"p256_dilithium2", "p256_dilithium2", NID_p256_dilithium2, 6, &so[7772]},
     {"rsa3072_dilithium2", "rsa3072_dilithium2", NID_rsa3072_dilithium2, 6, &so[7778]},
-    {"dilithium3", "dilithium3", NID_dilithium3, 11, &so[7784]},
-    {"p384_dilithium3", "p384_dilithium3", NID_p384_dilithium3, 6, &so[7795]},
-    {"dilithium5", "dilithium5", NID_dilithium5, 11, &so[7801]},
-    {"p521_dilithium5", "p521_dilithium5", NID_p521_dilithium5, 6, &so[7812]},
-    {"dilithium2_aes", "dilithium2_aes", NID_dilithium2_aes, 11, &so[7818]},
-    {"p256_dilithium2_aes", "p256_dilithium2_aes", NID_p256_dilithium2_aes, 6, &so[7829]},
-    {"rsa3072_dilithium2_aes", "rsa3072_dilithium2_aes", NID_rsa3072_dilithium2_aes, 6, &so[7835]},
-    {"dilithium3_aes", "dilithium3_aes", NID_dilithium3_aes, 11, &so[7841]},
-    {"p384_dilithium3_aes", "p384_dilithium3_aes", NID_p384_dilithium3_aes, 6, &so[7852]},
-    {"dilithium5_aes", "dilithium5_aes", NID_dilithium5_aes, 11, &so[7858]},
-    {"p521_dilithium5_aes", "p521_dilithium5_aes", NID_p521_dilithium5_aes, 6, &so[7869]},
-    {"falcon512", "falcon512", NID_falcon512, 5, &so[7875]},
-    {"p256_falcon512", "p256_falcon512", NID_p256_falcon512, 5, &so[7880]},
-    {"rsa3072_falcon512", "rsa3072_falcon512", NID_rsa3072_falcon512, 5, &so[7885]},
-    {"falcon1024", "falcon1024", NID_falcon1024, 5, &so[7890]},
-    {"p521_falcon1024", "p521_falcon1024", NID_p521_falcon1024, 5, &so[7895]},
-    {"picnicl1full", "picnicl1full", NID_picnicl1full, 11, &so[7900]},
-    {"p256_picnicl1full", "p256_picnicl1full", NID_p256_picnicl1full, 11, &so[7911]},
-    {"rsa3072_picnicl1full", "rsa3072_picnicl1full", NID_rsa3072_picnicl1full, 11, &so[7922]},
-    {"picnic3l1", "picnic3l1", NID_picnic3l1, 11, &so[7933]},
-    {"p256_picnic3l1", "p256_picnic3l1", NID_p256_picnic3l1, 11, &so[7944]},
-    {"rsa3072_picnic3l1", "rsa3072_picnic3l1", NID_rsa3072_picnic3l1, 11, &so[7955]},
-    {"rainbowVclassic", "rainbowVclassic", NID_rainbowVclassic, 7, &so[7966]},
-    {"p521_rainbowVclassic", "p521_rainbowVclassic", NID_p521_rainbowVclassic, 7, &so[7973]},
-    {"sphincsharaka128frobust", "sphincsharaka128frobust", NID_sphincsharaka128frobust, 6, &so[7980]},
-    {"p256_sphincsharaka128frobust", "p256_sphincsharaka128frobust", NID_p256_sphincsharaka128frobust, 6, &so[7986]},
-    {"rsa3072_sphincsharaka128frobust", "rsa3072_sphincsharaka128frobust", NID_rsa3072_sphincsharaka128frobust, 6, &so[7992]},
-    {"sphincssha256128frobust", "sphincssha256128frobust", NID_sphincssha256128frobust, 6, &so[7998]},
-    {"p256_sphincssha256128frobust", "p256_sphincssha256128frobust", NID_p256_sphincssha256128frobust, 6, &so[8004]},
-    {"rsa3072_sphincssha256128frobust", "rsa3072_sphincssha256128frobust", NID_rsa3072_sphincssha256128frobust, 6, &so[8010]},
-    {"sphincsshake256128frobust", "sphincsshake256128frobust", NID_sphincsshake256128frobust, 6, &so[8016]},
-    {"p256_sphincsshake256128frobust", "p256_sphincsshake256128frobust", NID_p256_sphincsshake256128frobust, 6, &so[8022]},
-    {"rsa3072_sphincsshake256128frobust", "rsa3072_sphincsshake256128frobust", NID_rsa3072_sphincsshake256128frobust, 6, &so[8028]},
+    {"sphincsharaka128frobust", "sphincsharaka128frobust", NID_sphincsharaka128frobust, 6, &so[7784]},
+    {"p256_sphincsharaka128frobust", "p256_sphincsharaka128frobust", NID_p256_sphincsharaka128frobust, 6, &so[7790]},
+    {"rsa3072_sphincsharaka128frobust", "rsa3072_sphincsharaka128frobust", NID_rsa3072_sphincsharaka128frobust, 6, &so[7796]},
+    {"sphincsharaka128fsimple", "sphincsharaka128fsimple", NID_sphincsharaka128fsimple, 6, &so[7802]},
+    {"p256_sphincsharaka128fsimple", "p256_sphincsharaka128fsimple", NID_p256_sphincsharaka128fsimple, 6, &so[7808]},
+    {"rsa3072_sphincsharaka128fsimple", "rsa3072_sphincsharaka128fsimple", NID_rsa3072_sphincsharaka128fsimple, 6, &so[7814]},
+    {"sphincsharaka128srobust", "sphincsharaka128srobust", NID_sphincsharaka128srobust, 6, &so[7820]},
+    {"p256_sphincsharaka128srobust", "p256_sphincsharaka128srobust", NID_p256_sphincsharaka128srobust, 6, &so[7826]},
+    {"rsa3072_sphincsharaka128srobust", "rsa3072_sphincsharaka128srobust", NID_rsa3072_sphincsharaka128srobust, 6, &so[7832]},
+    {"sphincsharaka128ssimple", "sphincsharaka128ssimple", NID_sphincsharaka128ssimple, 6, &so[7838]},
+    {"p256_sphincsharaka128ssimple", "p256_sphincsharaka128ssimple", NID_p256_sphincsharaka128ssimple, 6, &so[7844]},
+    {"rsa3072_sphincsharaka128ssimple", "rsa3072_sphincsharaka128ssimple", NID_rsa3072_sphincsharaka128ssimple, 6, &so[7850]},
+    {"sphincsharaka192frobust", "sphincsharaka192frobust", NID_sphincsharaka192frobust, 6, &so[7856]},
+    {"p384_sphincsharaka192frobust", "p384_sphincsharaka192frobust", NID_p384_sphincsharaka192frobust, 6, &so[7862]},
+    {"sphincsharaka192fsimple", "sphincsharaka192fsimple", NID_sphincsharaka192fsimple, 6, &so[7868]},
+    {"p384_sphincsharaka192fsimple", "p384_sphincsharaka192fsimple", NID_p384_sphincsharaka192fsimple, 6, &so[7874]},
+    {"sphincsharaka192srobust", "sphincsharaka192srobust", NID_sphincsharaka192srobust, 6, &so[7880]},
+    {"p384_sphincsharaka192srobust", "p384_sphincsharaka192srobust", NID_p384_sphincsharaka192srobust, 6, &so[7886]},
+    {"sphincsharaka192ssimple", "sphincsharaka192ssimple", NID_sphincsharaka192ssimple, 6, &so[7892]},
+    {"p384_sphincsharaka192ssimple", "p384_sphincsharaka192ssimple", NID_p384_sphincsharaka192ssimple, 6, &so[7898]},
+    {"sphincsharaka256frobust", "sphincsharaka256frobust", NID_sphincsharaka256frobust, 6, &so[7904]},
+    {"p521_sphincsharaka256frobust", "p521_sphincsharaka256frobust", NID_p521_sphincsharaka256frobust, 6, &so[7910]},
+    {"sphincsharaka256fsimple", "sphincsharaka256fsimple", NID_sphincsharaka256fsimple, 6, &so[7916]},
+    {"p521_sphincsharaka256fsimple", "p521_sphincsharaka256fsimple", NID_p521_sphincsharaka256fsimple, 6, &so[7922]},
+    {"sphincsharaka256srobust", "sphincsharaka256srobust", NID_sphincsharaka256srobust, 6, &so[7928]},
+    {"p521_sphincsharaka256srobust", "p521_sphincsharaka256srobust", NID_p521_sphincsharaka256srobust, 6, &so[7934]},
+    {"sphincsharaka256ssimple", "sphincsharaka256ssimple", NID_sphincsharaka256ssimple, 6, &so[7940]},
+    {"p521_sphincsharaka256ssimple", "p521_sphincsharaka256ssimple", NID_p521_sphincsharaka256ssimple, 6, &so[7946]},
+    {"sphincssha256128frobust", "sphincssha256128frobust", NID_sphincssha256128frobust, 6, &so[7952]},
+    {"p256_sphincssha256128frobust", "p256_sphincssha256128frobust", NID_p256_sphincssha256128frobust, 6, &so[7958]},
+    {"rsa3072_sphincssha256128frobust", "rsa3072_sphincssha256128frobust", NID_rsa3072_sphincssha256128frobust, 6, &so[7964]},
+    {"sphincssha256128fsimple", "sphincssha256128fsimple", NID_sphincssha256128fsimple, 6, &so[7970]},
+    {"p256_sphincssha256128fsimple", "p256_sphincssha256128fsimple", NID_p256_sphincssha256128fsimple, 6, &so[7976]},
+    {"rsa3072_sphincssha256128fsimple", "rsa3072_sphincssha256128fsimple", NID_rsa3072_sphincssha256128fsimple, 6, &so[7982]},
+    {"sphincssha256128srobust", "sphincssha256128srobust", NID_sphincssha256128srobust, 6, &so[7988]},
+    {"p256_sphincssha256128srobust", "p256_sphincssha256128srobust", NID_p256_sphincssha256128srobust, 6, &so[7994]},
+    {"rsa3072_sphincssha256128srobust", "rsa3072_sphincssha256128srobust", NID_rsa3072_sphincssha256128srobust, 6, &so[8000]},
+    {"sphincssha256128ssimple", "sphincssha256128ssimple", NID_sphincssha256128ssimple, 6, &so[8006]},
+    {"p256_sphincssha256128ssimple", "p256_sphincssha256128ssimple", NID_p256_sphincssha256128ssimple, 6, &so[8012]},
+    {"rsa3072_sphincssha256128ssimple", "rsa3072_sphincssha256128ssimple", NID_rsa3072_sphincssha256128ssimple, 6, &so[8018]},
+    {"sphincssha256192frobust", "sphincssha256192frobust", NID_sphincssha256192frobust, 6, &so[8024]},
+    {"p384_sphincssha256192frobust", "p384_sphincssha256192frobust", NID_p384_sphincssha256192frobust, 6, &so[8030]},
+    {"sphincssha256192fsimple", "sphincssha256192fsimple", NID_sphincssha256192fsimple, 6, &so[8036]},
+    {"p384_sphincssha256192fsimple", "p384_sphincssha256192fsimple", NID_p384_sphincssha256192fsimple, 6, &so[8042]},
+    {"sphincssha256192srobust", "sphincssha256192srobust", NID_sphincssha256192srobust, 6, &so[8048]},
+    {"p384_sphincssha256192srobust", "p384_sphincssha256192srobust", NID_p384_sphincssha256192srobust, 6, &so[8054]},
+    {"sphincssha256192ssimple", "sphincssha256192ssimple", NID_sphincssha256192ssimple, 6, &so[8060]},
+    {"p384_sphincssha256192ssimple", "p384_sphincssha256192ssimple", NID_p384_sphincssha256192ssimple, 6, &so[8066]},
+    {"sphincssha256256frobust", "sphincssha256256frobust", NID_sphincssha256256frobust, 6, &so[8072]},
+    {"p521_sphincssha256256frobust", "p521_sphincssha256256frobust", NID_p521_sphincssha256256frobust, 6, &so[8078]},
+    {"sphincssha256256fsimple", "sphincssha256256fsimple", NID_sphincssha256256fsimple, 6, &so[8084]},
+    {"p521_sphincssha256256fsimple", "p521_sphincssha256256fsimple", NID_p521_sphincssha256256fsimple, 6, &so[8090]},
+    {"sphincssha256256srobust", "sphincssha256256srobust", NID_sphincssha256256srobust, 6, &so[8096]},
+    {"p521_sphincssha256256srobust", "p521_sphincssha256256srobust", NID_p521_sphincssha256256srobust, 6, &so[8102]},
+    {"sphincssha256256ssimple", "sphincssha256256ssimple", NID_sphincssha256256ssimple, 6, &so[8108]},
+    {"p521_sphincssha256256ssimple", "p521_sphincssha256256ssimple", NID_p521_sphincssha256256ssimple, 6, &so[8114]},
+    {"sphincsshake256128frobust", "sphincsshake256128frobust", NID_sphincsshake256128frobust, 6, &so[8120]},
+    {"p256_sphincsshake256128frobust", "p256_sphincsshake256128frobust", NID_p256_sphincsshake256128frobust, 6, &so[8126]},
+    {"rsa3072_sphincsshake256128frobust", "rsa3072_sphincsshake256128frobust", NID_rsa3072_sphincsshake256128frobust, 6, &so[8132]},
+    {"sphincsshake256128fsimple", "sphincsshake256128fsimple", NID_sphincsshake256128fsimple, 6, &so[8138]},
+    {"p256_sphincsshake256128fsimple", "p256_sphincsshake256128fsimple", NID_p256_sphincsshake256128fsimple, 6, &so[8144]},
+    {"rsa3072_sphincsshake256128fsimple", "rsa3072_sphincsshake256128fsimple", NID_rsa3072_sphincsshake256128fsimple, 6, &so[8150]},
+    {"sphincsshake256128srobust", "sphincsshake256128srobust", NID_sphincsshake256128srobust, 6, &so[8156]},
+    {"p256_sphincsshake256128srobust", "p256_sphincsshake256128srobust", NID_p256_sphincsshake256128srobust, 6, &so[8162]},
+    {"rsa3072_sphincsshake256128srobust", "rsa3072_sphincsshake256128srobust", NID_rsa3072_sphincsshake256128srobust, 6, &so[8168]},
+    {"sphincsshake256128ssimple", "sphincsshake256128ssimple", NID_sphincsshake256128ssimple, 6, &so[8174]},
+    {"p256_sphincsshake256128ssimple", "p256_sphincsshake256128ssimple", NID_p256_sphincsshake256128ssimple, 6, &so[8180]},
+    {"rsa3072_sphincsshake256128ssimple", "rsa3072_sphincsshake256128ssimple", NID_rsa3072_sphincsshake256128ssimple, 6, &so[8186]},
+    {"sphincsshake256192frobust", "sphincsshake256192frobust", NID_sphincsshake256192frobust, 6, &so[8192]},
+    {"p384_sphincsshake256192frobust", "p384_sphincsshake256192frobust", NID_p384_sphincsshake256192frobust, 6, &so[8198]},
+    {"sphincsshake256192fsimple", "sphincsshake256192fsimple", NID_sphincsshake256192fsimple, 6, &so[8204]},
+    {"p384_sphincsshake256192fsimple", "p384_sphincsshake256192fsimple", NID_p384_sphincsshake256192fsimple, 6, &so[8210]},
+    {"sphincsshake256192srobust", "sphincsshake256192srobust", NID_sphincsshake256192srobust, 6, &so[8216]},
+    {"p384_sphincsshake256192srobust", "p384_sphincsshake256192srobust", NID_p384_sphincsshake256192srobust, 6, &so[8222]},
+    {"sphincsshake256192ssimple", "sphincsshake256192ssimple", NID_sphincsshake256192ssimple, 6, &so[8228]},
+    {"p384_sphincsshake256192ssimple", "p384_sphincsshake256192ssimple", NID_p384_sphincsshake256192ssimple, 6, &so[8234]},
+    {"sphincsshake256256frobust", "sphincsshake256256frobust", NID_sphincsshake256256frobust, 6, &so[8240]},
+    {"p521_sphincsshake256256frobust", "p521_sphincsshake256256frobust", NID_p521_sphincsshake256256frobust, 6, &so[8246]},
+    {"sphincsshake256256fsimple", "sphincsshake256256fsimple", NID_sphincsshake256256fsimple, 6, &so[8252]},
+    {"p521_sphincsshake256256fsimple", "p521_sphincsshake256256fsimple", NID_p521_sphincsshake256256fsimple, 6, &so[8258]},
+    {"sphincsshake256256srobust", "sphincsshake256256srobust", NID_sphincsshake256256srobust, 6, &so[8264]},
+    {"p521_sphincsshake256256srobust", "p521_sphincsshake256256srobust", NID_p521_sphincsshake256256srobust, 6, &so[8270]},
+    {"sphincsshake256256ssimple", "sphincsshake256256ssimple", NID_sphincsshake256256ssimple, 6, &so[8276]},
+    {"p521_sphincsshake256256ssimple", "p521_sphincsshake256256ssimple", NID_p521_sphincsshake256256ssimple, 6, &so[8282]},
 };
 
-#define NUM_SN 1290
+#define NUM_SN 1341
 static const unsigned int sn_objs[NUM_SN] = {
      364,    /* "AD_DVCS" */
      419,    /* "AES-128-CBC" */
@@ -2827,11 +2929,6 @@ static const unsigned int sn_objs[NUM_SN] = {
      940,    /* "dhSinglePass-stdDH-sha512kdf-scheme" */
      920,    /* "dhpublicnumber" */
     1265,    /* "dilithium2" */
-    1272,    /* "dilithium2_aes" */
-    1268,    /* "dilithium3" */
-    1275,    /* "dilithium3_aes" */
-    1270,    /* "dilithium5" */
-    1277,    /* "dilithium5_aes" */
      382,    /* "directory" */
      887,    /* "distinguishedName" */
      892,    /* "dmdName" */
@@ -2873,8 +2970,6 @@ static const unsigned int sn_objs[NUM_SN] = {
      126,    /* "extendedKeyUsage" */
      372,    /* "extendedStatus" */
      867,    /* "facsimileTelephoneNumber" */
-    1282,    /* "falcon1024" */
-    1279,    /* "falcon512" */
      462,    /* "favouriteDrink" */
     1126,    /* "ffdhe2048" */
     1127,    /* "ffdhe3072" */
@@ -3332,8 +3427,6 @@ static const unsigned int sn_objs[NUM_SN] = {
      876,    /* "owner" */
     1249,    /* "p256_bikel1" */
     1266,    /* "p256_dilithium2" */
-    1273,    /* "p256_dilithium2_aes" */
-    1280,    /* "p256_falcon512" */
     1231,    /* "p256_frodo640aes" */
     1232,    /* "p256_frodo640shake" */
     1254,    /* "p256_hqc128" */
@@ -3343,16 +3436,21 @@ static const unsigned int sn_objs[NUM_SN] = {
     1240,    /* "p256_ntru_hps2048509" */
     1257,    /* "p256_ntrulpr653" */
     1258,    /* "p256_ntrulpr761" */
-    1288,    /* "p256_picnic3l1" */
-    1285,    /* "p256_picnicl1full" */
     1261,    /* "p256_sntrup653" */
     1262,    /* "p256_sntrup761" */
-    1293,    /* "p256_sphincsharaka128frobust" */
-    1296,    /* "p256_sphincssha256128frobust" */
-    1299,    /* "p256_sphincsshake256128frobust" */
+    1269,    /* "p256_sphincsharaka128frobust" */
+    1272,    /* "p256_sphincsharaka128fsimple" */
+    1275,    /* "p256_sphincsharaka128srobust" */
+    1278,    /* "p256_sphincsharaka128ssimple" */
+    1297,    /* "p256_sphincssha256128frobust" */
+    1300,    /* "p256_sphincssha256128fsimple" */
+    1303,    /* "p256_sphincssha256128srobust" */
+    1306,    /* "p256_sphincssha256128ssimple" */
+    1325,    /* "p256_sphincsshake256128frobust" */
+    1328,    /* "p256_sphincsshake256128fsimple" */
+    1331,    /* "p256_sphincsshake256128srobust" */
+    1334,    /* "p256_sphincsshake256128ssimple" */
     1250,    /* "p384_bikel3" */
-    1269,    /* "p384_dilithium3" */
-    1276,    /* "p384_dilithium3_aes" */
     1233,    /* "p384_frodo976aes" */
     1234,    /* "p384_frodo976shake" */
     1255,    /* "p384_hqc192" */
@@ -3363,9 +3461,18 @@ static const unsigned int sn_objs[NUM_SN] = {
     1259,    /* "p384_ntrulpr857" */
     1247,    /* "p384_saber" */
     1263,    /* "p384_sntrup857" */
-    1271,    /* "p521_dilithium5" */
-    1278,    /* "p521_dilithium5_aes" */
-    1283,    /* "p521_falcon1024" */
+    1281,    /* "p384_sphincsharaka192frobust" */
+    1283,    /* "p384_sphincsharaka192fsimple" */
+    1285,    /* "p384_sphincsharaka192srobust" */
+    1287,    /* "p384_sphincsharaka192ssimple" */
+    1309,    /* "p384_sphincssha256192frobust" */
+    1311,    /* "p384_sphincssha256192fsimple" */
+    1313,    /* "p384_sphincssha256192srobust" */
+    1315,    /* "p384_sphincssha256192ssimple" */
+    1337,    /* "p384_sphincsshake256192frobust" */
+    1339,    /* "p384_sphincsshake256192fsimple" */
+    1341,    /* "p384_sphincsshake256192srobust" */
+    1343,    /* "p384_sphincsshake256192ssimple" */
     1248,    /* "p521_firesaber" */
     1235,    /* "p521_frodo1344aes" */
     1236,    /* "p521_frodo1344shake" */
@@ -3376,8 +3483,19 @@ static const unsigned int sn_objs[NUM_SN] = {
     1242,    /* "p521_ntru_hps4096821" */
     1245,    /* "p521_ntru_hrss1373" */
     1260,    /* "p521_ntrulpr1277" */
-    1291,    /* "p521_rainbowVclassic" */
     1264,    /* "p521_sntrup1277" */
+    1289,    /* "p521_sphincsharaka256frobust" */
+    1291,    /* "p521_sphincsharaka256fsimple" */
+    1293,    /* "p521_sphincsharaka256srobust" */
+    1295,    /* "p521_sphincsharaka256ssimple" */
+    1317,    /* "p521_sphincssha256256frobust" */
+    1319,    /* "p521_sphincssha256256fsimple" */
+    1321,    /* "p521_sphincssha256256srobust" */
+    1323,    /* "p521_sphincssha256256ssimple" */
+    1345,    /* "p521_sphincsshake256256frobust" */
+    1347,    /* "p521_sphincsshake256256fsimple" */
+    1349,    /* "p521_sphincsshake256256srobust" */
+    1351,    /* "p521_sphincsshake256256ssimple" */
      489,    /* "pagerTelephoneNumber" */
      374,    /* "path" */
      112,    /* "pbeWithMD5AndCast5CBC" */
@@ -3385,8 +3503,6 @@ static const unsigned int sn_objs[NUM_SN] = {
      487,    /* "personalTitle" */
      464,    /* "photo" */
      863,    /* "physicalDeliveryOfficeName" */
-    1287,    /* "picnic3l1" */
-    1284,    /* "picnicl1full" */
      437,    /* "pilot" */
      439,    /* "pilotAttributeSyntax" */
      438,    /* "pilotAttributeType" */
@@ -3438,20 +3554,24 @@ static const unsigned int sn_objs[NUM_SN] = {
      286,    /* "qcStatements" */
      457,    /* "qualityLabelledData" */
      450,    /* "rFC822localPart" */
-    1290,    /* "rainbowVclassic" */
      870,    /* "registeredAddress" */
      400,    /* "role" */
      877,    /* "roleOccupant" */
      448,    /* "room" */
      463,    /* "roomNumber" */
     1267,    /* "rsa3072_dilithium2" */
-    1274,    /* "rsa3072_dilithium2_aes" */
-    1281,    /* "rsa3072_falcon512" */
-    1289,    /* "rsa3072_picnic3l1" */
-    1286,    /* "rsa3072_picnicl1full" */
-    1294,    /* "rsa3072_sphincsharaka128frobust" */
-    1297,    /* "rsa3072_sphincssha256128frobust" */
-    1300,    /* "rsa3072_sphincsshake256128frobust" */
+    1270,    /* "rsa3072_sphincsharaka128frobust" */
+    1273,    /* "rsa3072_sphincsharaka128fsimple" */
+    1276,    /* "rsa3072_sphincsharaka128srobust" */
+    1279,    /* "rsa3072_sphincsharaka128ssimple" */
+    1298,    /* "rsa3072_sphincssha256128frobust" */
+    1301,    /* "rsa3072_sphincssha256128fsimple" */
+    1304,    /* "rsa3072_sphincssha256128srobust" */
+    1307,    /* "rsa3072_sphincssha256128ssimple" */
+    1326,    /* "rsa3072_sphincsshake256128frobust" */
+    1329,    /* "rsa3072_sphincsshake256128fsimple" */
+    1332,    /* "rsa3072_sphincsshake256128srobust" */
+    1335,    /* "rsa3072_sphincsshake256128ssimple" */
        6,    /* "rsaEncryption" */
      644,    /* "rsaOAEPEncryptionSET" */
      377,    /* "rsaSignature" */
@@ -3648,9 +3768,42 @@ static const unsigned int sn_objs[NUM_SN] = {
     1226,    /* "sntrup653" */
     1227,    /* "sntrup761" */
     1228,    /* "sntrup857" */
-    1292,    /* "sphincsharaka128frobust" */
-    1295,    /* "sphincssha256128frobust" */
-    1298,    /* "sphincsshake256128frobust" */
+    1268,    /* "sphincsharaka128frobust" */
+    1271,    /* "sphincsharaka128fsimple" */
+    1274,    /* "sphincsharaka128srobust" */
+    1277,    /* "sphincsharaka128ssimple" */
+    1280,    /* "sphincsharaka192frobust" */
+    1282,    /* "sphincsharaka192fsimple" */
+    1284,    /* "sphincsharaka192srobust" */
+    1286,    /* "sphincsharaka192ssimple" */
+    1288,    /* "sphincsharaka256frobust" */
+    1290,    /* "sphincsharaka256fsimple" */
+    1292,    /* "sphincsharaka256srobust" */
+    1294,    /* "sphincsharaka256ssimple" */
+    1296,    /* "sphincssha256128frobust" */
+    1299,    /* "sphincssha256128fsimple" */
+    1302,    /* "sphincssha256128srobust" */
+    1305,    /* "sphincssha256128ssimple" */
+    1308,    /* "sphincssha256192frobust" */
+    1310,    /* "sphincssha256192fsimple" */
+    1312,    /* "sphincssha256192srobust" */
+    1314,    /* "sphincssha256192ssimple" */
+    1316,    /* "sphincssha256256frobust" */
+    1318,    /* "sphincssha256256fsimple" */
+    1320,    /* "sphincssha256256srobust" */
+    1322,    /* "sphincssha256256ssimple" */
+    1324,    /* "sphincsshake256128frobust" */
+    1327,    /* "sphincsshake256128fsimple" */
+    1330,    /* "sphincsshake256128srobust" */
+    1333,    /* "sphincsshake256128ssimple" */
+    1336,    /* "sphincsshake256192frobust" */
+    1338,    /* "sphincsshake256192fsimple" */
+    1340,    /* "sphincsshake256192srobust" */
+    1342,    /* "sphincsshake256192ssimple" */
+    1344,    /* "sphincsshake256256frobust" */
+    1346,    /* "sphincsshake256256fsimple" */
+    1348,    /* "sphincsshake256256srobust" */
+    1350,    /* "sphincsshake256256ssimple" */
      660,    /* "street" */
       85,    /* "subjectAltName" */
      769,    /* "subjectDirectoryAttributes" */
@@ -3713,7 +3866,7 @@ static const unsigned int sn_objs[NUM_SN] = {
     1093,    /* "x509ExtAdmission" */
 };
 
-#define NUM_LN 1290
+#define NUM_LN 1341
 static const unsigned int ln_objs[NUM_LN] = {
      363,    /* "AD Time Stamping" */
      405,    /* "ANSI X9.62" */
@@ -4150,11 +4303,6 @@ static const unsigned int ln_objs[NUM_LN] = {
      939,    /* "dhSinglePass-stdDH-sha384kdf-scheme" */
      940,    /* "dhSinglePass-stdDH-sha512kdf-scheme" */
     1265,    /* "dilithium2" */
-    1272,    /* "dilithium2_aes" */
-    1268,    /* "dilithium3" */
-    1275,    /* "dilithium3_aes" */
-    1270,    /* "dilithium5" */
-    1277,    /* "dilithium5_aes" */
       11,    /* "directory services (X.500)" */
      378,    /* "directory services - algorithms" */
      887,    /* "distinguishedName" */
@@ -4202,8 +4350,6 @@ static const unsigned int ln_objs[NUM_LN] = {
      885,    /* "enhancedSearchGuide" */
       56,    /* "extendedCertificateAttributes" */
      867,    /* "facsimileTelephoneNumber" */
-    1282,    /* "falcon1024" */
-    1279,    /* "falcon512" */
      462,    /* "favouriteDrink" */
     1126,    /* "ffdhe2048" */
     1127,    /* "ffdhe3072" */
@@ -4599,8 +4745,6 @@ static const unsigned int ln_objs[NUM_LN] = {
      876,    /* "owner" */
     1249,    /* "p256_bikel1" */
     1266,    /* "p256_dilithium2" */
-    1273,    /* "p256_dilithium2_aes" */
-    1280,    /* "p256_falcon512" */
     1231,    /* "p256_frodo640aes" */
     1232,    /* "p256_frodo640shake" */
     1254,    /* "p256_hqc128" */
@@ -4610,16 +4754,21 @@ static const unsigned int ln_objs[NUM_LN] = {
     1240,    /* "p256_ntru_hps2048509" */
     1257,    /* "p256_ntrulpr653" */
     1258,    /* "p256_ntrulpr761" */
-    1288,    /* "p256_picnic3l1" */
-    1285,    /* "p256_picnicl1full" */
     1261,    /* "p256_sntrup653" */
     1262,    /* "p256_sntrup761" */
-    1293,    /* "p256_sphincsharaka128frobust" */
-    1296,    /* "p256_sphincssha256128frobust" */
-    1299,    /* "p256_sphincsshake256128frobust" */
+    1269,    /* "p256_sphincsharaka128frobust" */
+    1272,    /* "p256_sphincsharaka128fsimple" */
+    1275,    /* "p256_sphincsharaka128srobust" */
+    1278,    /* "p256_sphincsharaka128ssimple" */
+    1297,    /* "p256_sphincssha256128frobust" */
+    1300,    /* "p256_sphincssha256128fsimple" */
+    1303,    /* "p256_sphincssha256128srobust" */
+    1306,    /* "p256_sphincssha256128ssimple" */
+    1325,    /* "p256_sphincsshake256128frobust" */
+    1328,    /* "p256_sphincsshake256128fsimple" */
+    1331,    /* "p256_sphincsshake256128srobust" */
+    1334,    /* "p256_sphincsshake256128ssimple" */
     1250,    /* "p384_bikel3" */
-    1269,    /* "p384_dilithium3" */
-    1276,    /* "p384_dilithium3_aes" */
     1233,    /* "p384_frodo976aes" */
     1234,    /* "p384_frodo976shake" */
     1255,    /* "p384_hqc192" */
@@ -4630,9 +4779,18 @@ static const unsigned int ln_objs[NUM_LN] = {
     1259,    /* "p384_ntrulpr857" */
     1247,    /* "p384_saber" */
     1263,    /* "p384_sntrup857" */
-    1271,    /* "p521_dilithium5" */
-    1278,    /* "p521_dilithium5_aes" */
-    1283,    /* "p521_falcon1024" */
+    1281,    /* "p384_sphincsharaka192frobust" */
+    1283,    /* "p384_sphincsharaka192fsimple" */
+    1285,    /* "p384_sphincsharaka192srobust" */
+    1287,    /* "p384_sphincsharaka192ssimple" */
+    1309,    /* "p384_sphincssha256192frobust" */
+    1311,    /* "p384_sphincssha256192fsimple" */
+    1313,    /* "p384_sphincssha256192srobust" */
+    1315,    /* "p384_sphincssha256192ssimple" */
+    1337,    /* "p384_sphincsshake256192frobust" */
+    1339,    /* "p384_sphincsshake256192fsimple" */
+    1341,    /* "p384_sphincsshake256192srobust" */
+    1343,    /* "p384_sphincsshake256192ssimple" */
     1248,    /* "p521_firesaber" */
     1235,    /* "p521_frodo1344aes" */
     1236,    /* "p521_frodo1344shake" */
@@ -4643,8 +4801,19 @@ static const unsigned int ln_objs[NUM_LN] = {
     1242,    /* "p521_ntru_hps4096821" */
     1245,    /* "p521_ntru_hrss1373" */
     1260,    /* "p521_ntrulpr1277" */
-    1291,    /* "p521_rainbowVclassic" */
     1264,    /* "p521_sntrup1277" */
+    1289,    /* "p521_sphincsharaka256frobust" */
+    1291,    /* "p521_sphincsharaka256fsimple" */
+    1293,    /* "p521_sphincsharaka256srobust" */
+    1295,    /* "p521_sphincsharaka256ssimple" */
+    1317,    /* "p521_sphincssha256256frobust" */
+    1319,    /* "p521_sphincssha256256fsimple" */
+    1321,    /* "p521_sphincssha256256srobust" */
+    1323,    /* "p521_sphincssha256256ssimple" */
+    1345,    /* "p521_sphincsshake256256frobust" */
+    1347,    /* "p521_sphincsshake256256fsimple" */
+    1349,    /* "p521_sphincsshake256256srobust" */
+    1351,    /* "p521_sphincsshake256256ssimple" */
      935,    /* "pSpecified" */
      489,    /* "pagerTelephoneNumber" */
      782,    /* "password based MAC" */
@@ -4667,8 +4836,6 @@ static const unsigned int ln_objs[NUM_LN] = {
      487,    /* "personalTitle" */
      464,    /* "photo" */
      863,    /* "physicalDeliveryOfficeName" */
-    1287,    /* "picnic3l1" */
-    1284,    /* "picnicl1full" */
      437,    /* "pilot" */
      439,    /* "pilotAttributeSyntax" */
      438,    /* "pilotAttributeType" */
@@ -4712,7 +4879,6 @@ static const unsigned int ln_objs[NUM_LN] = {
      286,    /* "qcStatements" */
      457,    /* "qualityLabelledData" */
      450,    /* "rFC822localPart" */
-    1290,    /* "rainbowVclassic" */
       98,    /* "rc2-40-cbc" */
      166,    /* "rc2-64-cbc" */
       37,    /* "rc2-cbc" */
@@ -4736,13 +4902,18 @@ static const unsigned int ln_objs[NUM_LN] = {
      463,    /* "roomNumber" */
       19,    /* "rsa" */
     1267,    /* "rsa3072_dilithium2" */
-    1274,    /* "rsa3072_dilithium2_aes" */
-    1281,    /* "rsa3072_falcon512" */
-    1289,    /* "rsa3072_picnic3l1" */
-    1286,    /* "rsa3072_picnicl1full" */
-    1294,    /* "rsa3072_sphincsharaka128frobust" */
-    1297,    /* "rsa3072_sphincssha256128frobust" */
-    1300,    /* "rsa3072_sphincsshake256128frobust" */
+    1270,    /* "rsa3072_sphincsharaka128frobust" */
+    1273,    /* "rsa3072_sphincsharaka128fsimple" */
+    1276,    /* "rsa3072_sphincsharaka128srobust" */
+    1279,    /* "rsa3072_sphincsharaka128ssimple" */
+    1298,    /* "rsa3072_sphincssha256128frobust" */
+    1301,    /* "rsa3072_sphincssha256128fsimple" */
+    1304,    /* "rsa3072_sphincssha256128srobust" */
+    1307,    /* "rsa3072_sphincssha256128ssimple" */
+    1326,    /* "rsa3072_sphincsshake256128frobust" */
+    1329,    /* "rsa3072_sphincsshake256128fsimple" */
+    1332,    /* "rsa3072_sphincsshake256128srobust" */
+    1335,    /* "rsa3072_sphincsshake256128ssimple" */
        6,    /* "rsaEncryption" */
      644,    /* "rsaOAEPEncryptionSET" */
      377,    /* "rsaSignature" */
@@ -4956,9 +5127,42 @@ static const unsigned int ln_objs[NUM_LN] = {
     1226,    /* "sntrup653" */
     1227,    /* "sntrup761" */
     1228,    /* "sntrup857" */
-    1292,    /* "sphincsharaka128frobust" */
-    1295,    /* "sphincssha256128frobust" */
-    1298,    /* "sphincsshake256128frobust" */
+    1268,    /* "sphincsharaka128frobust" */
+    1271,    /* "sphincsharaka128fsimple" */
+    1274,    /* "sphincsharaka128srobust" */
+    1277,    /* "sphincsharaka128ssimple" */
+    1280,    /* "sphincsharaka192frobust" */
+    1282,    /* "sphincsharaka192fsimple" */
+    1284,    /* "sphincsharaka192srobust" */
+    1286,    /* "sphincsharaka192ssimple" */
+    1288,    /* "sphincsharaka256frobust" */
+    1290,    /* "sphincsharaka256fsimple" */
+    1292,    /* "sphincsharaka256srobust" */
+    1294,    /* "sphincsharaka256ssimple" */
+    1296,    /* "sphincssha256128frobust" */
+    1299,    /* "sphincssha256128fsimple" */
+    1302,    /* "sphincssha256128srobust" */
+    1305,    /* "sphincssha256128ssimple" */
+    1308,    /* "sphincssha256192frobust" */
+    1310,    /* "sphincssha256192fsimple" */
+    1312,    /* "sphincssha256192srobust" */
+    1314,    /* "sphincssha256192ssimple" */
+    1316,    /* "sphincssha256256frobust" */
+    1318,    /* "sphincssha256256fsimple" */
+    1320,    /* "sphincssha256256srobust" */
+    1322,    /* "sphincssha256256ssimple" */
+    1324,    /* "sphincsshake256128frobust" */
+    1327,    /* "sphincsshake256128fsimple" */
+    1330,    /* "sphincsshake256128srobust" */
+    1333,    /* "sphincsshake256128ssimple" */
+    1336,    /* "sphincsshake256192frobust" */
+    1338,    /* "sphincsshake256192fsimple" */
+    1340,    /* "sphincsshake256192srobust" */
+    1342,    /* "sphincsshake256192ssimple" */
+    1344,    /* "sphincsshake256256frobust" */
+    1346,    /* "sphincsshake256256fsimple" */
+    1348,    /* "sphincsshake256256srobust" */
+    1350,    /* "sphincsshake256256ssimple" */
       16,    /* "stateOrProvinceName" */
      660,    /* "streetAddress" */
      498,    /* "subtreeMaximumQuality" */
@@ -5007,7 +5211,7 @@ static const unsigned int ln_objs[NUM_LN] = {
      125,    /* "zlib compression" */
 };
 
-#define NUM_OBJ 1107
+#define NUM_OBJ 1158
 static const unsigned int obj_objs[NUM_OBJ] = {
        0,    /* OBJ_undef                        0 */
      181,    /* OBJ_iso                          1 */
@@ -5315,11 +5519,6 @@ static const unsigned int obj_objs[NUM_OBJ] = {
      732,    /* OBJ_sect409r1                    1 3 132 0 37 */
      733,    /* OBJ_sect571k1                    1 3 132 0 38 */
      734,    /* OBJ_sect571r1                    1 3 132 0 39 */
-    1279,    /* OBJ_falcon512                    1 3 9999 3 1 */
-    1280,    /* OBJ_p256_falcon512               1 3 9999 3 2 */
-    1281,    /* OBJ_rsa3072_falcon512            1 3 9999 3 3 */
-    1282,    /* OBJ_falcon1024                   1 3 9999 3 4 */
-    1283,    /* OBJ_p521_falcon1024              1 3 9999 3 5 */
      624,    /* OBJ_set_rootKeyThumb             2 23 42 3 0 0 */
      625,    /* OBJ_set_addPolicy                2 23 42 3 0 1 */
      626,    /* OBJ_setAttr_Token_EMV            2 23 42 3 2 1 */
@@ -5372,21 +5571,90 @@ static const unsigned int obj_objs[NUM_OBJ] = {
      945,    /* OBJ_dhSinglePass_cofactorDH_sha512kdf_scheme 1 3 132 1 14 3 */
     1266,    /* OBJ_p256_dilithium2              1 3 9999 2 7 1 */
     1267,    /* OBJ_rsa3072_dilithium2           1 3 9999 2 7 2 */
-    1269,    /* OBJ_p384_dilithium3              1 3 9999 2 7 3 */
-    1271,    /* OBJ_p521_dilithium5              1 3 9999 2 7 4 */
-    1273,    /* OBJ_p256_dilithium2_aes          1 3 9999 2 11 1 */
-    1274,    /* OBJ_rsa3072_dilithium2_aes       1 3 9999 2 11 2 */
-    1276,    /* OBJ_p384_dilithium3_aes          1 3 9999 2 11 3 */
-    1278,    /* OBJ_p521_dilithium5_aes          1 3 9999 2 11 4 */
-    1292,    /* OBJ_sphincsharaka128frobust      1 3 9999 6 1 1 */
-    1293,    /* OBJ_p256_sphincsharaka128frobust 1 3 9999 6 1 2 */
-    1294,    /* OBJ_rsa3072_sphincsharaka128frobust 1 3 9999 6 1 3 */
-    1295,    /* OBJ_sphincssha256128frobust      1 3 9999 6 4 1 */
-    1296,    /* OBJ_p256_sphincssha256128frobust 1 3 9999 6 4 2 */
-    1297,    /* OBJ_rsa3072_sphincssha256128frobust 1 3 9999 6 4 3 */
-    1298,    /* OBJ_sphincsshake256128frobust    1 3 9999 6 7 1 */
-    1299,    /* OBJ_p256_sphincsshake256128frobust 1 3 9999 6 7 2 */
-    1300,    /* OBJ_rsa3072_sphincsshake256128frobust 1 3 9999 6 7 3 */
+    1268,    /* OBJ_sphincsharaka128frobust      1 3 9999 6 1 1 */
+    1269,    /* OBJ_p256_sphincsharaka128frobust 1 3 9999 6 1 2 */
+    1270,    /* OBJ_rsa3072_sphincsharaka128frobust 1 3 9999 6 1 3 */
+    1271,    /* OBJ_sphincsharaka128fsimple      1 3 9999 6 1 4 */
+    1272,    /* OBJ_p256_sphincsharaka128fsimple 1 3 9999 6 1 5 */
+    1273,    /* OBJ_rsa3072_sphincsharaka128fsimple 1 3 9999 6 1 6 */
+    1274,    /* OBJ_sphincsharaka128srobust      1 3 9999 6 1 7 */
+    1275,    /* OBJ_p256_sphincsharaka128srobust 1 3 9999 6 1 8 */
+    1276,    /* OBJ_rsa3072_sphincsharaka128srobust 1 3 9999 6 1 9 */
+    1277,    /* OBJ_sphincsharaka128ssimple      1 3 9999 6 1 10 */
+    1278,    /* OBJ_p256_sphincsharaka128ssimple 1 3 9999 6 1 11 */
+    1279,    /* OBJ_rsa3072_sphincsharaka128ssimple 1 3 9999 6 1 12 */
+    1280,    /* OBJ_sphincsharaka192frobust      1 3 9999 6 2 1 */
+    1281,    /* OBJ_p384_sphincsharaka192frobust 1 3 9999 6 2 2 */
+    1282,    /* OBJ_sphincsharaka192fsimple      1 3 9999 6 2 3 */
+    1283,    /* OBJ_p384_sphincsharaka192fsimple 1 3 9999 6 2 4 */
+    1284,    /* OBJ_sphincsharaka192srobust      1 3 9999 6 2 5 */
+    1285,    /* OBJ_p384_sphincsharaka192srobust 1 3 9999 6 2 6 */
+    1286,    /* OBJ_sphincsharaka192ssimple      1 3 9999 6 2 7 */
+    1287,    /* OBJ_p384_sphincsharaka192ssimple 1 3 9999 6 2 8 */
+    1288,    /* OBJ_sphincsharaka256frobust      1 3 9999 6 3 1 */
+    1289,    /* OBJ_p521_sphincsharaka256frobust 1 3 9999 6 3 2 */
+    1290,    /* OBJ_sphincsharaka256fsimple      1 3 9999 6 3 3 */
+    1291,    /* OBJ_p521_sphincsharaka256fsimple 1 3 9999 6 3 4 */
+    1292,    /* OBJ_sphincsharaka256srobust      1 3 9999 6 3 5 */
+    1293,    /* OBJ_p521_sphincsharaka256srobust 1 3 9999 6 3 6 */
+    1294,    /* OBJ_sphincsharaka256ssimple      1 3 9999 6 3 7 */
+    1295,    /* OBJ_p521_sphincsharaka256ssimple 1 3 9999 6 3 8 */
+    1296,    /* OBJ_sphincssha256128frobust      1 3 9999 6 4 1 */
+    1297,    /* OBJ_p256_sphincssha256128frobust 1 3 9999 6 4 2 */
+    1298,    /* OBJ_rsa3072_sphincssha256128frobust 1 3 9999 6 4 3 */
+    1299,    /* OBJ_sphincssha256128fsimple      1 3 9999 6 4 4 */
+    1300,    /* OBJ_p256_sphincssha256128fsimple 1 3 9999 6 4 5 */
+    1301,    /* OBJ_rsa3072_sphincssha256128fsimple 1 3 9999 6 4 6 */
+    1302,    /* OBJ_sphincssha256128srobust      1 3 9999 6 4 7 */
+    1303,    /* OBJ_p256_sphincssha256128srobust 1 3 9999 6 4 8 */
+    1304,    /* OBJ_rsa3072_sphincssha256128srobust 1 3 9999 6 4 9 */
+    1305,    /* OBJ_sphincssha256128ssimple      1 3 9999 6 4 10 */
+    1306,    /* OBJ_p256_sphincssha256128ssimple 1 3 9999 6 4 11 */
+    1307,    /* OBJ_rsa3072_sphincssha256128ssimple 1 3 9999 6 4 12 */
+    1308,    /* OBJ_sphincssha256192frobust      1 3 9999 6 5 1 */
+    1309,    /* OBJ_p384_sphincssha256192frobust 1 3 9999 6 5 2 */
+    1310,    /* OBJ_sphincssha256192fsimple      1 3 9999 6 5 3 */
+    1311,    /* OBJ_p384_sphincssha256192fsimple 1 3 9999 6 5 4 */
+    1312,    /* OBJ_sphincssha256192srobust      1 3 9999 6 5 5 */
+    1313,    /* OBJ_p384_sphincssha256192srobust 1 3 9999 6 5 6 */
+    1314,    /* OBJ_sphincssha256192ssimple      1 3 9999 6 5 7 */
+    1315,    /* OBJ_p384_sphincssha256192ssimple 1 3 9999 6 5 8 */
+    1316,    /* OBJ_sphincssha256256frobust      1 3 9999 6 6 1 */
+    1317,    /* OBJ_p521_sphincssha256256frobust 1 3 9999 6 6 2 */
+    1318,    /* OBJ_sphincssha256256fsimple      1 3 9999 6 6 3 */
+    1319,    /* OBJ_p521_sphincssha256256fsimple 1 3 9999 6 6 4 */
+    1320,    /* OBJ_sphincssha256256srobust      1 3 9999 6 6 5 */
+    1321,    /* OBJ_p521_sphincssha256256srobust 1 3 9999 6 6 6 */
+    1322,    /* OBJ_sphincssha256256ssimple      1 3 9999 6 6 7 */
+    1323,    /* OBJ_p521_sphincssha256256ssimple 1 3 9999 6 6 8 */
+    1324,    /* OBJ_sphincsshake256128frobust    1 3 9999 6 7 1 */
+    1325,    /* OBJ_p256_sphincsshake256128frobust 1 3 9999 6 7 2 */
+    1326,    /* OBJ_rsa3072_sphincsshake256128frobust 1 3 9999 6 7 3 */
+    1327,    /* OBJ_sphincsshake256128fsimple    1 3 9999 6 7 4 */
+    1328,    /* OBJ_p256_sphincsshake256128fsimple 1 3 9999 6 7 5 */
+    1329,    /* OBJ_rsa3072_sphincsshake256128fsimple 1 3 9999 6 7 6 */
+    1330,    /* OBJ_sphincsshake256128srobust    1 3 9999 6 7 7 */
+    1331,    /* OBJ_p256_sphincsshake256128srobust 1 3 9999 6 7 8 */
+    1332,    /* OBJ_rsa3072_sphincsshake256128srobust 1 3 9999 6 7 9 */
+    1333,    /* OBJ_sphincsshake256128ssimple    1 3 9999 6 7 10 */
+    1334,    /* OBJ_p256_sphincsshake256128ssimple 1 3 9999 6 7 11 */
+    1335,    /* OBJ_rsa3072_sphincsshake256128ssimple 1 3 9999 6 7 12 */
+    1336,    /* OBJ_sphincsshake256192frobust    1 3 9999 6 8 1 */
+    1337,    /* OBJ_p384_sphincsshake256192frobust 1 3 9999 6 8 2 */
+    1338,    /* OBJ_sphincsshake256192fsimple    1 3 9999 6 8 3 */
+    1339,    /* OBJ_p384_sphincsshake256192fsimple 1 3 9999 6 8 4 */
+    1340,    /* OBJ_sphincsshake256192srobust    1 3 9999 6 8 5 */
+    1341,    /* OBJ_p384_sphincsshake256192srobust 1 3 9999 6 8 6 */
+    1342,    /* OBJ_sphincsshake256192ssimple    1 3 9999 6 8 7 */
+    1343,    /* OBJ_p384_sphincsshake256192ssimple 1 3 9999 6 8 8 */
+    1344,    /* OBJ_sphincsshake256256frobust    1 3 9999 6 9 1 */
+    1345,    /* OBJ_p521_sphincsshake256256frobust 1 3 9999 6 9 2 */
+    1346,    /* OBJ_sphincsshake256256fsimple    1 3 9999 6 9 3 */
+    1347,    /* OBJ_p521_sphincsshake256256fsimple 1 3 9999 6 9 4 */
+    1348,    /* OBJ_sphincsshake256256srobust    1 3 9999 6 9 5 */
+    1349,    /* OBJ_p521_sphincsshake256256srobust 1 3 9999 6 9 6 */
+    1350,    /* OBJ_sphincsshake256256ssimple    1 3 9999 6 9 7 */
+    1351,    /* OBJ_p521_sphincsshake256256ssimple 1 3 9999 6 9 8 */
      631,    /* OBJ_setAttr_GenCryptgrm          2 23 42 3 3 3 1 */
      632,    /* OBJ_setAttr_T2Enc                2 23 42 3 3 4 1 */
      633,    /* OBJ_setAttr_T2cleartxt           2 23 42 3 3 4 2 */
@@ -5466,8 +5734,6 @@ static const unsigned int obj_objs[NUM_OBJ] = {
      176,    /* OBJ_id_ad                        1 3 6 1 5 5 7 48 */
      507,    /* OBJ_id_hex_partial_message       1 3 6 1 7 1 1 1 */
      508,    /* OBJ_id_hex_multipart_message     1 3 6 1 7 1 1 2 */
-    1290,    /* OBJ_rainbowVclassic              1 3 9999 5 3 1 1 */
-    1291,    /* OBJ_p521_rainbowVclassic         1 3 9999 5 3 2 1 */
       57,    /* OBJ_netscape                     2 16 840 1 113730 */
      754,    /* OBJ_camellia_128_ecb             0 3 4401 5 3 1 9 1 */
      766,    /* OBJ_camellia_128_ofb128          0 3 4401 5 3 1 9 3 */
@@ -6088,21 +6354,10 @@ static const unsigned int obj_objs[NUM_OBJ] = {
      154,    /* OBJ_secretBag                    1 2 840 113549 1 12 10 1 5 */
      155,    /* OBJ_safeContentsBag              1 2 840 113549 1 12 10 1 6 */
     1265,    /* OBJ_dilithium2                   1 3 6 1 4 1 2 267 7 4 4 */
-    1268,    /* OBJ_dilithium3                   1 3 6 1 4 1 2 267 7 6 5 */
-    1270,    /* OBJ_dilithium5                   1 3 6 1 4 1 2 267 7 8 7 */
-    1272,    /* OBJ_dilithium2_aes               1 3 6 1 4 1 2 267 11 4 4 */
-    1275,    /* OBJ_dilithium3_aes               1 3 6 1 4 1 2 267 11 6 5 */
-    1277,    /* OBJ_dilithium5_aes               1 3 6 1 4 1 2 267 11 8 7 */
       34,    /* OBJ_idea_cbc                     1 3 6 1 4 1 188 7 1 1 2 */
      955,    /* OBJ_jurisdictionLocalityName     1 3 6 1 4 1 311 60 2 1 1 */
      956,    /* OBJ_jurisdictionStateOrProvinceName 1 3 6 1 4 1 311 60 2 1 2 */
      957,    /* OBJ_jurisdictionCountryName      1 3 6 1 4 1 311 60 2 1 3 */
-    1284,    /* OBJ_picnicl1full                 1 3 6 1 4 1 311 89 2 1 7 */
-    1285,    /* OBJ_p256_picnicl1full            1 3 6 1 4 1 311 89 2 1 8 */
-    1286,    /* OBJ_rsa3072_picnicl1full         1 3 6 1 4 1 311 89 2 1 9 */
-    1287,    /* OBJ_picnic3l1                    1 3 6 1 4 1 311 89 2 1 21 */
-    1288,    /* OBJ_p256_picnic3l1               1 3 6 1 4 1 311 89 2 1 22 */
-    1289,    /* OBJ_rsa3072_picnic3l1            1 3 6 1 4 1 311 89 2 1 23 */
     1056,    /* OBJ_blake2b512                   1 3 6 1 4 1 1722 12 2 1 16 */
     1057,    /* OBJ_blake2s256                   1 3 6 1 4 1 1722 12 2 2 8 */
     1159,    /* OBJ_dstu4145be                   1 2 804 2 1 1 1 1 3 1 1 1 1 */

@@ -284,28 +284,20 @@ static const char *get_sigtype(int nid)
         return "Falcon-1024";
     case NID_p521_falcon1024:
         return "ECDSA p521 - Falcon-1024";
-    case NID_picnicl1full:
-        return "Picnic L1 full";
-    case NID_p256_picnicl1full:
-        return "ECDSA p256 - Picnic L1 full";
-    case NID_rsa3072_picnicl1full:
-        return "RSA3072 - Picnic L1 full";
-    case NID_picnic3l1:
-        return "Picnic3 L1";
-    case NID_p256_picnic3l1:
-        return "ECDSA p256 - Picnic3 L1";
-    case NID_rsa3072_picnic3l1:
-        return "RSA3072 - Picnic3 L1";
-    case NID_rainbowVclassic:
-        return "Rainbow-V-Classic";
-    case NID_p521_rainbowVclassic:
-        return "ECDSA p521 - Rainbow-V-Classic";
-    case NID_sphincsharaka128frobust:
-        return "SPHINCS+-Haraka-128f-robust";
-    case NID_p256_sphincsharaka128frobust:
-        return "ECDSA p256 - SPHINCS+-Haraka-128f-robust";
-    case NID_rsa3072_sphincsharaka128frobust:
-        return "RSA3072 - SPHINCS+-Haraka-128f-robust";
+    case NID_sphincsharaka128fsimple:
+        return "SPHINCS+-Haraka-128f-simple";
+    case NID_p256_sphincsharaka128fsimple:
+        return "ECDSA p256 - SPHINCS+-Haraka-128f-simple";
+    case NID_rsa3072_sphincsharaka128fsimple:
+        return "RSA3072 - SPHINCS+-Haraka-128f-simple";
+    case NID_sphincsharaka192fsimple:
+        return "SPHINCS+-Haraka-192f-simple";
+    case NID_p384_sphincsharaka192fsimple:
+        return "ECDSA p384 - SPHINCS+-Haraka-192f-simple";
+    case NID_sphincsharaka256fsimple:
+        return "SPHINCS+-Haraka-256f-simple";
+    case NID_p521_sphincsharaka256fsimple:
+        return "ECDSA p521 - SPHINCS+-Haraka-256f-simple";
     case NID_sphincssha256128frobust:
         return "SPHINCS+-SHA256-128f-robust";
     case NID_p256_sphincssha256128frobust:
@@ -497,14 +489,6 @@ static const char* OQS_CURVE_ID_NAME_STR(int id) {
   case 0x022C: return "hqc128";
   case 0x022D: return "hqc192";
   case 0x022E: return "hqc256";
-  case 0x022F: return "ntrulpr653";
-  case 0x0230: return "ntrulpr761";
-  case 0x0231: return "ntrulpr857";
-  case 0x0241: return "ntrulpr1277";
-  case 0x0232: return "sntrup653";
-  case 0x0233: return "sntrup761";
-  case 0x0234: return "sntrup857";
-  case 0x0242: return "sntrup1277";
   ///// OQS_TEMPLATE_FRAGMENT_OQS_CURVE_ID_NAME_STR_END
   ///// OQS_TEMPLATE_FRAGMENT_OQS_CURVE_ID_NAME_STR_HYBRID_START
    case 0x2F00: return "p256_frodo640aes hybrid";
@@ -533,14 +517,6 @@ static const char* OQS_CURVE_ID_NAME_STR(int id) {
    case 0x2F2C: return "p256_hqc128 hybrid";
    case 0x2F2D: return "p384_hqc192 hybrid";
    case 0x2F2E: return "p521_hqc256 hybrid";
-   case 0x2F2F: return "p256_ntrulpr653 hybrid";
-   case 0x2F43: return "p256_ntrulpr761 hybrid";
-   case 0x2F31: return "p384_ntrulpr857 hybrid";
-   case 0x2F41: return "p521_ntrulpr1277 hybrid";
-   case 0x2F32: return "p256_sntrup653 hybrid";
-   case 0x2F44: return "p256_sntrup761 hybrid";
-   case 0x2F34: return "p384_sntrup857 hybrid";
-   case 0x2F42: return "p521_sntrup1277 hybrid";
   ///// OQS_TEMPLATE_FRAGMENT_OQS_CURVE_ID_NAME_STR_HYBRID_END
   default: return "";
   }

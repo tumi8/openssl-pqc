@@ -393,6 +393,24 @@ kems:
     nid: '0x022E'
     nid_hybrid: '0x2F2E'
     oqs_alg: 'OQS_KEM_alg_hqc_256'
+  -
+    family: 'Classic McEliece'
+    name_group: 'Classic-McEliece-348864'
+    nid: '0x082E'
+    nid_hybrid: '0x8F2E'
+    oqs_alg: 'OQS_KEM_alg_classic_mceliece_348864'
+  -
+    family: 'Classic McEliece'
+    name_group: 'Classic-McEliece-46089'
+    nid: '0x083E'
+    nid_hybrid: '0x8F3E'
+    oqs_alg: 'OQS_KEM_alg_classic_mceliece_46089'
+  -
+    family: 'Classic McEliece'
+    name_group: 'Classic-McEliece-8192128'
+    nid: '0x084E'
+    nid_hybrid: '0x8F4E'
+    oqs_alg: 'OQS_KEM_alg_classic_mceliece_8192128'
 
 kem_nid_end: '0x0250'
 kem_nid_hybrid_end: '0x2FFF'

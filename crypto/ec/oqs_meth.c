@@ -136,8 +136,8 @@ int oqssl_kem_nids_list[] = {
         NID_hqc128,
         NID_hqc192,
         NID_hqc256,
-        NID_Classic-McEliece-348864,
-        NID_Classic-McEliece-8192128,
+        NID_ClassicMcEliece348864,
+        NID_ClassicMcEliece8192128,
 /////// OQS_TEMPLATE_FRAGMENT_LIST_KNOWN_KEM_NIDS_END
 };
 
@@ -282,11 +282,11 @@ char* get_oqs_alg_name(int openssl_nid)
     case NID_hqc256:
     case NID_p521_hqc256:
       return OQS_KEM_alg_hqc_256;
-    case NID_Classic-McEliece-348864:
-    case NID_p256_Classic-McEliece-348864:
+    case NID_ClassicMcEliece348864:
+    case NID_p256_ClassicMcEliece348864:
       return OQS_KEM_alg_classic_mceliece_348864;
-    case NID_Classic-McEliece-8192128:
-    case NID_p521_Classic-McEliece-8192128:
+    case NID_ClassicMcEliece8192128:
+    case NID_p521_ClassicMcEliece8192128:
       return OQS_KEM_alg_classic_mceliece_8192128;
 ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_ALG_END
     default:

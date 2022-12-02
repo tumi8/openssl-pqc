@@ -527,8 +527,8 @@
   (nid == NID_hqc128 ? 0x022C : \
   (nid == NID_hqc192 ? 0x022D : \
   (nid == NID_hqc256 ? 0x022E : \
-  (nid == NID_Classic-McEliece-348864 ? 0x082E : \
-  (nid == NID_Classic-McEliece-8192128 ? 0x084E : \
+  (nid == NID_ClassicMcEliece348864 ? 0x082E : \
+  (nid == NID_ClassicMcEliece8192128 ? 0x084E : \
   0 \
   )))))))))))))))))))))))))
 ///// OQS_TEMPLATE_FRAGMENT_OQS_KEM_CURVEID_END
@@ -558,8 +558,8 @@
     (nid == NID_p256_hqc128 ? 0x2F2C : \
     (nid == NID_p384_hqc192 ? 0x2F2D : \
     (nid == NID_p521_hqc256 ? 0x2F2E : \
-    (nid == NID_p256_Classic-McEliece-348864 ? 0x8F2E : \
-    (nid == NID_p521_Classic-McEliece-8192128 ? 0x8F4E : \
+    (nid == NID_p256_ClassicMcEliece348864 ? 0x8F2E : \
+    (nid == NID_p521_ClassicMcEliece8192128 ? 0x8F4E : \
   0 \
   )))))))))))))))))))))))))
 ///// OQS_TEMPLATE_FRAGMENT_OQS_KEM_HYBRID_CURVEID_END
@@ -590,8 +590,8 @@
   (curveID == 0x022C || curveID == 0x2F2C ? NID_hqc128 : \
   (curveID == 0x022D || curveID == 0x2F2D ? NID_hqc192 : \
   (curveID == 0x022E || curveID == 0x2F2E ? NID_hqc256 : \
-  (curveID == 0x082E || curveID == 0x8F2E ? NID_Classic-McEliece-348864 : \
-  (curveID == 0x084E || curveID == 0x8F4E ? NID_Classic-McEliece-8192128 : \
+  (curveID == 0x082E || curveID == 0x8F2E ? NID_ClassicMcEliece348864 : \
+  (curveID == 0x084E || curveID == 0x8F4E ? NID_ClassicMcEliece8192128 : \
   0 \
   )))))))))))))))))))))))))
 ///// OQS_TEMPLATE_FRAGMENT_OQS_KEM_NID_END
@@ -622,8 +622,8 @@
     (curveID == 0x2F2C ? NID_p256_hqc128 : \
     (curveID == 0x2F2D ? NID_p384_hqc192 : \
     (curveID == 0x2F2E ? NID_p521_hqc256 : \
-    (curveID == 0x8F2E ? NID_p256_Classic-McEliece-348864 : \
-    (curveID == 0x8F4E ? NID_p521_Classic-McEliece-8192128 : \
+    (curveID == 0x8F2E ? NID_p256_ClassicMcEliece348864 : \
+    (curveID == 0x8F4E ? NID_p521_ClassicMcEliece8192128 : \
   0 \
   )))))))))))))))))))))))))
 ///// OQS_TEMPLATE_FRAGMENT_OQS_HYBRID_KEM_NID_END
@@ -662,8 +662,8 @@
   (nid == NID_hqc128 ? OQS_KEM_alg_hqc_128 : \
   (nid == NID_hqc192 ? OQS_KEM_alg_hqc_192 : \
   (nid == NID_hqc256 ? OQS_KEM_alg_hqc_256 : \
-  (nid == NID_Classic-McEliece-348864 ? OQS_KEM_alg_classic_mceliece_348864 : \
-  (nid == NID_Classic-McEliece-8192128 ? OQS_KEM_alg_classic_mceliece_8192128 : \
+  (nid == NID_ClassicMcEliece348864 ? OQS_KEM_alg_classic_mceliece_348864 : \
+  (nid == NID_ClassicMcEliece8192128 ? OQS_KEM_alg_classic_mceliece_8192128 : \
   0 \
   )))))))))))))))))))))))))
 ///// OQS_TEMPLATE_FRAGMENT_OQS_ALG_NAME_END

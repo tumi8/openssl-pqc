@@ -1723,10 +1723,10 @@ dstu4145le 2 9 : uacurve9 : DSTU curve 9
  : p384_hqc192 : p384_hqc192
  : hqc256 : hqc256
  : p521_hqc256 : p521_hqc256
- : Classic-McEliece-348864 : Classic-McEliece-348864
- : p256_Classic-McEliece-348864 : p256_Classic-McEliece-348864
- : Classic-McEliece-8192128 : Classic-McEliece-8192128
- : p521_Classic-McEliece-8192128 : p521_Classic-McEliece-8192128
+ : ClassicMcEliece348864 : ClassicMcEliece348864
+ : p256_ClassicMcEliece348864 : p256_ClassicMcEliece348864
+ : ClassicMcEliece8192128 : ClassicMcEliece8192128
+ : p521_ClassicMcEliece8192128 : p521_ClassicMcEliece8192128
 ##### OQS_TEMPLATE_FRAGMENT_LIST_KEMS_END
 
 ##### OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_OIDS_START

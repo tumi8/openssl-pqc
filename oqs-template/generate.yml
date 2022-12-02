@@ -377,13 +377,13 @@ kems:
     oqs_alg: 'OQS_KEM_alg_hqc_256'
   -
     family: 'Classic_McEliece'
-    name_group: 'Classic-McEliece-348864'
+    name_group: 'ClassicMcEliece348864'
     nid: '0x082E'
     nid_hybrid: '0x8F2E'
     oqs_alg: 'OQS_KEM_alg_classic_mceliece_348864'
   -
     family: 'Classic_McEliece'
-    name_group: 'Classic-McEliece-8192128'
+    name_group: 'ClassicMcEliece8192128'
     nid: '0x084E'
     nid_hybrid: '0x8F4E'
     oqs_alg: 'OQS_KEM_alg_classic_mceliece_8192128'

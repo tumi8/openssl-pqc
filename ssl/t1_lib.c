@@ -202,9 +202,6 @@ static const TLS_GROUP_INFO oqs_nid_list[] = {
     {NID_ntru_hps40961229, 256, TLS_CURVE_CUSTOM}, /* ntru_hps40961229 (0x0245) */
     {NID_ntru_hrss701, 192, TLS_CURVE_CUSTOM}, /* ntru_hrss701 (0x0217) */
     {NID_ntru_hrss1373, 256, TLS_CURVE_CUSTOM}, /* ntru_hrss1373 (0x0246) */
-    {NID_lightsaber, 128, TLS_CURVE_CUSTOM}, /* lightsaber (0x0218) */
-    {NID_saber, 192, TLS_CURVE_CUSTOM}, /* saber (0x0219) */
-    {NID_firesaber, 256, TLS_CURVE_CUSTOM}, /* firesaber (0x021A) */
     {NID_bikel1, 128, TLS_CURVE_CUSTOM}, /* bikel1 (0x0238) */
     {NID_bikel3, 192, TLS_CURVE_CUSTOM}, /* bikel3 (0x023B) */
     {NID_kyber90s512, 128, TLS_CURVE_CUSTOM}, /* kyber90s512 (0x023E) */
@@ -213,6 +210,8 @@ static const TLS_GROUP_INFO oqs_nid_list[] = {
     {NID_hqc128, 128, TLS_CURVE_CUSTOM}, /* hqc128 (0x022C) */
     {NID_hqc192, 192, TLS_CURVE_CUSTOM}, /* hqc192 (0x022D) */
     {NID_hqc256, 256, TLS_CURVE_CUSTOM}, /* hqc256 (0x022E) */
+    {NID_Classic-McEliece-348864, 128, TLS_CURVE_CUSTOM}, /* Classic-McEliece-348864 (0x082E) */
+    {NID_Classic-McEliece-8192128, 256, TLS_CURVE_CUSTOM}, /* Classic-McEliece-8192128 (0x084E) */
 ///// OQS_TEMPLATE_FRAGMENT_OQS_NID_LIST_END
 };
     /* Hybrid OQS groups. Security level is classical. */
@@ -233,9 +232,6 @@ static const TLS_GROUP_INFO oqs_hybrid_nid_list[] = {
  {NID_p521_ntru_hps40961229, 256, TLS_CURVE_CUSTOM}, /* p256/384/521 + ntru_hps40961229 hybrid (0x0245) */
  {NID_p384_ntru_hrss701, 192, TLS_CURVE_CUSTOM}, /* p256/384/521 + ntru_hrss701 hybrid (0x0217) */
  {NID_p521_ntru_hrss1373, 256, TLS_CURVE_CUSTOM}, /* p256/384/521 + ntru_hrss1373 hybrid (0x0246) */
- {NID_p256_lightsaber, 128, TLS_CURVE_CUSTOM}, /* p256/384/521 + lightsaber hybrid (0x0218) */
- {NID_p384_saber, 192, TLS_CURVE_CUSTOM}, /* p256/384/521 + saber hybrid (0x0219) */
- {NID_p521_firesaber, 256, TLS_CURVE_CUSTOM}, /* p256/384/521 + firesaber hybrid (0x021A) */
  {NID_p256_bikel1, 128, TLS_CURVE_CUSTOM}, /* p256/384/521 + bikel1 hybrid (0x0238) */
  {NID_p384_bikel3, 192, TLS_CURVE_CUSTOM}, /* p256/384/521 + bikel3 hybrid (0x023B) */
  {NID_p256_kyber90s512, 128, TLS_CURVE_CUSTOM}, /* p256/384/521 + kyber90s512 hybrid (0x023E) */
@@ -244,6 +240,8 @@ static const TLS_GROUP_INFO oqs_hybrid_nid_list[] = {
  {NID_p256_hqc128, 128, TLS_CURVE_CUSTOM}, /* p256/384/521 + hqc128 hybrid (0x022C) */
  {NID_p384_hqc192, 192, TLS_CURVE_CUSTOM}, /* p256/384/521 + hqc192 hybrid (0x022D) */
  {NID_p521_hqc256, 256, TLS_CURVE_CUSTOM}, /* p256/384/521 + hqc256 hybrid (0x022E) */
+ {NID_p256_Classic-McEliece-348864, 128, TLS_CURVE_CUSTOM}, /* p256/384/521 + Classic-McEliece-348864 hybrid (0x082E) */
+ {NID_p521_Classic-McEliece-8192128, 256, TLS_CURVE_CUSTOM}, /* p256/384/521 + Classic-McEliece-8192128 hybrid (0x084E) */
 ///// OQS_TEMPLATE_FRAGMENT_OQS_NID_LIST_HYBRID_END
 };
 
@@ -265,10 +263,10 @@ static const uint16_t eccurves_default[] = {
     0x2F01, /* OQS frodo640shake hybrid */
     0x2F3A, /* OQS kyber512 hybrid */
     0x2F14, /* OQS ntru_hps2048509 hybrid */
-    0x2F18, /* OQS lightsaber hybrid */
     0x2F38, /* OQS bikel1 hybrid */
     0x2F3E, /* OQS kyber90s512 hybrid */
     0x2F2C, /* OQS hqc128 hybrid */
+    0x8F2E, /* OQS Classic-McEliece-348864 hybrid */
 ///// OQS_TEMPLATE_FRAGMENT_ECCURVES_DEFAULT_HYBRID_END
 };
 
@@ -317,12 +315,6 @@ static const uint16_t oqs_all_tls13_server_groups[] = {
     0x2F17, /* OQS ntru_hrss701 hybrid */
     0x0246, /* ntru_hrss1373 */
     0x2F46, /* OQS ntru_hrss1373 hybrid */
-    0x0218, /* lightsaber */
-    0x2F18, /* OQS lightsaber hybrid */
-    0x0219, /* saber */
-    0x2F19, /* OQS saber hybrid */
-    0x021A, /* firesaber */
-    0x2F1A, /* OQS firesaber hybrid */
     0x0238, /* bikel1 */
     0x2F38, /* OQS bikel1 hybrid */
     0x023B, /* bikel3 */
@@ -339,6 +331,10 @@ static const uint16_t oqs_all_tls13_server_groups[] = {
     0x2F2D, /* OQS hqc192 hybrid */
     0x022E, /* hqc256 */
     0x2F2E, /* OQS hqc256 hybrid */
+    0x082E, /* Classic-McEliece-348864 */
+    0x8F2E, /* OQS Classic-McEliece-348864 hybrid */
+    0x084E, /* Classic-McEliece-8192128 */
+    0x8F4E, /* OQS Classic-McEliece-8192128 hybrid */
 ///// OQS_TEMPLATE_FRAGMENT_ALL_OQS_CURVEIDS_END
 };
 

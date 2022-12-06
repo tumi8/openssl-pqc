@@ -154,6 +154,24 @@ kems:
     nid_hybrid: '0x2F46'
     oqs_alg: 'OQS_KEM_alg_ntru_hrss1373'
   -
+    family: 'SABER'
+    name_group: 'lightsaber'
+    nid: '0x0218'
+    nid_hybrid: '0x2F18'
+    oqs_alg: 'OQS_KEM_alg_saber_lightsaber'
+  -
+    family: 'SABER'
+    name_group: 'saber'
+    nid: '0x0219'
+    nid_hybrid: '0x2F19'
+    oqs_alg: 'OQS_KEM_alg_saber_saber'
+  -
+    family: 'SABER'
+    name_group: 'firesaber'
+    nid: '0x021A'
+    nid_hybrid: '0x2F1A'
+    oqs_alg: 'OQS_KEM_alg_saber_firesaber'
+  -
     family: 'SIDH'
     name_group: 'sidhp434'
     extra_nids:
@@ -376,13 +394,19 @@ kems:
     nid_hybrid: '0x2F2E'
     oqs_alg: 'OQS_KEM_alg_hqc_256'
   -
-    family: 'Classic_McEliece'
+    family: 'Classic McEliece'
     name_group: 'Classic-McEliece-348864'
     nid: '0x082E'
     nid_hybrid: '0x8F2E'
     oqs_alg: 'OQS_KEM_alg_classic_mceliece_348864'
   -
-    family: 'Classic_McEliece'
+    family: 'Classic McEliece'
+    name_group: 'Classic-McEliece-46089'
+    nid: '0x083E'
+    nid_hybrid: '0x8F3E'
+    oqs_alg: 'OQS_KEM_alg_classic_mceliece_46089'
+  -
+    family: 'Classic McEliece'
     name_group: 'Classic-McEliece-8192128'
     nid: '0x084E'
     nid_hybrid: '0x8F4E'

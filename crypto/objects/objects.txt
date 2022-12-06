@@ -1707,6 +1707,12 @@ dstu4145le 2 9 : uacurve9 : DSTU curve 9
  : p384_ntru_hrss701 : p384_ntru_hrss701
  : ntru_hrss1373 : ntru_hrss1373
  : p521_ntru_hrss1373 : p521_ntru_hrss1373
+ : lightsaber : lightsaber
+ : p256_lightsaber : p256_lightsaber
+ : saber : saber
+ : p384_saber : p384_saber
+ : firesaber : firesaber
+ : p521_firesaber : p521_firesaber
  : bikel1 : bikel1
  : p256_bikel1 : p256_bikel1
  : bikel3 : bikel3
@@ -1723,10 +1729,6 @@ dstu4145le 2 9 : uacurve9 : DSTU curve 9
  : p384_hqc192 : p384_hqc192
  : hqc256 : hqc256
  : p521_hqc256 : p521_hqc256
- : Classic-McEliece-348864 : Classic-McEliece-348864
- : p256_Classic-McEliece-348864 : p256_Classic-McEliece-348864
- : Classic-McEliece-8192128 : Classic-McEliece-8192128
- : p521_Classic-McEliece-8192128 : p521_Classic-McEliece-8192128
 ##### OQS_TEMPLATE_FRAGMENT_LIST_KEMS_END
 
 ##### OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_OIDS_START

@@ -70,6 +70,12 @@
 | NTRU           | NIST Round 3 submission  | ntru_hrss1373    |            3 |                    5 | 0x2F46       | secp521_r1                       |
 | NTRU           | NIST Round 3 submission  | ntru_hrss701     |            3 |                    3 | 0x0217       |                                  |
 | NTRU           | NIST Round 3 submission  | ntru_hrss701     |            3 |                    3 | 0x2F17       | secp384_r1                       |
+| SABER          | NIST Round 3 submission  | firesaber        |            3 |                    5 | 0x021A       |                                  |
+| SABER          | NIST Round 3 submission  | firesaber        |            3 |                    5 | 0x2F1A       | secp521_r1                       |
+| SABER          | NIST Round 3 submission  | lightsaber       |            3 |                    1 | 0x0218       |                                  |
+| SABER          | NIST Round 3 submission  | lightsaber       |            3 |                    1 | 0x2F18       | secp256_r1                       |
+| SABER          | NIST Round 3 submission  | saber            |            3 |                    3 | 0x0219       |                                  |
+| SABER          | NIST Round 3 submission  | saber            |            3 |                    3 | 0x2F19       | secp384_r1                       |
 | SIDH           | NIST Round 3 submission  | sidhp434         |            3 |                    1 | 0x021B       |                                  |
 | SIDH           | NIST Round 3 submission  | sidhp434         |            3 |                    1 | 0x2F1B       | secp256_r1                       |
 | SIDH           | NIST Round 3 submission  | sidhp503         |            3 |                    2 | 0x021C       |                                  |

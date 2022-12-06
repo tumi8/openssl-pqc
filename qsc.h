@@ -30,6 +30,12 @@
     { 0x2F17, "p384_ntru_hrss701" }, \
     { 0x0246, "ntru_hrss1373" }, \
     { 0x2F46, "p521_ntru_hrss1373" }, \
+    { 0x0218, "lightsaber" }, \
+    { 0x2F18, "p256_lightsaber" }, \
+    { 0x0219, "saber" }, \
+    { 0x2F19, "p384_saber" }, \
+    { 0x021A, "firesaber" }, \
+    { 0x2F1A, "p521_firesaber" }, \
     { 0x0238, "bikel1" }, \
     { 0x2F38, "p256_bikel1" }, \
     { 0x023B, "bikel3" }, \
@@ -46,10 +52,6 @@
     { 0x2F2D, "p384_hqc192" }, \
     { 0x022E, "hqc256" }, \
     { 0x2F2E, "p521_hqc256" }, \
-    { 0x082E, "Classic-McEliece-348864" }, \
-    { 0x8F2E, "p256_Classic-McEliece-348864" }, \
-    { 0x084E, "Classic-McEliece-8192128" }, \
-    { 0x8F4E, "p521_Classic-McEliece-8192128" }, \
   
 
 ///// OQS_TEMPLATE_FRAGMENT_OQS_CURVE_ID_NAME_STR_END

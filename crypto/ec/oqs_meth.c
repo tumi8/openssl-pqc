@@ -128,6 +128,9 @@ int oqssl_kem_nids_list[] = {
         NID_ntru_hps40961229,
         NID_ntru_hrss701,
         NID_ntru_hrss1373,
+        NID_lightsaber,
+        NID_saber,
+        NID_firesaber,
         NID_bikel1,
         NID_bikel3,
         NID_kyber90s512,
@@ -136,8 +139,6 @@ int oqssl_kem_nids_list[] = {
         NID_hqc128,
         NID_hqc192,
         NID_hqc256,
-        NID_Classic-McEliece-348864,
-        NID_Classic-McEliece-8192128,
 /////// OQS_TEMPLATE_FRAGMENT_LIST_KNOWN_KEM_NIDS_END
 };
 
@@ -258,6 +259,15 @@ char* get_oqs_alg_name(int openssl_nid)
     case NID_ntru_hrss1373:
     case NID_p521_ntru_hrss1373:
       return OQS_KEM_alg_ntru_hrss1373;
+    case NID_lightsaber:
+    case NID_p256_lightsaber:
+      return OQS_KEM_alg_saber_lightsaber;
+    case NID_saber:
+    case NID_p384_saber:
+      return OQS_KEM_alg_saber_saber;
+    case NID_firesaber:
+    case NID_p521_firesaber:
+      return OQS_KEM_alg_saber_firesaber;
     case NID_bikel1:
     case NID_p256_bikel1:
       return OQS_KEM_alg_bike_l1;
@@ -282,12 +292,6 @@ char* get_oqs_alg_name(int openssl_nid)
     case NID_hqc256:
     case NID_p521_hqc256:
       return OQS_KEM_alg_hqc_256;
-    case NID_Classic-McEliece-348864:
-    case NID_p256_Classic-McEliece-348864:
-      return OQS_KEM_alg_classic_mceliece_348864;
-    case NID_Classic-McEliece-8192128:
-    case NID_p521_Classic-McEliece-8192128:
-      return OQS_KEM_alg_classic_mceliece_8192128;
 ///// OQS_TEMPLATE_FRAGMENT_ASSIGN_SIG_ALG_END
     default:
       return NULL;

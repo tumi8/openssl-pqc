@@ -77,7 +77,7 @@ The following quantum-safe algorithms from liboqs are supported (assuming they h
 <!--- OQS_TEMPLATE_FRAGMENT_LIST_KEXS_START -->
 - **BIKE**: `bikel1`, `bikel3`
 - **CRYSTALS-Kyber**: `kyber512`, `kyber768`, `kyber1024`, `kyber90s512`, `kyber90s768`, `kyber90s1024`
-- **Classic_McEliece**: `ClassicMcEliece348864`, `ClassicMcEliece8192128`
+- **Classic_McEliece**: `Classic-McEliece-348864`, `Classic-McEliece-8192128`
 - **FrodoKEM**: `frodo640aes`, `frodo640shake`, `frodo976aes`, `frodo976shake`, `frodo1344aes`, `frodo1344shake`
 - **HQC**: `hqc128`, `hqc192`, `hqc256`†
 - **NTRU**: `ntru_hps2048509`, `ntru_hps2048677`, `ntru_hps4096821`, `ntru_hps40961229`, `ntru_hrss701`, `ntru_hrss1373`

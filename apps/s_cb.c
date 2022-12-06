@@ -486,8 +486,8 @@ static const char* OQS_CURVE_ID_NAME_STR(int id) {
   case 0x022C: return "hqc128";
   case 0x022D: return "hqc192";
   case 0x022E: return "hqc256";
-  case 0x082E: return "ClassicMcEliece348864";
-  case 0x084E: return "ClassicMcEliece8192128";
+  case 0x082E: return "Classic-McEliece-348864";
+  case 0x084E: return "Classic-McEliece-8192128";
   ///// OQS_TEMPLATE_FRAGMENT_OQS_CURVE_ID_NAME_STR_END
   ///// OQS_TEMPLATE_FRAGMENT_OQS_CURVE_ID_NAME_STR_HYBRID_START
    case 0x2F00: return "p256_frodo640aes hybrid";
@@ -513,8 +513,8 @@ static const char* OQS_CURVE_ID_NAME_STR(int id) {
    case 0x2F2C: return "p256_hqc128 hybrid";
    case 0x2F2D: return "p384_hqc192 hybrid";
    case 0x2F2E: return "p521_hqc256 hybrid";
-   case 0x8F2E: return "p256_ClassicMcEliece348864 hybrid";
-   case 0x8F4E: return "p521_ClassicMcEliece8192128 hybrid";
+   case 0x8F2E: return "p256_Classic-McEliece-348864 hybrid";
+   case 0x8F4E: return "p521_Classic-McEliece-8192128 hybrid";
   ///// OQS_TEMPLATE_FRAGMENT_OQS_CURVE_ID_NAME_STR_HYBRID_END
   default: return "";
   }

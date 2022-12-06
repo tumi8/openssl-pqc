@@ -46,10 +46,10 @@
     { 0x2F2D, "p384_hqc192" }, \
     { 0x022E, "hqc256" }, \
     { 0x2F2E, "p521_hqc256" }, \
-    { 0x082E, "ClassicMcEliece348864" }, \
-    { 0x8F2E, "p256_ClassicMcEliece348864" }, \
-    { 0x084E, "ClassicMcEliece8192128" }, \
-    { 0x8F4E, "p521_ClassicMcEliece8192128" }, \
+    { 0x082E, "Classic-McEliece-348864" }, \
+    { 0x8F2E, "p256_Classic-McEliece-348864" }, \
+    { 0x084E, "Classic-McEliece-8192128" }, \
+    { 0x8F4E, "p521_Classic-McEliece-8192128" }, \
   
 
 ///// OQS_TEMPLATE_FRAGMENT_OQS_CURVE_ID_NAME_STR_END

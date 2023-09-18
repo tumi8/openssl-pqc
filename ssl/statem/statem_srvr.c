@@ -841,6 +841,11 @@ WORK_STATE ossl_statem_server_post_work(SSL *s, WORK_STATE wst)
         break;
 
     case TLS_ST_SW_SRVR_HELLO:
+#ifdef NOKAI_EARLY_PSH
+        if (statem_flush(s) != 1)
+            return WORK_MORE_A;
+#endif
+
         if (SSL_IS_TLS13(s) && s->hello_retry_request == SSL_HRR_PENDING) {
             if ((s->options & SSL_OP_ENABLE_MIDDLEBOX_COMPAT) == 0
                     && statem_flush(s) != 1)
@@ -936,6 +941,9 @@ WORK_STATE ossl_statem_server_post_work(SSL *s, WORK_STATE wst)
             dtls1_reset_seq_numbers(s, SSL3_CC_WRITE);
         break;
 
+#ifdef NOKAI_EARLY_PSH
+    case TLS_ST_SW_CERT:
+#endif
     case TLS_ST_SW_SRVR_DONE:
         if (statem_flush(s) != 1)
             return WORK_MORE_A;

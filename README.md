@@ -37,6 +37,8 @@ Both liboqs and this fork are part of the **Open Quantum Safe (OQS) project**, w
 
 Note that, referencing the terminology defined by [ETSI](https://www.etsi.org/technologies/quantum-safe-cryptography) and [CSA](https://downloads.cloudsecurityalliance.org/assets/research/quantum-safe-security/applied-quantum-safe-security.pdf), the terms "post-quantum cryptography" (PQC), "quantum-safe cryptography" (QSC) and "quantum-resistant cryptography" (QRC) all refer to the same class of cryptographic algorithms that is made available for use via this fork.
 
+This branch extend the original project by supporting directly sphincs basic post-quantum cryptography.
+
 ## Status
 
 This fork is currently in sync with the [OpenSSL\_1\_1\_1k tag](https://github.com/openssl/openssl/tree/OpenSSL_1_1_1k), and adds the following:
@@ -101,7 +103,7 @@ The following digital signature algorithms from liboqs are supported by the fork
 - **CRYSTALS-Dilithium**:`dilithium2`\*, `dilithium3`\*, `dilithium5`\*, `dilithium2_aes`\*, `dilithium3_aes`\*, `dilithium5_aes`\*
 - **Falcon**:`falcon512`\*, `falcon1024`\*
 - **SPHINCS-Haraka**:`sphincsharaka128frobust`, `sphincsharaka128fsimple`\*, `sphincsharaka128srobust`, `sphincsharaka128ssimple`, `sphincsharaka192frobust`, `sphincsharaka192fsimple`\*, `sphincsharaka192srobust`, `sphincsharaka192ssimple`, `sphincsharaka256frobust`, `sphincsharaka256fsimple`\*, `sphincsharaka256srobust`, `sphincsharaka256ssimple`
-- **SPHINCS-SHA256**:`sphincssha256128frobust`\*, `sphincssha256128fsimple`, `sphincssha256128srobust`, `sphincssha256128ssimple`, `sphincssha256192frobust`, `sphincssha256192fsimple`, `sphincssha256192srobust`, `sphincssha256192ssimple`, `sphincssha256256frobust`, `sphincssha256256fsimple`, `sphincssha256256srobust`, `sphincssha256256ssimple`
+- **SPHINCS-SHA256**:`sphincssha256128frobust`\, `sphincssha256128fsimple`\*, `sphincssha256128srobust`, `sphincssha256128ssimple`\*, `sphincssha256192frobust`, `sphincssha256192fsimple`*, `sphincssha256192srobust`, `sphincssha256192ssimple`, `sphincssha256256frobust`, `sphincssha256256fsimple`\*, `sphincssha256256srobust`, `sphincssha256256ssimple`
 - **SPHINCS-SHAKE256**:`sphincsshake256128frobust`\*, `sphincsshake256128fsimple`, `sphincsshake256128srobust`, `sphincsshake256128ssimple`, `sphincsshake256192frobust`, `sphincsshake256192fsimple`, `sphincsshake256192srobust`, `sphincsshake256192ssimple`, `sphincsshake256256frobust`, `sphincsshake256256fsimple`, `sphincsshake256256srobust`, `sphincsshake256256ssimple`
 <!--- OQS_TEMPLATE_FRAGMENT_LIST_SIGS_END -->
 

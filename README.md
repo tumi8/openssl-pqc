@@ -37,6 +37,8 @@ Both liboqs and this fork are part of the **Open Quantum Safe (OQS) project**, w
 
 Note that, referencing the terminology defined by [ETSI](https://www.etsi.org/technologies/quantum-safe-cryptography) and [CSA](https://downloads.cloudsecurityalliance.org/assets/research/quantum-safe-security/applied-quantum-safe-security.pdf), the terms "post-quantum cryptography" (PQC), "quantum-safe cryptography" (QSC) and "quantum-resistant cryptography" (QRC) all refer to the same class of cryptographic algorithms that is made available for use via this fork.
 
+This branch adds the support of basic sphincs post quantum cryptography as well as forces TCP pushes not done in the original version for clear behavior.
+
 ## Status
 
 This fork is currently in sync with the [OpenSSL\_1\_1\_1k tag](https://github.com/openssl/openssl/tree/OpenSSL_1_1_1k), and adds the following:
